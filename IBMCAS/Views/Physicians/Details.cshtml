@@ -1,0 +1,66 @@
+﻿@model IBMCAS.Models.Physician
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Physician</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PhysicianName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhysicianName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhysicianAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhysicianAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhysicianPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhysicianPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhysicianEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhysicianEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhysicianSpecialization)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhysicianSpecialization)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhysicianSummary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhysicianSummary)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PhysicianID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
