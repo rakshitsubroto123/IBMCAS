@@ -12,10 +12,11 @@ namespace IBMCAS.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Patient
+    public partial class PatientRegistrationQueue
     {
-        public int PatientID { get; set; }
-        public string PatientMRNumber { get; set; }
+        public int ID { get; set; }
+        public string RegistrationTokenID { get; set; }
+        public System.DateTime DateCreated { get; set; }
         public System.DateTime PatientDOB { get; set; }
         public string PatientFirstName { get; set; }
         public string PatientLastName { get; set; }

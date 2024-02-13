@@ -1,0 +1,78 @@
+﻿@model IEnumerable<IBMCAS.Models.PatientRegistrationQueue>
+
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>RegistrationRequests</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationTokenID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientGender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PatientAadhaarNumber)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationTokenID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated)
+            </td>   
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientGender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientAadhaarNumber)
+            </td>
+            <td>
+                @Html.ActionLink("GO", "ShowOneRegistrationRequest", new { id=item.RegistrationTokenID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

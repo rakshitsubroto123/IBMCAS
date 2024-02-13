@@ -11,23 +11,13 @@ namespace IBMCAS.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class UserCred
     {
         public int UserID { get; set; }
-        [Required]
-        [Display(Name = "User Name")]
         public string UserName { get; set; }
-        [Required]
-        [DataType(DataType.Password)]
-        [Display(Name = "User Password")]
         public string UserPassword { get; set; }
-  
-        [Display(Name = "User Role")]
         public string UserRole { get; set; }
-     
-        public int UserReferneceToID { get; set; }
+        public Nullable<int> UserReferneceToID { get; set; }
     }
 }

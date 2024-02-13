@@ -7,6 +7,13 @@ using System.Web.Mvc;
 
 namespace IBMCAS.Models
 {
+
+    public enum Role
+    {
+        ADMIN,
+        PATIENT,
+        PHYSICIAN
+    }
     public class UserModel
     {
         [Required]

@@ -2,14 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
 namespace IBMCAS.Controllers
 {
-    public class UserCrediantialController : Controller
+    public class UserCredentialController : Controller
     {
-        // GET: UserCrediantial
         public ActionResult Login()
         {
             return View();
@@ -21,10 +21,10 @@ namespace IBMCAS.Controllers
             if (ModelState.IsValid)
             {
                 Models.IBMCASDBEntities1 _db = new Models.IBMCASDBEntities1();
-                UserCred usr = _db.UserCreds.SingleOrDefault(dbusr => dbusr.UserName.ToLower() 
+                UserCred usr = _db.UserCreds.SingleOrDefault(dbusr => dbusr.UserName.ToLower()
                 == user.UserName.ToLower() && dbusr.UserPassword == user.UserPassword);
 
-                if(usr != null)
+                if (usr != null)
                 {
                     FormsAuthentication.SetAuthCookie(usr.UserName, false);
                     CurrentUserModel cusr = new CurrentUserModel();
@@ -33,7 +33,7 @@ namespace IBMCAS.Controllers
                     cusr.UserID = usr.UserID;
                     cusr.Role = usr.UserRole;
 
-                    if(usr.UserRole == "PHYSICIAN")
+                    if (usr.UserRole == Role.PHYSICIAN.ToString())
                     {
                         cusr.UserName = _db.Physicians.Find(usr.UserReferneceToID).PhysicianName;
                     }
@@ -52,6 +52,5 @@ namespace IBMCAS.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
-
     }
 }
