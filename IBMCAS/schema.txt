@@ -1,32 +1,32 @@
-﻿CREATE TABLE [dbo].[Chemist] (
-    [ChemistID]      INT            IDENTITY (1, 1) NOT NULL,
-    [ChemistName]    VARCHAR (50)   NOT NULL,
-    [ChemistAddress] VARCHAR (100)  NOT NULL,
-    [ChemistPhone]   VARCHAR (13)   NOT NULL,
-    [ChemistEmail]   VARCHAR (50)   NOT NULL,
-    [ChemistSummary] VARCHAR (1000) NOT NULL,
-    PRIMARY KEY CLUSTERED ([ChemistID] ASC)
-);
-
-CREATE TABLE [dbo].[Drug] (
-    [DrugID]          INT          IDENTITY (1, 1) NOT NULL,
-    [DrugTitle]       VARCHAR (20) NOT NULL,
-    [DrugDescription] VARCHAR (30) NOT NULL,
-    [DrugExpiry]      DATE         NOT NULL,
-    [DrugDosage]      VARCHAR (20) NOT NULL,
-    PRIMARY KEY CLUSTERED ([DrugID] ASC)
-);
-
-CREATE TABLE [dbo].[Patient] (
-    [PatientID]      INT            IDENTITY (1, 1) NOT NULL,
-    [PatientDOB]     DATE           NOT NULL,
-    [PatientName]    VARCHAR (50)   NOT NULL,
-    [PatientAddress] VARCHAR (100)  NOT NULL,
-    [PatientPhone]   VARCHAR (13)   NOT NULL,
-    [PatientEmail]   VARCHAR (50)   NOT NULL,
-    [PatientGender]  VARCHAR (10)   NOT NULL,
-    [PatientSummary] VARCHAR (1000) NOT NULL,
+﻿CREATE TABLE [dbo].[Patient] (
+    [PatientID]             INT            IDENTITY (1, 1) NOT NULL,
+    [PatientMRNumber]       NCHAR (20)     NOT NULL,
+    [PatientDOB]            DATE           NOT NULL,
+    [PatientFirstName]      VARCHAR (50)   NOT NULL,
+    [PatientLastName]       VARCHAR (50)   NOT NULL,
+    [PatientAddress]        VARCHAR (100)  NOT NULL,
+    [PatientPhone]          VARCHAR (13)   NOT NULL,
+    [PatientEmail]          VARCHAR (50)   NOT NULL,
+    [PatientGender]         VARCHAR (10)   NOT NULL,
+    [PatientMedicalHistory] VARCHAR (1000) NULL,
+    [PatientAadhaarNumber]  NCHAR (12)     NOT NULL,
     PRIMARY KEY CLUSTERED ([PatientID] ASC)
+);
+
+CREATE TABLE [dbo].PatientRegistrationQueue (
+    [ID]             INT            IDENTITY (1, 1) NOT NULL,
+    [RegistrationTokenID]       VARCHAR(50)     NOT NULL,
+	[DateCreated]            DATE           NOT NULL,
+    [PatientDOB]            DATE           NOT NULL,
+    [PatientFirstName]      VARCHAR (50)   NOT NULL,
+    [PatientLastName]       VARCHAR (50)   NOT NULL,
+    [PatientAddress]        VARCHAR (100)  NOT NULL,
+    [PatientPhone]          NCHAR(10)   NOT NULL,
+    [PatientEmail]          VARCHAR (50)   NOT NULL,
+    [PatientGender]         VARCHAR (10)   NOT NULL,
+    [PatientMedicalHistory] VARCHAR (1000) NULL,
+    [PatientAadhaarNumber]  NCHAR (12)     NOT NULL,
+    PRIMARY KEY CLUSTERED ([ID] ASC)
 );
 
 CREATE TABLE [dbo].[Physician] (
@@ -40,21 +40,12 @@ CREATE TABLE [dbo].[Physician] (
     PRIMARY KEY CLUSTERED ([PhysicianID] ASC)
 );
 
-CREATE TABLE [dbo].[Supplier] (
-    [SupplierID]      INT           IDENTITY (1, 1) NOT NULL,
-    [SupplierName]    VARCHAR (50)  NOT NULL,
-    [SupplierAddress] VARCHAR (100) NOT NULL,
-    [SupplierPhone]   VARCHAR (13)  NOT NULL,
-    [SupplierEmail]   VARCHAR (50)  NOT NULL,
-    PRIMARY KEY CLUSTERED ([SupplierID] ASC)
-);
-
 CREATE TABLE [dbo].[UserCred] (
     [UserID]            INT          IDENTITY (1, 1) NOT NULL,
     [UserName]          VARCHAR (50) NOT NULL,
     [UserPassword]      VARCHAR (20) NOT NULL,
     [UserRole]          VARCHAR (10) NOT NULL,
-    [UserReferneceToID] INT          NULL,
+    [UserReferneceToID] INT          NOT NULL,
     PRIMARY KEY CLUSTERED ([UserID] ASC)
 );
 

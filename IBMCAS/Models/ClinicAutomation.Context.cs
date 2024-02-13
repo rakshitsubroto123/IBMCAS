@@ -25,11 +25,9 @@ namespace IBMCAS.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Chemist> Chemists { get; set; }
-        public virtual DbSet<Drug> Drugs { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
+        public virtual DbSet<PatientRegistrationQueue> PatientRegistrationQueues { get; set; }
         public virtual DbSet<Physician> Physicians { get; set; }
-        public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<UserCred> UserCreds { get; set; }
     }
 }

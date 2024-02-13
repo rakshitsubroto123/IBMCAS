@@ -11,27 +11,15 @@ namespace IBMCAS.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class Physician
     {
         public int PhysicianID { get; set; }
-        [Required]
-        [Display(Name = "Name")]
         public string PhysicianName { get; set; }
-        [Required]
-        [Display(Name = "Permanent Address")]
         public string PhysicianAddress { get; set; }
-        [Required]
-        [Display(Name = "Mobile Number")]
         public string PhysicianPhone { get; set; }
-        [Required]
-        [Display(Name = "Email")]
         public string PhysicianEmail { get; set; }
-        [Required]
-        [Display(Name = "Specialization")]
         public string PhysicianSpecialization { get; set; }
-        [Display(Name = "Summary")]
         public string PhysicianSummary { get; set; }
     }
 }

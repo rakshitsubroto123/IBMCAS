@@ -5,39 +5,38 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="IBMCASDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Chemist">
-          <Key>
-            <PropertyRef Name="ChemistID" />
-          </Key>
-          <Property Name="ChemistID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ChemistName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ChemistAddress" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="ChemistPhone" Type="varchar" MaxLength="13" Nullable="false" />
-          <Property Name="ChemistEmail" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ChemistSummary" Type="varchar" MaxLength="1000" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Drug">
-          <Key>
-            <PropertyRef Name="DrugID" />
-          </Key>
-          <Property Name="DrugID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DrugTitle" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="DrugDescription" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="DrugExpiry" Type="date" Nullable="false" />
-          <Property Name="DrugDosage" Type="varchar" MaxLength="20" Nullable="false" />
-        </EntityType>
         <EntityType Name="Patient">
           <Key>
             <PropertyRef Name="PatientID" />
           </Key>
           <Property Name="PatientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientMRNumber" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="PatientDOB" Type="date" Nullable="false" />
-          <Property Name="PatientName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PatientFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PatientLastName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PatientAddress" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PatientPhone" Type="varchar" MaxLength="13" Nullable="false" />
           <Property Name="PatientEmail" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="PatientGender" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="PatientSummary" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="PatientMedicalHistory" Type="varchar" MaxLength="1000" />
+          <Property Name="PatientAadhaarNumber" Type="nchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PatientRegistrationQueue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegistrationTokenID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateCreated" Type="date" Nullable="false" />
+          <Property Name="PatientDOB" Type="date" Nullable="false" />
+          <Property Name="PatientFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PatientLastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PatientAddress" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PatientPhone" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="PatientEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PatientGender" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PatientMedicalHistory" Type="varchar" MaxLength="1000" />
+          <Property Name="PatientAadhaarNumber" Type="nchar" MaxLength="12" Nullable="false" />
         </EntityType>
         <EntityType Name="Physician">
           <Key>
@@ -51,16 +50,6 @@
           <Property Name="PhysicianSpecialization" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="PhysicianSummary" Type="varchar" MaxLength="1000" />
         </EntityType>
-        <EntityType Name="Supplier">
-          <Key>
-            <PropertyRef Name="SupplierID" />
-          </Key>
-          <Property Name="SupplierID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SupplierName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="SupplierAddress" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="SupplierPhone" Type="varchar" MaxLength="13" Nullable="false" />
-          <Property Name="SupplierEmail" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="UserCred">
           <Key>
             <PropertyRef Name="UserID" />
@@ -69,14 +58,12 @@
           <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="UserPassword" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="UserRole" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="UserReferneceToID" Type="int" Nullable="false" />
+          <Property Name="UserReferneceToID" Type="int" />
         </EntityType>
         <EntityContainer Name="IBMCASDBModelStoreContainer">
-          <EntitySet Name="Chemist" EntityType="Self.Chemist" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Drug" EntityType="Self.Drug" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatientRegistrationQueue" EntityType="Self.PatientRegistrationQueue" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Physician" EntityType="Self.Physician" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserCred" EntityType="Self.UserCred" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
@@ -84,39 +71,38 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IBMCASDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Chemist">
-          <Key>
-            <PropertyRef Name="ChemistID" />
-          </Key>
-          <Property Name="ChemistID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ChemistName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ChemistAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ChemistPhone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ChemistEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ChemistSummary" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Drug">
-          <Key>
-            <PropertyRef Name="DrugID" />
-          </Key>
-          <Property Name="DrugID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DrugTitle" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DrugDescription" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DrugExpiry" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DrugDosage" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityType Name="Patient">
           <Key>
             <PropertyRef Name="PatientID" />
           </Key>
           <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientMRNumber" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="PatientDOB" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="PatientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PatientFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PatientLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PatientAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PatientPhone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PatientEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PatientGender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PatientSummary" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PatientMedicalHistory" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="PatientAadhaarNumber" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PatientRegistrationQueue">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationTokenID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PatientDOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PatientFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PatientLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PatientAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PatientPhone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PatientEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PatientGender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PatientMedicalHistory" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="PatientAadhaarNumber" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Physician">
           <Key>
@@ -130,16 +116,6 @@
           <Property Name="PhysicianSpecialization" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PhysicianSummary" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Supplier">
-          <Key>
-            <PropertyRef Name="SupplierID" />
-          </Key>
-          <Property Name="SupplierID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SupplierName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SupplierAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SupplierPhone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="SupplierEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityType Name="UserCred">
           <Key>
             <PropertyRef Name="UserID" />
@@ -148,14 +124,12 @@
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserRole" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserReferneceToID" Type="Int32" Nullable="false" />
+          <Property Name="UserReferneceToID" Type="Int32" />
         </EntityType>
         <EntityContainer Name="IBMCASDBEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Chemists" EntityType="Self.Chemist" />
-          <EntitySet Name="Drugs" EntityType="Self.Drug" />
           <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <EntitySet Name="PatientRegistrationQueues" EntityType="Self.PatientRegistrationQueue" />
           <EntitySet Name="Physicians" EntityType="Self.Physician" />
-          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
           <EntitySet Name="UserCreds" EntityType="Self.UserCred" />
         </EntityContainer>
       </Schema>
@@ -164,40 +138,38 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="IBMCASDBModelStoreContainer" CdmEntityContainer="IBMCASDBEntities1">
-          <EntitySetMapping Name="Chemists">
-            <EntityTypeMapping TypeName="IBMCASDBModel.Chemist">
-              <MappingFragment StoreEntitySet="Chemist">
-                <ScalarProperty Name="ChemistID" ColumnName="ChemistID" />
-                <ScalarProperty Name="ChemistName" ColumnName="ChemistName" />
-                <ScalarProperty Name="ChemistAddress" ColumnName="ChemistAddress" />
-                <ScalarProperty Name="ChemistPhone" ColumnName="ChemistPhone" />
-                <ScalarProperty Name="ChemistEmail" ColumnName="ChemistEmail" />
-                <ScalarProperty Name="ChemistSummary" ColumnName="ChemistSummary" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Drugs">
-            <EntityTypeMapping TypeName="IBMCASDBModel.Drug">
-              <MappingFragment StoreEntitySet="Drug">
-                <ScalarProperty Name="DrugID" ColumnName="DrugID" />
-                <ScalarProperty Name="DrugTitle" ColumnName="DrugTitle" />
-                <ScalarProperty Name="DrugDescription" ColumnName="DrugDescription" />
-                <ScalarProperty Name="DrugExpiry" ColumnName="DrugExpiry" />
-                <ScalarProperty Name="DrugDosage" ColumnName="DrugDosage" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Patients">
             <EntityTypeMapping TypeName="IBMCASDBModel.Patient">
               <MappingFragment StoreEntitySet="Patient">
                 <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="PatientMRNumber" ColumnName="PatientMRNumber" />
                 <ScalarProperty Name="PatientDOB" ColumnName="PatientDOB" />
-                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
+                <ScalarProperty Name="PatientFirstName" ColumnName="PatientFirstName" />
+                <ScalarProperty Name="PatientLastName" ColumnName="PatientLastName" />
                 <ScalarProperty Name="PatientAddress" ColumnName="PatientAddress" />
                 <ScalarProperty Name="PatientPhone" ColumnName="PatientPhone" />
                 <ScalarProperty Name="PatientEmail" ColumnName="PatientEmail" />
                 <ScalarProperty Name="PatientGender" ColumnName="PatientGender" />
-                <ScalarProperty Name="PatientSummary" ColumnName="PatientSummary" />
+                <ScalarProperty Name="PatientMedicalHistory" ColumnName="PatientMedicalHistory" />
+                <ScalarProperty Name="PatientAadhaarNumber" ColumnName="PatientAadhaarNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientRegistrationQueues">
+            <EntityTypeMapping TypeName="IBMCASDBModel.PatientRegistrationQueue">
+              <MappingFragment StoreEntitySet="PatientRegistrationQueue">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RegistrationTokenID" ColumnName="RegistrationTokenID" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="PatientDOB" ColumnName="PatientDOB" />
+                <ScalarProperty Name="PatientFirstName" ColumnName="PatientFirstName" />
+                <ScalarProperty Name="PatientLastName" ColumnName="PatientLastName" />
+                <ScalarProperty Name="PatientAddress" ColumnName="PatientAddress" />
+                <ScalarProperty Name="PatientPhone" ColumnName="PatientPhone" />
+                <ScalarProperty Name="PatientEmail" ColumnName="PatientEmail" />
+                <ScalarProperty Name="PatientGender" ColumnName="PatientGender" />
+                <ScalarProperty Name="PatientMedicalHistory" ColumnName="PatientMedicalHistory" />
+                <ScalarProperty Name="PatientAadhaarNumber" ColumnName="PatientAadhaarNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -211,17 +183,6 @@
                 <ScalarProperty Name="PhysicianEmail" ColumnName="PhysicianEmail" />
                 <ScalarProperty Name="PhysicianSpecialization" ColumnName="PhysicianSpecialization" />
                 <ScalarProperty Name="PhysicianSummary" ColumnName="PhysicianSummary" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Suppliers">
-            <EntityTypeMapping TypeName="IBMCASDBModel.Supplier">
-              <MappingFragment StoreEntitySet="Supplier">
-                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
-                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
-                <ScalarProperty Name="SupplierAddress" ColumnName="SupplierAddress" />
-                <ScalarProperty Name="SupplierPhone" ColumnName="SupplierPhone" />
-                <ScalarProperty Name="SupplierEmail" ColumnName="SupplierEmail" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -8,7 +8,7 @@ using System.Web.Security;
 
 namespace IBMCAS.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "ADMIN")]
     public class AdminController : Controller
     {
         // GET: Admin
@@ -18,31 +18,61 @@ namespace IBMCAS.Controllers
             return View();
         }
 
-        public ActionResult AddNewPhysician()
+        [HttpGet]
+        public ActionResult RegistrationRequests() 
         {
-            return View();
+            return View(_db.PatientRegistrationQueues.ToList());
         }
 
-        [HttpPost]
-        public ActionResult AddNewPhysician(Models.Physician physician)
+        [HttpGet]
+        public ActionResult ShowOneRegistrationRequest(string id)
         {
-            if (ModelState.IsValid)
-            {
-                _db.Physicians.Add(physician);
-                _db.SaveChanges();
+            return View(_db.PatientRegistrationQueues.Where(q => q.RegistrationTokenID == id).SingleOrDefault());
+        }
 
-                UserCred usr = new UserCred();
-                usr.UserReferneceToID = physician.PhysicianID;
-                usr.UserName = physician.PhysicianName + DateTime.Now.ToString("ddMMyyhhmmss");
-                usr.UserPassword = physician.PhysicianPhone;
-                usr.UserRole = "PHYSICIAN";
-                
-                _db.UserCreds.Add(usr);
-                _db.SaveChanges();
+        [HttpGet]
+        public ActionResult EditRegistrationRequest(string id)
+        {
+            return View(_db.PatientRegistrationQueues.Where(q => q.RegistrationTokenID == id).SingleOrDefault());
+        }
 
-                return RedirectToAction("Index");
-            }
-            return View();
+        [HttpGet]
+        public ActionResult ApproveRegistrationRequest(string id) 
+        {
+            PatientRegistrationQueue prq = _db.PatientRegistrationQueues.FirstOrDefault(q => q.RegistrationTokenID == id);
+            Patient patient = new Patient();
+            patient.PatientFirstName = prq.PatientFirstName;
+            patient.PatientLastName = prq.PatientLastName;
+            patient.PatientGender = prq.PatientGender;
+            patient.PatientDOB = prq.PatientDOB;
+            patient.PatientPhone = prq.PatientPhone;
+            patient.PatientEmail = prq.PatientEmail;
+            patient.PatientMedicalHistory = prq.PatientMedicalHistory;
+            patient.PatientAddress = prq.PatientAddress;
+            patient.PatientAadhaarNumber = prq.PatientAadhaarNumber;
+            patient.PatientMRNumber = "MR_" + DateTime.Now.ToString("ddMMyyyyhhmmss");
+            _db.Patients.Add(patient);
+            _db.SaveChanges();
+
+            int patientID = _db.Patients.Where(p => p.PatientMRNumber == patient.PatientMRNumber).FirstOrDefault().PatientID;
+            UserCred userCred = new UserCred();
+            userCred.UserName = patient.PatientEmail;
+            userCred.UserPassword = patient.PatientEmail;
+            userCred.UserRole = Role.ADMIN.ToString();
+            userCred.UserReferneceToID = patientID;
+            _db.UserCreds.Add(userCred);
+            _db.PatientRegistrationQueues.Remove(_db.PatientRegistrationQueues.Where(p => p.RegistrationTokenID == id).Single());
+            _db.SaveChanges();
+
+            return RedirectToAction("RegistrationRequests");
+        }
+
+        [HttpGet]
+        public ActionResult RejectRegistrationRequest(string id)
+        {
+            _db.PatientRegistrationQueues.Remove(_db.PatientRegistrationQueues.Where(p => p.RegistrationTokenID == id).Single());
+            _db.SaveChanges();
+            return RedirectToAction("RegistrationRequests");
         }
     }
 }
