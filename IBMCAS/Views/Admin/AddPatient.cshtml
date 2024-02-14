@@ -1,41 +1,20 @@
-﻿@model IBMCAS.Models.PatientRegistrationQueue
+﻿@model IBMCAS.Models.Patient
 
 @{
-    ViewBag.Title = "EditRegistrationRequest";
+    ViewBag.Title = "AddPatient";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>EditRegistrationRequest</h2>
+<h2>AddPatient</h2>
 
-
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>PatientRegistrationQueue</h4>
+    <h4>Patient</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-   
-    <input type="hidden" name="PRQID" value="@Model.PRQID" />
-    <div class="form-group">
-        @Html.LabelFor(model => model.RegistrationTokenNo, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DisplayFor(model => model.RegistrationTokenNo, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.RegistrationTokenNo, "", new { @class = "text-danger" })
-            <input type="hidden" name="RegistrationTokenNo" value="@Model.RegistrationTokenNo" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.DateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DisplayFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control" } })
-
-            <input type="hidden" name="DateCreated" value="@Model.DateCreated" />
-            @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.PatientDOB, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -88,8 +67,12 @@
     <div class="form-group">
         @Html.LabelFor(model => model.PatientGender, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.PatientGender, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.PatientGender, "", new { @class = "text-danger" })
+
+            @Html.DropDownList("PatientGender", new List<SelectListItem>
+                               {
+                                   new SelectListItem {Text = "Male", Value = "Male", Selected = true },
+                                   new SelectListItem {Text = "Female", Value = "Female" },
+                               })
         </div>
     </div>
 
@@ -111,16 +94,12 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+            <input type="submit" value="Create" class="btn btn-default" />
         </div>
     </div>
 </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "RegistrationRequests")
+    @Html.ActionLink("Back to List", "Index")
 </div>
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

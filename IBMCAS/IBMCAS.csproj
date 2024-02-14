@@ -216,6 +216,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PatientController.cs" />
+    <Compile Include="Controllers\PhysicianController.cs" />
+    <Compile Include="Controllers\PhysiciansController.cs" />
     <Compile Include="Controllers\UserCredentialController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -263,10 +266,20 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutHome.cshtml" />
     <Content Include="Views\Home\RegisterSuccessfulView.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Admin\RegistrationRequests.cshtml" />
     <Content Include="Views\Admin\ShowOneRegistrationRequest.cshtml" />
     <Content Include="Views\Admin\EditRegistrationRequest.cshtml" />
+    <Content Include="Views\Physician\Index.cshtml" />
+    <Content Include="Views\Patient\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutPatient.cshtml" />
+    <Content Include="Views\Shared\_LayoutPhysician.cshtml" />
+    <Content Include="Views\Admin\PatientIndex.cshtml" />
+    <Content Include="Views\Admin\PhysicianIndex.cshtml" />
+    <Content Include="Views\Admin\AddPhysician.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Admin\AddPatient.cshtml" />
+    <Content Include="Views\Admin\ShowPatient.cshtml" />
+    <Content Include="Views\Admin\UpdatePatient.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

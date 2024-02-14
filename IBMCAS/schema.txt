@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Patient] (
     [PatientID]             INT            IDENTITY (1, 1) NOT NULL,
-    [PatientMRNumber]       NCHAR (20)     NOT NULL,
+    [PatientMRNumber]       NCHAR (13)     NOT NULL,
     [PatientDOB]            DATE           NOT NULL,
     [PatientFirstName]      VARCHAR (50)   NOT NULL,
     [PatientLastName]       VARCHAR (50)   NOT NULL,
@@ -13,21 +13,23 @@
     PRIMARY KEY CLUSTERED ([PatientID] ASC)
 );
 
-CREATE TABLE [dbo].PatientRegistrationQueue (
-    [ID]             INT            IDENTITY (1, 1) NOT NULL,
-    [RegistrationTokenID]       VARCHAR(50)     NOT NULL,
-	[DateCreated]            DATE           NOT NULL,
+
+CREATE TABLE [dbo].[PatientRegistrationQueue] (
+    [PRQID]                 INT            IDENTITY (1, 1) NOT NULL,
+    [RegistrationTokenNo]   VARCHAR (50)   NOT NULL,
+    [DateCreated]           DATE           NOT NULL,
     [PatientDOB]            DATE           NOT NULL,
     [PatientFirstName]      VARCHAR (50)   NOT NULL,
     [PatientLastName]       VARCHAR (50)   NOT NULL,
     [PatientAddress]        VARCHAR (100)  NOT NULL,
-    [PatientPhone]          NCHAR(10)   NOT NULL,
+    [PatientPhone]          NCHAR (10)     NOT NULL,
     [PatientEmail]          VARCHAR (50)   NOT NULL,
     [PatientGender]         VARCHAR (10)   NOT NULL,
     [PatientMedicalHistory] VARCHAR (1000) NULL,
     [PatientAadhaarNumber]  NCHAR (12)     NOT NULL,
-    PRIMARY KEY CLUSTERED ([ID] ASC)
+    PRIMARY KEY CLUSTERED ([PRQID] ASC)
 );
+
 
 CREATE TABLE [dbo].[Physician] (
     [PhysicianID]             INT            IDENTITY (1, 1) NOT NULL,
@@ -40,6 +42,7 @@ CREATE TABLE [dbo].[Physician] (
     PRIMARY KEY CLUSTERED ([PhysicianID] ASC)
 );
 
+
 CREATE TABLE [dbo].[UserCred] (
     [UserID]            INT          IDENTITY (1, 1) NOT NULL,
     [UserName]          VARCHAR (50) NOT NULL,
@@ -48,4 +51,6 @@ CREATE TABLE [dbo].[UserCred] (
     [UserReferneceToID] INT          NOT NULL,
     PRIMARY KEY CLUSTERED ([UserID] ASC)
 );
+
+
 

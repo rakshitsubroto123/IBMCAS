@@ -15,7 +15,7 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.RegistrationTokenID)
+                @Html.DisplayNameFor(model => model.RegistrationTokenNo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateCreated)
@@ -44,7 +44,7 @@
     @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.RegistrationTokenID)
+                @Html.DisplayFor(modelItem => item.RegistrationTokenNo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateCreated)
@@ -68,7 +68,7 @@
                 @Html.DisplayFor(modelItem => item.PatientAadhaarNumber)
             </td>
             <td>
-                @Html.ActionLink("GO", "ShowOneRegistrationRequest", new { id=item.RegistrationTokenID })
+                @Html.ActionLink("GO", "ShowOneRegistrationRequest", new { id=item.RegistrationTokenNo })
             </td>
         </tr>
     }

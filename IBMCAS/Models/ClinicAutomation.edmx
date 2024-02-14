@@ -23,10 +23,10 @@
         </EntityType>
         <EntityType Name="PatientRegistrationQueue">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="PRQID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RegistrationTokenID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PRQID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegistrationTokenNo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DateCreated" Type="date" Nullable="false" />
           <Property Name="PatientDOB" Type="date" Nullable="false" />
           <Property Name="PatientFirstName" Type="varchar" MaxLength="50" Nullable="false" />
@@ -58,7 +58,7 @@
           <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="UserPassword" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="UserRole" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="UserReferneceToID" Type="int" />
+          <Property Name="UserReferneceToID" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="IBMCASDBModelStoreContainer">
           <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
@@ -89,10 +89,10 @@
         </EntityType>
         <EntityType Name="PatientRegistrationQueue">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="PRQID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RegistrationTokenID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRQID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationTokenNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PatientDOB" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PatientFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -124,7 +124,7 @@
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserRole" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserReferneceToID" Type="Int32" />
+          <Property Name="UserReferneceToID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="IBMCASDBEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Patients" EntityType="Self.Patient" />
@@ -158,8 +158,8 @@
           <EntitySetMapping Name="PatientRegistrationQueues">
             <EntityTypeMapping TypeName="IBMCASDBModel.PatientRegistrationQueue">
               <MappingFragment StoreEntitySet="PatientRegistrationQueue">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="RegistrationTokenID" ColumnName="RegistrationTokenID" />
+                <ScalarProperty Name="PRQID" ColumnName="PRQID" />
+                <ScalarProperty Name="RegistrationTokenNo" ColumnName="RegistrationTokenNo" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="PatientDOB" ColumnName="PatientDOB" />
                 <ScalarProperty Name="PatientFirstName" ColumnName="PatientFirstName" />
