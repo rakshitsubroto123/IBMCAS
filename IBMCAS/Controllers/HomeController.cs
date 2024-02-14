@@ -27,7 +27,7 @@ namespace IBMCAS.Controllers
             if (ModelState.IsValid)
             {
                 Models.PatientRegistrationQueue patientRegistrationQueue = new Models.PatientRegistrationQueue();
-                patientRegistrationQueue.RegistrationTokenID = "PRQ" + patientRegistrationFormData.DateOfBirth.Date.Year.ToString() + DateTime.Now.ToString("ddMMyyhhmmss");
+                patientRegistrationQueue.RegistrationTokenNo = "PRQ" + patientRegistrationFormData.DateOfBirth.Date.Year.ToString() + DateTime.Now.ToString("ddMMyyhhmmss");
                 patientRegistrationQueue.DateCreated = DateTime.Now.Date;
                 patientRegistrationQueue.PatientDOB = DateTime.Now.Date;
                 patientRegistrationQueue.PatientFirstName = patientRegistrationFormData.FirstName;
@@ -42,7 +42,7 @@ namespace IBMCAS.Controllers
                 Models.IBMCASDBEntities1 _db = new Models.IBMCASDBEntities1();
                 _db.PatientRegistrationQueues.Add(patientRegistrationQueue);
                 _db.SaveChanges();
-                ViewBag.PatientRegistrationFormData = patientRegistrationQueue.RegistrationTokenID;
+                ViewBag.PatientRegistrationFormData = patientRegistrationQueue.RegistrationTokenNo;
                 return View("RegisterSuccessfulView");
 
             }

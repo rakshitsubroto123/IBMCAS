@@ -1,0 +1,68 @@
+﻿@model IEnumerable<IBMCAS.Models.Patient>
+
+@{
+    ViewBag.Title = "PatientIndex";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Patient Management Page</h2>
+
+@*<p>
+    @Html.ActionLink("Add New", "AddPatient")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientMRNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientGender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PatientAadhaarNumber)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientMRNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientLastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientGender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PatientAadhaarNumber)
+        </td>
+        <td>
+            @Html.ActionLink("Select", "ShowPatient", new { id=item.PatientMRNumber })
+        </td>
+    </tr>
+}
+
+</table>

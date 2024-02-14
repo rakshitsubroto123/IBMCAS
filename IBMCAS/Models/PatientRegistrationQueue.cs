@@ -14,8 +14,8 @@ namespace IBMCAS.Models
     
     public partial class PatientRegistrationQueue
     {
-        public int ID { get; set; }
-        public string RegistrationTokenID { get; set; }
+        public int PRQID { get; set; }
+        public string RegistrationTokenNo { get; set; }
         public System.DateTime DateCreated { get; set; }
         public System.DateTime PatientDOB { get; set; }
         public string PatientFirstName { get; set; }

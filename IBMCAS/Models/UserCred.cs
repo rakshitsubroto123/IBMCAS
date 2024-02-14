@@ -18,6 +18,6 @@ namespace IBMCAS.Models
         public string UserName { get; set; }
         public string UserPassword { get; set; }
         public string UserRole { get; set; }
-        public Nullable<int> UserReferneceToID { get; set; }
+        public int UserReferneceToID { get; set; }
     }
 }

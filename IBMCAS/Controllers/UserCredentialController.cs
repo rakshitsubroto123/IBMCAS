@@ -33,11 +33,6 @@ namespace IBMCAS.Controllers
                     cusr.UserID = usr.UserID;
                     cusr.Role = usr.UserRole;
 
-                    if (usr.UserRole == Role.PHYSICIAN.ToString())
-                    {
-                        cusr.UserName = _db.Physicians.Find(usr.UserReferneceToID).PhysicianName;
-                    }
-
                     Session["CurrentUser"] = cusr;
 
                     return RedirectToAction("Index", usr.UserRole);

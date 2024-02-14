@@ -1,7 +1,9 @@
 ﻿using IBMCAS.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -27,19 +29,50 @@ namespace IBMCAS.Controllers
         [HttpGet]
         public ActionResult ShowOneRegistrationRequest(string id)
         {
-            return View(_db.PatientRegistrationQueues.Where(q => q.RegistrationTokenID == id).SingleOrDefault());
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PatientRegistrationQueue patientRegistrationQueue = _db.PatientRegistrationQueues.Where(q => q.RegistrationTokenNo == id).SingleOrDefault();
+            if (patientRegistrationQueue == null)
+            {
+                return HttpNotFound();
+            }
+            return View(patientRegistrationQueue);
+            //return View(_db.PatientRegistrationQueues.Where(q => q.RegistrationTokenID == id).SingleOrDefault());
         }
 
         [HttpGet]
         public ActionResult EditRegistrationRequest(string id)
         {
-            return View(_db.PatientRegistrationQueues.Where(q => q.RegistrationTokenID == id).SingleOrDefault());
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PatientRegistrationQueue patientRegistrationQueue = _db.PatientRegistrationQueues.Where(q => q.RegistrationTokenNo == id).SingleOrDefault();
+            if (patientRegistrationQueue == null)
+            {
+                return HttpNotFound();
+            }
+            return View(patientRegistrationQueue);
+
+        }
+
+        [HttpPost]
+        public ActionResult EditRegistrationRequest([Bind(    Include = "PRQID, RegistrationTokenNo,DateCreated,PatientDOB,PatientFirstName,PatientLastName,PatientAddress,PatientPhone,PatientEmail,PatientGender,PatientMedicalHistory,PatientAadhaarNumber")] PatientRegistrationQueue patientRegistrationQueue)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Entry(patientRegistrationQueue).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
+            return RedirectToAction("ShowOneRegistrationRequest", new {id = patientRegistrationQueue.RegistrationTokenNo});
         }
 
         [HttpGet]
         public ActionResult ApproveRegistrationRequest(string id) 
         {
-            PatientRegistrationQueue prq = _db.PatientRegistrationQueues.FirstOrDefault(q => q.RegistrationTokenID == id);
+            PatientRegistrationQueue prq = _db.PatientRegistrationQueues.FirstOrDefault(q => q.RegistrationTokenNo == id);
             Patient patient = new Patient();
             patient.PatientFirstName = prq.PatientFirstName;
             patient.PatientLastName = prq.PatientLastName;
@@ -50,7 +83,7 @@ namespace IBMCAS.Controllers
             patient.PatientMedicalHistory = prq.PatientMedicalHistory;
             patient.PatientAddress = prq.PatientAddress;
             patient.PatientAadhaarNumber = prq.PatientAadhaarNumber;
-            patient.PatientMRNumber = "MR_" + DateTime.Now.ToString("ddMMyyyyhhmmss");
+            patient.PatientMRNumber = "MR_" + DateTime.Now.Year + DateTime.Now.TimeOfDay.ToString("hhmmss");
             _db.Patients.Add(patient);
             _db.SaveChanges();
 
@@ -58,10 +91,10 @@ namespace IBMCAS.Controllers
             UserCred userCred = new UserCred();
             userCred.UserName = patient.PatientEmail;
             userCred.UserPassword = patient.PatientEmail;
-            userCred.UserRole = Role.ADMIN.ToString();
+            userCred.UserRole = Role.PATIENT.ToString();
             userCred.UserReferneceToID = patientID;
             _db.UserCreds.Add(userCred);
-            _db.PatientRegistrationQueues.Remove(_db.PatientRegistrationQueues.Where(p => p.RegistrationTokenID == id).Single());
+            _db.PatientRegistrationQueues.Remove(_db.PatientRegistrationQueues.Where(p => p.RegistrationTokenNo == id).Single());
             _db.SaveChanges();
 
             return RedirectToAction("RegistrationRequests");
@@ -70,9 +103,84 @@ namespace IBMCAS.Controllers
         [HttpGet]
         public ActionResult RejectRegistrationRequest(string id)
         {
-            _db.PatientRegistrationQueues.Remove(_db.PatientRegistrationQueues.Where(p => p.RegistrationTokenID == id).Single());
+            _db.PatientRegistrationQueues.Remove(_db.PatientRegistrationQueues.Where(p => p.RegistrationTokenNo == id).Single());
             _db.SaveChanges();
             return RedirectToAction("RegistrationRequests");
+        }
+
+
+        public ActionResult PatientIndex()
+        {
+            return View("PatientIndex", _db.Patients.ToList());
+        }
+
+        public ActionResult AddPatient()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddPatient(Models.Patient patient)
+        {
+            patient.PatientMRNumber = "MR_" + DateTime.Now.Year + DateTime.Now.TimeOfDay.ToString("hhmmss");
+            _db.Patients.Add(patient);
+            _db.SaveChanges();
+
+            UserCred userCred = new UserCred();
+            userCred.UserName = patient.PatientEmail;
+            userCred.UserPassword = patient.PatientEmail;
+            userCred.UserRole = Role.PATIENT.ToString();
+            userCred.UserReferneceToID = patient.PatientID;
+            _db.UserCreds.Add(userCred);
+            _db.SaveChanges();
+            return RedirectToAction("PatientIndex");
+        }
+
+        public ActionResult ShowPatient(string id)
+        {
+            return View(_db.Patients.Where(q => q.PatientMRNumber == id).SingleOrDefault());
+        }
+
+        public ActionResult UpdatePatient(string id)
+        {
+            return View(_db.Patients.Where(q => q.PatientMRNumber == id).SingleOrDefault());
+        }
+
+        [HttpPost]
+        public ActionResult UpdatePatient(Models.Patient patient)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Entry(patient).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
+            return RedirectToAction("ShowPatient", new { id = patient.PatientMRNumber });
+        }
+
+        public ActionResult PhysicianIndex()
+        {
+            return View("PhysicianIndex", _db.Physicians.ToList());
+        }
+
+        public ActionResult AddPhysician()
+        {
+            return View();
+        }
+
+        // POST: Physicians/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddPhysician([Bind(Include = "PhysicianName,PhysicianAddress,PhysicianPhone,PhysicianEmail,PhysicianSpecialization,PhysicianSummary")] Physician physician)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Physicians.Add(physician);
+                _db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
