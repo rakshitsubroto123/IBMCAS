@@ -176,11 +176,26 @@ namespace IBMCAS.Controllers
         {
             if (ModelState.IsValid)
             {
+                if(_db.Physicians.Where(p => p.PhysicianEmail == physician.PhysicianEmail).SingleOrDefault() != default)
+                {
+                    ModelState.AddModelError("PhysicianEmail", "Email Already Exits");
+                    return View("AddPhysician");
+                }
                 _db.Physicians.Add(physician);
+
+                _db.SaveChanges();
+
+                int physicianID = _db.Physicians.Where(p => p.PhysicianEmail == physician.PhysicianEmail).FirstOrDefault().PhysicianID;
+                UserCred userCred = new UserCred();
+                userCred.UserName = physician.PhysicianEmail;
+                userCred.UserPassword = physician.PhysicianEmail;
+                userCred.UserRole = Role.PHYSICIAN.ToString();
+                userCred.UserReferneceToID = physicianID;
+                _db.UserCreds.Add(userCred);
                 _db.SaveChanges();
             }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("PhysicianIndex");
         }
     }
 }
