@@ -16,7 +16,8 @@ namespace IBMCAS.Controllers
         // GET: Patient
         public ActionResult Index()
         {
-            return View(_db.Appointments.ToList());
+            CurrentUserModel cur = Session["CurrentUser"] as CurrentUserModel;
+            return View(_db.Appointments.Where(a => a.PatientID == cur.ReferenceToId).ToList());
         }
 
         public ActionResult BookAppointment()
