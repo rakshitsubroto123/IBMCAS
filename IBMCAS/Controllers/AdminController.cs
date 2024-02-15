@@ -230,5 +230,23 @@ namespace IBMCAS.Controllers
             _db.SaveChanges();
             return RedirectToAction("ApointmentRequests");
         }
+
+        public ActionResult FrontDesk()
+        {
+            var todaysAppointment = from appoint in _db.Appointments
+                                    where appoint.ScheduledDate == DateTime.Today.Date
+                                    select appoint;
+
+            return View(todaysAppointment.ToList());
+        }
+
+        public ActionResult Isvisited(string id)
+        {
+            Appointment app = _db.Appointments.Where(a => a.AppointmentToken == id).SingleOrDefault();
+            app.isVisited = 1;
+            _db.Entry(app).State = EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("FrontDesk");
+        }
     }
 }
