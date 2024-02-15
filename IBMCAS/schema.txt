@@ -52,5 +52,19 @@ CREATE TABLE [dbo].[UserCred] (
     PRIMARY KEY CLUSTERED ([UserID] ASC)
 );
 
+CREATE TABLE [dbo].[Appointment] (
+    [AppointmentID]    INT            IDENTITY (1, 1) NOT NULL,
+    [AppointmentToken] NCHAR (10)     NOT NULL,
+    [PatientID]        INT            NOT NULL,
+    [PhysicianID]      INT            NOT NULL,
+    [DateCreated]      DATE           NOT NULL,
+    [DateRequested]    DATE           NOT NULL,
+    [ScheduledDate]    DATE           NULL,
+    [ScheduledTime]    INT            NULL,
+    [isVisited]        INT            NOT NULL,
+    [Advice]           VARCHAR (1000) NULL,
+    PRIMARY KEY CLUSTERED ([AppointmentID] ASC)
+);
+
 
 
