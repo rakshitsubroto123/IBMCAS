@@ -1,0 +1,49 @@
+﻿@model IBMCAS.Models.Appointment
+
+@{
+    ViewBag.Title = "BookAppointment";
+    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+}
+
+<h2>BookAppointment</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Appointment</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @{
+        List<IBMCAS.Models.Physician> PhyscianList = ViewBag.PhysicianList;
+        IEnumerable<SelectListItem> PhysicianSelectList = PhyscianList.Select(x => new SelectListItem() { Text = x.PhysicianName.Trim() + " - " + x.PhysicianSpecialization, Value = x.PhysicianID.ToString() });
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PhysicianID, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("PhysicianID", PhysicianSelectList, "Select a Physician")
+            @Html.ValidationMessageFor(model => model.PhysicianID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DateRequested, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DateRequested, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.DateRequested, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
