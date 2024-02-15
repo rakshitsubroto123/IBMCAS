@@ -72,9 +72,8 @@
             @Html.DisplayFor(modelItem => item.Advice)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AppointmentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AppointmentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AppointmentID })
+            @Html.ActionLink("Schedule", "Schedule", new { id=item.AppointmentToken }) |
+            @Html.ActionLink("Remove", "AppointmentRemove", new { id=item.AppointmentToken })
         </td>
     </tr>
 }

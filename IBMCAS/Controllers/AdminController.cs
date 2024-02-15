@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -205,6 +206,29 @@ namespace IBMCAS.Controllers
                                  where appoint.ScheduledDate == null
                                  select appoint;
             return View(appointmentReq.ToList());
+        }
+
+        public ActionResult Schedule(string id)
+        {
+            return View(_db.Appointments.Where(q => q.AppointmentToken == id).SingleOrDefault());
+        }
+
+        [HttpPost]
+        public ActionResult Schedule(Models.Appointment appointment)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Entry(appointment).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
+            return RedirectToAction("ApointmentRequests");
+        }
+
+        public ActionResult AppointmentRemove(string id)
+        {
+            _db.Appointments.Remove(_db.Appointments.Where(q => q.AppointmentToken == id).Single());
+            _db.SaveChanges();
+            return RedirectToAction("ApointmentRequests");
         }
     }
 }
