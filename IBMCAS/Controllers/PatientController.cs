@@ -27,7 +27,8 @@ namespace IBMCAS.Controllers
         [HttpPost]
         public ActionResult BookAppointment([Bind(Include = "PhysicianID, DateRequested" )] Appointment appointment)
         {
-            appointment.PatientID = int.Parse(Session["ReferenceID"].ToString());
+            CurrentUserModel cur = Session["CurrentUser"] as CurrentUserModel;
+            appointment.PatientID = (int)cur.ReferenceToId;
             appointment.isVisited = 0;
             appointment.DateCreated = DateTime.Now.Date;
             appointment.AppointmentToken = DateTime.Now.Year.ToString() + DateTime.Now.TimeOfDay.ToString("hhmmss");

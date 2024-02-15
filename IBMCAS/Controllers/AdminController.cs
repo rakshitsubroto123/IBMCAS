@@ -197,5 +197,14 @@ namespace IBMCAS.Controllers
 
             return RedirectToAction("PhysicianIndex");
         }
+
+        [HttpGet]
+        public ActionResult ApointmentRequests()
+        {
+            var appointmentReq = from appoint in _db.Appointments
+                                 where appoint.ScheduledDate == null
+                                 select appoint;
+            return View(appointmentReq.ToList());
+        }
     }
 }
