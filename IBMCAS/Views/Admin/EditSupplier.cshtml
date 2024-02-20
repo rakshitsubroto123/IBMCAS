@@ -1,14 +1,14 @@
 ﻿@model IBMCAS.Models.Supplier
 
 @{
-    ViewBag.Title = "CreateSupplier";
+    ViewBag.Title = "EditSupplier";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>CreateSupplier</h2>
+<h2>EditSupplier</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
@@ -16,6 +16,8 @@
         <h4>Supplier</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.SupplierId)
+
         <div class="form-group">
             @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -34,7 +36,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>

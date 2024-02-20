@@ -94,6 +94,12 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Update", "UpdatePatient", new { id = Model.PatientMRNumber })
-    @Html.ActionLink("Back to List", "PatientIndex")
+    <button type="button" class="btn btn-outline-success">
+        <a href="@Url.Action("UpdatePatient", new { id = Model.PatientMRNumber })" style="color: black; text-decoration: none !important">Update</a>
+    </button>
+    @*@Html.ActionLink("Update", "UpdatePatient", new { id = Model.PatientMRNumber })*@
+    <button type="button" class="btn btn-primary">
+        <a href="@Url.Action("PatientIndex")" style="color: White; text-decoration: none !important">Back</a>
+    </button>
+    @*@Html.ActionLink("Back", "PatientIndex")*@
 </p>

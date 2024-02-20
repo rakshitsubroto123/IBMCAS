@@ -55,5 +55,8 @@
 </div>
 <p>
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.chemistId }) |*@
-    @Html.ActionLink("Back", "chemistIndex")
+    <button type="button" class="btn btn-primary">
+        <a href="@Url.Action("chemistIndex")" style="color: White; text-decoration: none !important">Back</a>
+    </button>
+    @*@Html.ActionLink("Back", "chemistIndex")*@
 </p>

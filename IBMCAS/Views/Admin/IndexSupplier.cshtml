@@ -34,14 +34,14 @@
         </td>
         <td>
             <button type="button" class="btn btn-outline-primary">
-                <a href="@Url.Action("Edit", new { id = item.SupplierId })" style="color: black; text-decoration: none !important">Edit</a>
+                <a href="@Url.Action("EditSupplier", new { id = item.SupplierId })" style="color: black; text-decoration: none !important">Edit</a>
             </button>
             <button type="button" class="btn btn-outline-secondary">
-                <a href="@Url.Action("Details", new { id = item.SupplierId })" style="color: black; text-decoration: none !important">Details</a>
+                <a href="@Url.Action("DetailsSupplier", new { id = item.SupplierId })" style="color: black; text-decoration: none !important">Details</a>
             </button>
-            <button type="button" class="btn btn-outline-danger">
+            @*<button type="button" class="btn btn-outline-danger">
                 <a href="@Url.Action("Delete", new { id = item.SupplierId })" style="color: black; text-decoration: none !important">Delete</a>
-            </button>
+            </button>*@
             @*@Html.ActionLink("Edit", "Edit", new { id = item.SupplierId }) |
             @Html.ActionLink("Details", "Details", new { id = item.SupplierId }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.SupplierId })*@

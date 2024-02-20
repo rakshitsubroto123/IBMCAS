@@ -106,7 +106,10 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <button type="button" class="btn btn-primary">
+        <a href="@Url.Action("ApointmentRequests")" style="color: White; text-decoration: none !important">Back</a>
+    </button>
+    @*@Html.ActionLink("Back to List", "Index")*@
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>

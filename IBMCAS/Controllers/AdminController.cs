@@ -359,5 +359,26 @@ namespace IBMCAS.Controllers
             _db.SaveChanges();
             return View("IndexSupplier", _db.Suppliers.ToList());
         }
+
+        public ActionResult EditSupplier(int id)
+        {
+            return View(_db.Suppliers.Where(q=>q.SupplierId==id).SingleOrDefault());
+        }
+
+        [HttpPost]
+        public ActionResult EditSupplier(Supplier sup)
+        {
+            if(ModelState.IsValid)
+            {
+                _db.Entry(sup).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
+            return View("IndexSupplier", _db.Suppliers.ToList());
+        }
+
+        public ActionResult DetailsSupplier(int id)
+        {
+            return View(_db.Suppliers.Where(q=>q.SupplierId==id).SingleOrDefault());
+        }
     }
 }
