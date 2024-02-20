@@ -36,9 +36,6 @@
         <th>
             @Html.DisplayNameFor(model => model.isVisited)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Advice)
-        </th>
         <th></th>
     </tr>
 
@@ -69,13 +66,14 @@
             @Html.DisplayFor(modelItem => item.isVisited)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Advice)
+            @if (item.isVisited == 0)
+            {
+                <button type="button" class="btn btn-success">
+                    <a href="@Html.Action("Isvisited")" style="color: white; text-decoration: none !important">Visited</a>
+                </button>
+                @*@Html.ActionLink("Isvisited", "Isvisited", new { id = item.AppointmentToken })*@
+            }
         </td>
-        <td>
-            @if (item.isVisited == 0) {
-                    @Html.ActionLink("Isvisited", "Isvisited", new { id = item.AppointmentToken })
-                    }
-    </td>
 
 </tr>
 }

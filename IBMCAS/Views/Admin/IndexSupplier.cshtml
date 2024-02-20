@@ -1,0 +1,52 @@
+﻿@model IEnumerable<IBMCAS.Models.Supplier>
+
+@{
+    ViewBag.Title = "IndexSupplier";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Supplier Management Page</h2>
+
+<p>
+    <button type="button" class="btn btn-primary">
+        <a href="@Url.Action("CreateSupplier")" style="color:white; text-decoration: none !important">Add new supplier</a>
+    </button>
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-primary">
+                <a href="@Url.Action("Edit", new { id = item.SupplierId })" style="color: black; text-decoration: none !important">Edit</a>
+            </button>
+            <button type="button" class="btn btn-outline-secondary">
+                <a href="@Url.Action("Details", new { id = item.SupplierId })" style="color: black; text-decoration: none !important">Details</a>
+            </button>
+            <button type="button" class="btn btn-outline-danger">
+                <a href="@Url.Action("Delete", new { id = item.SupplierId })" style="color: black; text-decoration: none !important">Delete</a>
+            </button>
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.SupplierId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.SupplierId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.SupplierId })*@
+        </td>
+    </tr>
+}
+
+</table>

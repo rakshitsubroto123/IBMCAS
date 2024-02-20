@@ -8,7 +8,7 @@
 <h2>Apointments</h2>
 
 <p>
-    @*@Html.ActionLink("Create New", "Create")*@
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -72,9 +72,8 @@
             @Html.DisplayFor(modelItem => item.Advice)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AppointmentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AppointmentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AppointmentID })
+            <a href="~/Physician/AdvicePrescriptionForm?AppointmentID=@item.AppointmentID"><button>Advice</button></a>
+            @*@Html.ActionLink("Edit", "AdvicePrescriptionForm", new { id=item.AppointmentID })*@
         </td>
     </tr>
 }

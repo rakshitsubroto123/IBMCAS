@@ -15,7 +15,7 @@ namespace IBMCAS.Controllers
     public class AdminController : Controller
     {
         // GET: Admin
-        Models.IBMCASDBEntities1 _db = new Models.IBMCASDBEntities1();
+        Models.IBMCASDBEntities2 _db = new Models.IBMCASDBEntities2();
         public ActionResult Index()
         {
             return View();
@@ -139,7 +139,7 @@ namespace IBMCAS.Controllers
 
         public ActionResult ShowPatient(string id)
         {
-            return View(_db.Patients.Where(q => q.PatientMRNumber == id).SingleOrDefault());
+             return View(_db.Patients.Where(q => q.PatientMRNumber == id).SingleOrDefault());
         }
 
         public ActionResult UpdatePatient(string id)
@@ -199,6 +199,27 @@ namespace IBMCAS.Controllers
             return RedirectToAction("PhysicianIndex");
         }
 
+        public ActionResult EditPhysician(int id)
+        {
+            return View(_db.Physicians.Where(q => q.PhysicianID == id).SingleOrDefault());
+        }
+
+        [HttpPost]
+        public ActionResult EditPhysician(Models.Physician phy)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Entry(phy).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
+            return View("PhysicianIndex", _db.Physicians.ToList());
+        }
+
+        public ActionResult DetailsPhysician(int id)
+        {
+            return View(_db.Physicians.Where(q => q.PhysicianID == id).SingleOrDefault());
+        }
+
         [HttpGet]
         public ActionResult ApointmentRequests()
         {
@@ -247,6 +268,96 @@ namespace IBMCAS.Controllers
             _db.Entry(app).State = EntityState.Modified;
             _db.SaveChanges();
             return RedirectToAction("FrontDesk");
+        }
+
+        public ActionResult chemistIndex()
+        {
+            return View(_db.chemists.ToList());
+        }
+
+        public ActionResult chemistCreate()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult chemistCreate([Bind(Include = "chemistName, chemistPhone, chemistEmail, chemistAddress, ChemistDateOfBirth")] chemist chemist)
+        {
+            chemist newChemist = new chemist();
+            newChemist.chemistName = chemist.chemistName;
+            newChemist.chemistPhone = chemist.chemistPhone;
+            newChemist.chemistEmail = chemist.chemistEmail;
+            newChemist.chemistAddress = chemist.chemistAddress;
+            newChemist.ChemistDateOfBirth = chemist.ChemistDateOfBirth;
+
+            UserCred usr = new UserCred();
+            usr.UserName = chemist.chemistEmail;
+            usr.UserPassword = chemist.chemistEmail;
+            usr.UserRole = "CHEMIST";
+            usr.UserReferneceToID = chemist.chemistId;
+
+            _db.chemists.Add(newChemist);
+            _db.SaveChanges();
+
+            _db.UserCreds.Add(usr);
+            _db.SaveChanges();
+            return View("chemistIndex", _db.chemists.ToList());
+        }
+
+        public ActionResult deleteChemist(int id)
+        {
+            _db.chemists.Remove(_db.chemists.Where(q => q.chemistId == id).SingleOrDefault());
+            return View("chemistIndex", _db.chemists.ToList());
+        }
+
+        public ActionResult editChemist(int id)
+        {
+            return View(_db.chemists.Where(q => q.chemistId == id).SingleOrDefault());
+        }
+
+        [HttpPost]
+        public ActionResult editChemist(chemist che)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Entry(che).State = EntityState.Modified;
+                _db.SaveChanges();
+            }
+            return View("chemistIndex", _db.chemists.ToList());
+        }
+
+        public ActionResult DetailsChemist(int id)
+        {
+            return View(_db.chemists.Where(q => q.chemistId == id).SingleOrDefault());
+        }
+
+        public ActionResult IndexSupplier()
+        {
+            return View(_db.Suppliers.ToList());
+        }
+
+        public ActionResult CreateSupplier()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateSupplier([Bind(Include = "FirstName, LastName")] Supplier supplier)
+        {
+            Supplier newsup = new Supplier();
+            newsup.FirstName = supplier.FirstName;
+            newsup.LastName = supplier.LastName;
+            _db.Suppliers.Add(newsup);
+            _db.SaveChanges();
+
+            UserCred newUsr = new UserCred();
+            newUsr.UserName = supplier.FirstName+ "@gmail.com";
+            newUsr.UserRole = "SUPPLIER";
+            newUsr.UserReferneceToID = supplier.SupplierId;
+            newUsr.UserPassword = supplier.FirstName + "@gmail.com";
+            _db.UserCreds.Add(newUsr);
+            _db.SaveChanges();
+            return View("IndexSupplier", _db.Suppliers.ToList());
         }
     }
 }

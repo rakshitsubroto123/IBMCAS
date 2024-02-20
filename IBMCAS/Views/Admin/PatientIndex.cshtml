@@ -8,8 +8,9 @@
 <h2>Patient Management Page</h2>
 
 @*<p>
-    @Html.ActionLink("Add New", "AddPatient")
-</p>*@
+        @Html.ActionLink("Add New", "AddPatient")
+    </p>*@
+
 <table class="table">
     <tr>
         <th>
@@ -36,33 +37,36 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PatientMRNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PatientFirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PatientLastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PatientPhone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PatientEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PatientGender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PatientAadhaarNumber)
-        </td>
-        <td>
-            @Html.ActionLink("Select", "ShowPatient", new { id=item.PatientMRNumber })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientMRNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientGender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientAadhaarNumber)
+            </td>
+            <td>
+                <button type="button" class="btn btn-success">
+                    <a href="@Url.Action("ShowPatient", new { id = item.PatientMRNumber })" style="color: white; text-decoration: none !important">Select</a>
+                </button>
+            </td>
+        </tr>
+    }
 
 </table>

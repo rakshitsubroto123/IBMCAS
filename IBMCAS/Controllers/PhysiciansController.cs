@@ -12,7 +12,7 @@ namespace IBMCAS.Controllers
 {
     public class PhysiciansController : Controller
     {
-        private IBMCASDBEntities1 db = new IBMCASDBEntities1();
+        private IBMCASDBEntities2 db = new IBMCASDBEntities2();
 
         // GET: Physicians
         public ActionResult Index()

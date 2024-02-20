@@ -1,4 +1,50 @@
-﻿CREATE TABLE [dbo].[Patient] (
+﻿CREATE TABLE [dbo].[Advice] (
+    [AdviceId]   INT           IDENTITY (1, 1) NOT NULL,
+    [ScheduleId] INT           NOT NULL,
+    [AdviceText] VARCHAR (250) NOT NULL,
+    PRIMARY KEY CLUSTERED ([AdviceId] ASC)
+);
+
+CREATE TABLE [dbo].[Appointment] (
+    [AppointmentID]    INT            IDENTITY (1, 1) NOT NULL,
+    [AppointmentToken] NCHAR (10)     NOT NULL,
+    [PatientID]        INT            NOT NULL,
+    [PhysicianID]      INT            NOT NULL,
+    [DateCreated]      DATE           NOT NULL,
+    [DateRequested]    DATE           NOT NULL,
+    [ScheduledDate]    DATE           NULL,
+    [ScheduledTime]    INT            NULL,
+    [isVisited]        INT            NOT NULL,
+    [Advice]           VARCHAR (1000) NULL,
+    PRIMARY KEY CLUSTERED ([AppointmentID] ASC)
+);
+
+CREATE TABLE [dbo].[chemist] (
+    [chemistId]          INT           IDENTITY (1, 1) NOT NULL,
+    [chemistName]        VARCHAR (30)  NOT NULL,
+    [chemistPhone]       VARCHAR (13)  NOT NULL,
+    [chemistEmail]       VARCHAR (30)  NOT NULL,
+    [chemistAddress]     VARCHAR (100) NOT NULL,
+    [ChemistDateOfBirth] DATE          NOT NULL,
+    PRIMARY KEY CLUSTERED ([chemistId] ASC)
+);
+
+CREATE TABLE [dbo].[Drug] (
+    [DrugId]          INT          IDENTITY (1, 1) NOT NULL,
+    [DrugName]        VARCHAR (20) NOT NULL,
+    [DrugDescription] VARCHAR (20) NOT NULL,
+    PRIMARY KEY CLUSTERED ([DrugId] ASC)
+);
+
+CREATE TABLE [dbo].[DrugRequest] (
+    [DrugRequestId]      INT          IDENTITY (1, 1) NOT NULL,
+    [RequestPhysicianId] INT          NOT NULL,
+    [RequestDescription] VARCHAR (50) NOT NULL,
+    [RequestedDate]      DATE         NOT NULL,
+    PRIMARY KEY CLUSTERED ([DrugRequestId] ASC)
+);
+
+CREATE TABLE [dbo].[Patient] (
     [PatientID]             INT            IDENTITY (1, 1) NOT NULL,
     [PatientMRNumber]       NCHAR (13)     NOT NULL,
     [PatientDOB]            DATE           NOT NULL,
@@ -12,7 +58,6 @@
     [PatientAadhaarNumber]  NCHAR (12)     NOT NULL,
     PRIMARY KEY CLUSTERED ([PatientID] ASC)
 );
-
 
 CREATE TABLE [dbo].[PatientRegistrationQueue] (
     [PRQID]                 INT            IDENTITY (1, 1) NOT NULL,
@@ -30,7 +75,6 @@ CREATE TABLE [dbo].[PatientRegistrationQueue] (
     PRIMARY KEY CLUSTERED ([PRQID] ASC)
 );
 
-
 CREATE TABLE [dbo].[Physician] (
     [PhysicianID]             INT            IDENTITY (1, 1) NOT NULL,
     [PhysicianName]           VARCHAR (50)   NOT NULL,
@@ -42,6 +86,37 @@ CREATE TABLE [dbo].[Physician] (
     PRIMARY KEY CLUSTERED ([PhysicianID] ASC)
 );
 
+CREATE TABLE [dbo].[Prescription] (
+    [PrescriptionID]       INT           IDENTITY (1, 1) NOT NULL,
+    [PrescriptionAdviceId] INT           NOT NULL,
+    [DrugID]               INT           NULL,
+    [Description]          VARCHAR (300) NULL,
+    PRIMARY KEY CLUSTERED ([PrescriptionID] ASC)
+);
+
+CREATE TABLE [dbo].[PurchaseOrderHeader] (
+    [PurchaseOrderId] INT         IDENTITY (1, 1) NOT NULL,
+    [PODate]          DATE        NULL,
+    [SupplierId]      INT         NOT NULL,
+    [Note]            NCHAR (300) NULL,
+    PRIMARY KEY CLUSTERED ([PurchaseOrderId] ASC)
+);
+
+CREATE TABLE [dbo].[PurchaseOrderProductLine] (
+    [PurchaseOrderProductLineId] INT           IDENTITY (1, 1) NOT NULL,
+    [PurchaseOrderId]            INT           NOT NULL,
+    [DrugId]                     INT           NOT NULL,
+    [Qty]                        INT           NOT NULL,
+    [ShortNote]                  VARCHAR (200) NULL,
+    PRIMARY KEY CLUSTERED ([PurchaseOrderProductLineId] ASC)
+);
+
+CREATE TABLE [dbo].[Supplier] (
+    [SupplierId] INT          IDENTITY (1, 1) NOT NULL,
+    [FirstName]  VARCHAR (20) NOT NULL,
+    [LastName]   VARCHAR (20) NOT NULL,
+    PRIMARY KEY CLUSTERED ([SupplierId] ASC)
+);
 
 CREATE TABLE [dbo].[UserCred] (
     [UserID]            INT          IDENTITY (1, 1) NOT NULL,
@@ -51,20 +126,3 @@ CREATE TABLE [dbo].[UserCred] (
     [UserReferneceToID] INT          NOT NULL,
     PRIMARY KEY CLUSTERED ([UserID] ASC)
 );
-
-CREATE TABLE [dbo].[Appointment] (
-    [AppointmentID]    INT            IDENTITY (1, 1) NOT NULL,
-    [AppointmentToken] NCHAR (10)     NOT NULL,
-    [PatientID]        INT            NOT NULL,
-    [PhysicianID]      INT            NOT NULL,
-    [DateCreated]      DATE           NOT NULL,
-    [DateRequested]    DATE           NOT NULL,
-    [ScheduledDate]    DATE           NULL,
-    [ScheduledTime]    INT            NULL,
-    [isVisited]        INT            NOT NULL,
-    [Advice]           VARCHAR (1000) NULL,
-    PRIMARY KEY CLUSTERED ([AppointmentID] ASC)
-);
-
-
-

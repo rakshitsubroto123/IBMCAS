@@ -27,18 +27,6 @@
         <th>
             @Html.DisplayNameFor(model => model.DateRequested)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ScheduledDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ScheduledTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isVisited)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Advice)
-        </th>
         <th></th>
     </tr>
 
@@ -59,21 +47,14 @@
         <td>
             @Html.DisplayFor(modelItem => item.DateRequested)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.ScheduledDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ScheduledTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.isVisited)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Advice)
-        </td>
-        <td>
-            @Html.ActionLink("Schedule", "Schedule", new { id=item.AppointmentToken }) |
-            @Html.ActionLink("Remove", "AppointmentRemove", new { id=item.AppointmentToken })
+            <button type="button" class="btn btn-outline-warning">
+                <a href="@Url.Action("Schedule", new { id = item.AppointmentToken })" style="color: black; text-decoration: none !important">Schedule</a>
+            </button>
+            <button type="button" class="btn btn-outline-danger">
+                <a href="@Url.Action("AppointmentRemove", new { id = item.AppointmentToken })" style="color: black; text-decoration: none !important">Remove</a>
+            </button>
         </td>
     </tr>
 }

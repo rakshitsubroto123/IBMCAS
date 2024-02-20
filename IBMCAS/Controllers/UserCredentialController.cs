@@ -20,7 +20,7 @@ namespace IBMCAS.Controllers
         {
             if (ModelState.IsValid)
             {
-                Models.IBMCASDBEntities1 _db = new Models.IBMCASDBEntities1();
+                Models.IBMCASDBEntities2 _db = new Models.IBMCASDBEntities2();
                 UserCred usr = _db.UserCreds.SingleOrDefault(dbusr => dbusr.UserName.ToLower()
                 == user.UserName.ToLower() && dbusr.UserPassword == user.UserPassword);
 

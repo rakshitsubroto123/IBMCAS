@@ -48,7 +48,7 @@ namespace IBMCAS.Infra
 
         public override string[] GetRolesForUser(string username)
         {
-            using (Models.IBMCASDBEntities1 _db = new Models.IBMCASDBEntities1())
+            using (Models.IBMCASDBEntities2 _db = new Models.IBMCASDBEntities2())
             {
 
                 return new string[] { _db.UserCreds.SingleOrDefault(u => u.UserName == username).UserRole };

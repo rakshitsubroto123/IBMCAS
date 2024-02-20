@@ -1,0 +1,59 @@
+﻿@model IBMCAS.Models.chemist
+
+@{
+    ViewBag.Title = "DetailsChemist";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>DetailsChemist</h2>
+
+<div>
+    <h4>chemist</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.chemistName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chemistName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.chemistPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chemistPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.chemistEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chemistEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.chemistAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chemistAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChemistDateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChemistDateOfBirth)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.chemistId }) |*@
+    @Html.ActionLink("Back", "chemistIndex")
+</p>

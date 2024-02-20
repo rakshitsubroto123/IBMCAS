@@ -12,7 +12,7 @@ namespace IBMCAS.Controllers
     [Authorize(Roles = "PATIENT")]
     public class PatientController : Controller
     {
-        Models.IBMCASDBEntities1 _db = new Models.IBMCASDBEntities1();
+        Models.IBMCASDBEntities2 _db = new Models.IBMCASDBEntities2();
         // GET: Patient
         public ActionResult Index()
         {
@@ -26,14 +26,17 @@ namespace IBMCAS.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult BookAppointment([Bind(Include = "PhysicianID, DateRequested" )] Appointment appointment)
+        public ActionResult BookAppointment([Bind(Include = "PhysicianID, DateRequested")] Appointment appointment)
         {
             CurrentUserModel cur = Session["CurrentUser"] as CurrentUserModel;
-            appointment.PatientID = (int)cur.ReferenceToId;
-            appointment.isVisited = 0;
-            appointment.DateCreated = DateTime.Now.Date;
-            appointment.AppointmentToken = DateTime.Now.Year.ToString() + DateTime.Now.TimeOfDay.ToString("hhmmss");
-            _db.Appointments.Add(appointment);
+            Appointment appointment1 = new Appointment();
+            appointment1.PatientID = (int)cur.ReferenceToId;
+            appointment1.isVisited = 0;
+            appointment1.PhysicianID = appointment.PhysicianID;
+            appointment1.DateCreated = DateTime.Now.Date;
+            appointment1.DateRequested = appointment.DateRequested;
+            appointment1.AppointmentToken = DateTime.Now.Year.ToString() + DateTime.Now.TimeOfDay.ToString("hhmmss");
+            _db.Appointments.Add(appointment1);
             _db.SaveChanges();
 
             return RedirectToAction("Index");

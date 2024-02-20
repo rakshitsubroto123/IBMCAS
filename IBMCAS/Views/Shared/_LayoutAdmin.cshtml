@@ -25,7 +25,7 @@
             </div>
         </form>
         <!-- Navbar-->
-        <button class="btn btn-primary mx-2" href="@Url.Action("Logout","UserCrendential")">Logout</button>
+        <a class="btn btn-primary mx-2" href="@Url.Action("Logout","UserCredential")">Logout</a>
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
@@ -42,6 +42,7 @@
                             Requests
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
+
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="@Url.Action("ApointmentRequests","Admin")">Appointments</a>
@@ -58,6 +59,9 @@
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="@Url.Action("PatientIndex","Admin")">Patient</a>
                                 <a class="nav-link" href="@Url.Action("PhysicianIndex","Admin")">Physician</a>
+                                <a class="nav-link" href="@Url.Action("chemistIndex","Admin")">Chemist</a>
+                                <a class="nav-link" href="@Url.Action("IndexSupplier","Admin")">Supplier</a>
+
                             </nav>
                         </div>
                     </div>
@@ -93,10 +97,9 @@
         </div>
     </div>
     <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
-
+    @*<footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>*@
 
 </body>
 </html>

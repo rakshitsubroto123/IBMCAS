@@ -1,0 +1,58 @@
+﻿@model IEnumerable<IBMCAS.Models.Drug>
+
+@{
+    ViewBag.Title = "DrugIndex";
+    Layout = "~/Views/Shared/_Layoutchemist.cshtml";
+}
+
+<h2>DrugIndex</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateDrug")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DrugName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DrugExripyDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DrugQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DrugDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SupplierId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DrugName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DrugExripyDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DrugQuantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DrugDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SupplierId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DrugId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DrugId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DrugId })
+        </td>
+    </tr>
+}
+
+</table>

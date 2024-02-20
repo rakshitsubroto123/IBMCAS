@@ -39,15 +39,13 @@ namespace IBMCAS.Controllers
                 patientRegistrationQueue.PatientMedicalHistory = patientRegistrationFormData.MedicalHistory;
                 patientRegistrationQueue.PatientAadhaarNumber = patientRegistrationFormData.AadhaarNumber;
 
-                Models.IBMCASDBEntities1 _db = new Models.IBMCASDBEntities1();
+                Models.IBMCASDBEntities2 _db = new Models.IBMCASDBEntities2();
                 _db.PatientRegistrationQueues.Add(patientRegistrationQueue);
                 _db.SaveChanges();
                 ViewBag.PatientRegistrationFormData = patientRegistrationQueue.RegistrationTokenNo;
                 return View("RegisterSuccessfulView");
 
             }
-
-
             return View();
         }
     }
