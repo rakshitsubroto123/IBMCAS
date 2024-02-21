@@ -45,7 +45,8 @@
     <header id="header" class="header fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-            <a class="logo d-flex align-items-center">
+            <a href="index.html" class="logo d-flex align-items-center">
+                @*<img src="assets/img/logo.png" alt="">*@
                 <img src="~/Content/home/assets/img/logo.png" alt="" />
                 <span>IBMCAS</span>
             </a>
@@ -120,10 +121,10 @@
 
                     <div class="col-lg-6 d-flex flex-column justify-content-center">
                         <div class="content">
-                            <h3>Who We Are</h3>
-                            <h2>Expedita voluptas omnis cupiditate totam eveniet nobis sint iste. Dolores est repellat corrupti reprehenderit.</h2>
+                            <h1>About </h1>
+                            <h2>IBMCAS:Clinic Automation System</h2>
                             <p>
-                                Quisquam vel ut sint cum eos hic dolores aperiam. Sed deserunt et. Inventore et et dolor consequatur itaque ut voluptate sed et. Magnam nam ipsum tenetur suscipit voluptatum nam et est corrupti.
+                                IBMCAS, the Integrated Biometric Clinic Automation System, is a groundbreaking software solution designed to revolutionize clinic operations by automating patient registration, appointment scheduling based on physician availability, and prescription generation including drugs and personalized advice. With streamlined processes for adding and deleting physicians and patients, IBMCAS empowers clinics to enhance efficiency, reduce paperwork, and deliver high-quality patient care seamlessly.
                             </p>
                             <div class="text-center text-lg-start">
                                 <a href="#consultants" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
@@ -166,7 +167,7 @@
                             <i class="bi bi-emoji-smile"></i>
                             <div>
                                 <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-                                <p>Happy Clients</p>
+                                <p>Happy Patients</p>
                             </div>
                         </div>
                     </div>
@@ -176,7 +177,7 @@
                             <i class="bi bi-journal-richtext" style="color: #ee6c20;"></i>
                             <div>
                                 <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-                                <p>Projects</p>
+                                <p>Appointments</p>
                             </div>
                         </div>
                     </div>
@@ -196,7 +197,7 @@
                             <i class="bi bi-people" style="color: #bb0852;"></i>
                             <div>
                                 <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
-                                <p>Hard Workers</p>
+                                <p>Admin</p>
                             </div>
                         </div>
                     </div>
@@ -211,8 +212,8 @@
             <div class="container">
 
                 <header class="section-header">
-                    <h2>Features</h2>
-                    <p>Laboriosam et omnis fuga quis dolor direda fara</p>
+                    <h2>Key Features</h2>
+                    @*<p>Laboriosam et omnis fuga quis dolor direda fara</p>*@
                 </header>
 
                 <div class="row">
@@ -228,42 +229,42 @@
                             <div class="col-md-6">
                                 <div class="feature-box d-flex align-items-center">
                                     <i class="bi bi-check"></i>
-                                    <h3>Eos aspernatur rem</h3>
+                                    <h3>Appointment Management</h3>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="feature-box d-flex align-items-center">
                                     <i class="bi bi-check"></i>
-                                    <h3>Facilis neque ipsa</h3>
+                                    <h3>Electronic Health Records (EHR)</h3>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="feature-box d-flex align-items-center">
                                     <i class="bi bi-check"></i>
-                                    <h3>Volup amet voluptas</h3>
+                                    <h3>Billing and Invoicing</h3>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="feature-box d-flex align-items-center">
                                     <i class="bi bi-check"></i>
-                                    <h3>Rerum omnis sint</h3>
+                                    <h3>Prescription Management</h3>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="feature-box d-flex align-items-center">
                                     <i class="bi bi-check"></i>
-                                    <h3>Alias possimus</h3>
+                                    <h3>Clinical Decision Support</h3>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="feature-box d-flex align-items-center">
                                     <i class="bi bi-check"></i>
-                                    <h3>Repellendus mollitia</h3>
+                                    <h3>Inventory Management</h3>
                                 </div>
                             </div>
 
@@ -690,6 +691,7 @@
                     </div>
 
                     <div class="col-lg-6 p-4">
+
                         @model IBMCAS.Models.UserCred
                         @using (Html.BeginForm("Login", "Home"))
                         {
@@ -709,7 +711,7 @@
                                 <div class="container">
                                     <div class="login-container-wrapper clearfix">
 
-                                        <form action =@Url.Action("Login", "UserCredential") class="form-horizontal login-form">
+                                        <form action=@Url.Action("Login", "UserCredential") class="form-horizontal login-form">
                                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                             <div class="form-group">
                                                 @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -738,7 +740,6 @@
 
                             </body>
                         }
-
 
                     </div>
 
