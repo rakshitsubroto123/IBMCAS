@@ -33,10 +33,10 @@ namespace IBMCAS.Models
         public virtual DbSet<PatientRegistrationQueue> PatientRegistrationQueues { get; set; }
         public virtual DbSet<Physician> Physicians { get; set; }
         public virtual DbSet<Prescription> Prescriptions { get; set; }
-        public virtual DbSet<PurchaseOrderHeader> PurchaseOrderHeaders { get; set; }
-        public virtual DbSet<PurchaseOrderProductLine> PurchaseOrderProductLines { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
         public virtual DbSet<UserCred> UserCreds { get; set; }
         public virtual DbSet<DrugRequest> DrugRequests { get; set; }
+        public virtual DbSet<PurchaseOrderHeader> PurchaseOrderHeaders { get; set; }
+        public virtual DbSet<PurchaseOrderProductLine> PurchaseOrderProductLines { get; set; }
     }
 }
