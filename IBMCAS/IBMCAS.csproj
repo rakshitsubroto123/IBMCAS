@@ -259,7 +259,6 @@
     <Content Include="Content\home\assets\img\footer-bg.png" />
     <Content Include="Content\home\assets\img\hero-bg.png" />
     <Content Include="Content\home\assets\img\hero-img.png" />
-    <Content Include="Content\home\assets\img\hero-img.svg" />
     <Content Include="Content\home\assets\img\logo.png" />
     <Content Include="Content\home\assets\img\portfolio\portfolio-1.jpg" />
     <Content Include="Content\home\assets\img\portfolio\portfolio-2.jpg" />
@@ -382,6 +381,7 @@
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PatientRegistrationForm.cs" />
+    <Compile Include="Models\AdvicePrescriptionViewModel.cs" />
     <Compile Include="Models\PatientRegistrationQueue.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
