@@ -64,6 +64,7 @@ namespace IBMCAS.Controllers
             };
             return View(model);
         }
+
         [HttpPost]
         public ActionResult AdvicePrescriptionForm(AdvicePrescriptionViewModel model)
         {

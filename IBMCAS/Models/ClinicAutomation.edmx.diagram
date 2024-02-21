@@ -13,11 +13,11 @@
         <EntityTypeShape EntityType="IBMCASDBModel.PatientRegistrationQueue" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IBMCASDBModel.Physician" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IBMCASDBModel.Prescription" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IBMCASDBModel.PurchaseOrderHeader" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="IBMCASDBModel.PurchaseOrderProductLine" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IBMCASDBModel.Supplier" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IBMCASDBModel.UserCred" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="IBMCASDBModel.DrugRequest" Width="1.5" PointX="9.375" PointY="3.75" />
+        <EntityTypeShape EntityType="IBMCASDBModel.PurchaseOrderHeader" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="IBMCASDBModel.PurchaseOrderProductLine" Width="1.5" PointX="9.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
