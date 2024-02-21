@@ -18,7 +18,7 @@ namespace IBMCAS.Controllers
         Models.IBMCASDBEntities2 _db = new Models.IBMCASDBEntities2();
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Frontdesk");
         }
 
         [HttpGet]
