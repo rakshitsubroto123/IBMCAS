@@ -392,6 +392,7 @@
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AdvicePrescriptionViewModel.cs" />
+    <Compile Include="Models\PurchaseLine.cs" />
     <Compile Include="Models\PurchaseOrderHeader.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
@@ -489,6 +490,11 @@
     <Content Include="Views\Admin\DetailsPhysician.cshtml" />
     <Content Include="Views\Admin\editChemist.cshtml" />
     <Content Include="Views\Admin\DetailsChemist.cshtml" />
+    <Content Include="Views\Admin\EditSupplier.cshtml" />
+    <Content Include="Views\Admin\DeleteSupplier.cshtml" />
+    <Content Include="Views\Admin\DetailsSupplier.cshtml" />
+    <Content Include="Views\chemist\PurchaseOrder.cshtml" />
+    <Content Include="Views\chemist\suppliersList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -498,6 +504,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\PurchaseOrder\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

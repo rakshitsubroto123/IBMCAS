@@ -115,9 +115,9 @@
             <PropertyRef Name="PurchaseOrderId" />
           </Key>
           <Property Name="PurchaseOrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PODate" Type="date" />
+          <Property Name="PODate" Type="date" Nullable="false" />
           <Property Name="SupplierId" Type="int" Nullable="false" />
-          <Property Name="Note" Type="nchar" MaxLength="300" />
+          <Property Name="Note" Type="varchar" MaxLength="300" Nullable="false" />
         </EntityType>
         <EntityType Name="PurchaseOrderProductLine">
           <Key>
@@ -127,7 +127,7 @@
           <Property Name="PurchaseOrderId" Type="int" Nullable="false" />
           <Property Name="DrugId" Type="int" Nullable="false" />
           <Property Name="Qty" Type="int" Nullable="false" />
-          <Property Name="ShortNote" Type="varchar" MaxLength="200" />
+          <Property Name="ShortNote" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="Supplier">
           <Key>
@@ -262,25 +262,6 @@
           <Property Name="DrugID" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="PurchaseOrderHeader">
-          <Key>
-            <PropertyRef Name="PurchaseOrderId" />
-          </Key>
-          <Property Name="PurchaseOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PODate" Type="DateTime" Precision="0" />
-          <Property Name="SupplierId" Type="Int32" Nullable="false" />
-          <Property Name="Note" Type="String" MaxLength="300" FixedLength="true" Unicode="true" />
-        </EntityType>
-        <EntityType Name="PurchaseOrderProductLine">
-          <Key>
-            <PropertyRef Name="PurchaseOrderProductLineId" />
-          </Key>
-          <Property Name="PurchaseOrderProductLineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PurchaseOrderId" Type="Int32" Nullable="false" />
-          <Property Name="DrugId" Type="Int32" Nullable="false" />
-          <Property Name="Qty" Type="Int32" Nullable="false" />
-          <Property Name="ShortNote" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Supplier">
           <Key>
             <PropertyRef Name="SupplierId" />
@@ -308,11 +289,11 @@
           <EntitySet Name="PatientRegistrationQueues" EntityType="Self.PatientRegistrationQueue" />
           <EntitySet Name="Physicians" EntityType="Self.Physician" />
           <EntitySet Name="Prescriptions" EntityType="Self.Prescription" />
-          <EntitySet Name="PurchaseOrderHeaders" EntityType="Self.PurchaseOrderHeader" />
-          <EntitySet Name="PurchaseOrderProductLines" EntityType="Self.PurchaseOrderProductLine" />
           <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
           <EntitySet Name="UserCreds" EntityType="Self.UserCred" />
           <EntitySet Name="DrugRequests" EntityType="IBMCASDBModel.DrugRequest" />
+          <EntitySet Name="PurchaseOrderHeaders" EntityType="IBMCASDBModel.PurchaseOrderHeader" />
+          <EntitySet Name="PurchaseOrderProductLines" EntityType="IBMCASDBModel.PurchaseOrderProductLine" />
         </EntityContainer>
         <EntityType Name="DrugRequest">
           <Key>
@@ -322,6 +303,25 @@
           <Property Name="RequestPhysicianId" Type="Int32" Nullable="false" />
           <Property Name="RequestDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="RequestedDate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderHeader">
+          <Key>
+            <PropertyRef Name="PurchaseOrderId" />
+          </Key>
+          <Property Name="PurchaseOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PODate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SupplierId" Type="Int32" Nullable="false" />
+          <Property Name="Note" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PurchaseOrderProductLine">
+          <Key>
+            <PropertyRef Name="PurchaseOrderProductLineId" />
+          </Key>
+          <Property Name="PurchaseOrderProductLineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PurchaseOrderId" Type="Int32" Nullable="false" />
+          <Property Name="DrugId" Type="Int32" Nullable="false" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="ShortNote" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -433,27 +433,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PurchaseOrderHeaders">
-            <EntityTypeMapping TypeName="IBMCASDBModel.PurchaseOrderHeader">
-              <MappingFragment StoreEntitySet="PurchaseOrderHeader">
-                <ScalarProperty Name="PurchaseOrderId" ColumnName="PurchaseOrderId" />
-                <ScalarProperty Name="PODate" ColumnName="PODate" />
-                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PurchaseOrderProductLines">
-            <EntityTypeMapping TypeName="IBMCASDBModel.PurchaseOrderProductLine">
-              <MappingFragment StoreEntitySet="PurchaseOrderProductLine">
-                <ScalarProperty Name="PurchaseOrderProductLineId" ColumnName="PurchaseOrderProductLineId" />
-                <ScalarProperty Name="PurchaseOrderId" ColumnName="PurchaseOrderId" />
-                <ScalarProperty Name="DrugId" ColumnName="DrugId" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="ShortNote" ColumnName="ShortNote" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Suppliers">
             <EntityTypeMapping TypeName="IBMCASDBModel.Supplier">
               <MappingFragment StoreEntitySet="Supplier">
@@ -481,6 +460,27 @@
                 <ScalarProperty Name="RequestDescription" ColumnName="RequestDescription" />
                 <ScalarProperty Name="RequestPhysicianId" ColumnName="RequestPhysicianId" />
                 <ScalarProperty Name="DrugRequestId" ColumnName="DrugRequestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrderHeaders">
+            <EntityTypeMapping TypeName="IBMCASDBModel.PurchaseOrderHeader">
+              <MappingFragment StoreEntitySet="PurchaseOrderHeader">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="PODate" ColumnName="PODate" />
+                <ScalarProperty Name="PurchaseOrderId" ColumnName="PurchaseOrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseOrderProductLines">
+            <EntityTypeMapping TypeName="IBMCASDBModel.PurchaseOrderProductLine">
+              <MappingFragment StoreEntitySet="PurchaseOrderProductLine">
+                <ScalarProperty Name="ShortNote" ColumnName="ShortNote" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="DrugId" ColumnName="DrugId" />
+                <ScalarProperty Name="PurchaseOrderId" ColumnName="PurchaseOrderId" />
+                <ScalarProperty Name="PurchaseOrderProductLineId" ColumnName="PurchaseOrderProductLineId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
