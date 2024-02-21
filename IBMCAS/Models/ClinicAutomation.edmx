@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="IBMCASDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="IBMCASDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advice">
           <Key>
             <PropertyRef Name="AdviceId" />
@@ -162,7 +162,8 @@
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserCred" EntityType="Self.UserCred" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IBMCASDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -207,6 +208,15 @@
           <Property Name="DrugId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DrugName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DrugDescription" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DrugRequest">
+          <Key>
+            <PropertyRef Name="DrugRequestId" />
+          </Key>
+          <Property Name="DrugRequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestPhysicianId" Type="Int32" Nullable="false" />
+          <Property Name="RequestDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RequestedDate" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="Patient">
           <Key>
@@ -285,6 +295,7 @@
           <EntitySet Name="Appointments" EntityType="Self.Appointment" />
           <EntitySet Name="chemists" EntityType="Self.chemist" />
           <EntitySet Name="Drugs" EntityType="Self.Drug" />
+          <EntitySet Name="DrugRequests" EntityType="Self.DrugRequest" />
           <EntitySet Name="Patients" EntityType="Self.Patient" />
           <EntitySet Name="PatientRegistrationQueues" EntityType="Self.PatientRegistrationQueue" />
           <EntitySet Name="Physicians" EntityType="Self.Physician" />
@@ -303,25 +314,6 @@
           <Property Name="RequestPhysicianId" Type="Int32" Nullable="false" />
           <Property Name="RequestDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="RequestedDate" Type="DateTime" Nullable="false" Precision="0" />
-        </EntityType>
-        <EntityType Name="PurchaseOrderHeader">
-          <Key>
-            <PropertyRef Name="PurchaseOrderId" />
-          </Key>
-          <Property Name="PurchaseOrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PODate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="SupplierId" Type="Int32" Nullable="false" />
-          <Property Name="Note" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="PurchaseOrderProductLine">
-          <Key>
-            <PropertyRef Name="PurchaseOrderProductLineId" />
-          </Key>
-          <Property Name="PurchaseOrderProductLineId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PurchaseOrderId" Type="Int32" Nullable="false" />
-          <Property Name="DrugId" Type="Int32" Nullable="false" />
-          <Property Name="Qty" Type="Int32" Nullable="false" />
-          <Property Name="ShortNote" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -372,6 +364,16 @@
                 <ScalarProperty Name="DrugId" ColumnName="DrugId" />
                 <ScalarProperty Name="DrugName" ColumnName="DrugName" />
                 <ScalarProperty Name="DrugDescription" ColumnName="DrugDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DrugRequests">
+            <EntityTypeMapping TypeName="IBMCASDBModel.DrugRequest">
+              <MappingFragment StoreEntitySet="DrugRequest">
+                <ScalarProperty Name="DrugRequestId" ColumnName="DrugRequestId" />
+                <ScalarProperty Name="RequestPhysicianId" ColumnName="RequestPhysicianId" />
+                <ScalarProperty Name="RequestDescription" ColumnName="RequestDescription" />
+                <ScalarProperty Name="RequestedDate" ColumnName="RequestedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -460,27 +462,6 @@
                 <ScalarProperty Name="RequestDescription" ColumnName="RequestDescription" />
                 <ScalarProperty Name="RequestPhysicianId" ColumnName="RequestPhysicianId" />
                 <ScalarProperty Name="DrugRequestId" ColumnName="DrugRequestId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PurchaseOrderHeaders">
-            <EntityTypeMapping TypeName="IBMCASDBModel.PurchaseOrderHeader">
-              <MappingFragment StoreEntitySet="PurchaseOrderHeader">
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
-                <ScalarProperty Name="PODate" ColumnName="PODate" />
-                <ScalarProperty Name="PurchaseOrderId" ColumnName="PurchaseOrderId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PurchaseOrderProductLines">
-            <EntityTypeMapping TypeName="IBMCASDBModel.PurchaseOrderProductLine">
-              <MappingFragment StoreEntitySet="PurchaseOrderProductLine">
-                <ScalarProperty Name="ShortNote" ColumnName="ShortNote" />
-                <ScalarProperty Name="Qty" ColumnName="Qty" />
-                <ScalarProperty Name="DrugId" ColumnName="DrugId" />
-                <ScalarProperty Name="PurchaseOrderId" ColumnName="PurchaseOrderId" />
-                <ScalarProperty Name="PurchaseOrderProductLineId" ColumnName="PurchaseOrderProductLineId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

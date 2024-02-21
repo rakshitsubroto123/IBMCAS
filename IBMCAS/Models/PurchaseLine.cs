@@ -13,7 +13,7 @@ namespace IBMCAS.Models
     }
     public class PurchaseLine
     {
-        public int SupplierId { get; set; } 
+        public int SupplierId { get; set; }
         public string Note { get; set; }
         public List<pBody> pbdies { get; set; }
     }
