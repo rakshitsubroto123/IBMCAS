@@ -391,6 +391,7 @@
     <Compile Include="Models\Prescription.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PurchaseLine.cs" />
     <Compile Include="Models\PurchaseOrderHeader.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
