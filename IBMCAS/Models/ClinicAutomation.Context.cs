@@ -27,6 +27,7 @@ namespace IBMCAS.Models
     
         public virtual DbSet<Advice> Advices { get; set; }
         public virtual DbSet<Appointment> Appointments { get; set; }
+        public virtual DbSet<AppointmentRequest> AppointmentRequests { get; set; }
         public virtual DbSet<chemist> chemists { get; set; }
         public virtual DbSet<Drug> Drugs { get; set; }
         public virtual DbSet<DrugRequest> DrugRequests { get; set; }

@@ -224,10 +224,10 @@ namespace IBMCAS.Controllers
         }
 
         [HttpGet]
-        public ActionResult ApointmentRequests()
+        public ActionResult AppointmentRequests()
         {
-            var appointmentReq = from appoint in _db.Appointments
-                                 where appoint.ScheduledDate == null
+            var appointmentReq = from appoint in _db.AppointmentRequests
+                                 where appoint.isAccepted == 0
                                  select appoint;
             return View(appointmentReq.ToList());
         }

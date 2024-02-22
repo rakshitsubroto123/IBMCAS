@@ -34,13 +34,13 @@ namespace IBMCAS.Controllers
         public ActionResult BookAppointment([Bind(Include = "PhysicianID, DateRequested")] Appointment appointment)
         {
             CurrentUserModel cur = Session["CurrentUser"] as CurrentUserModel;
-            Appointment appointment1 = new Appointment();
+            AppointmentRequest appointment1 = new AppointmentRequest();
             appointment1.PatientID = (int)cur.ReferenceToId;
             appointment1.PhysicianID = appointment.PhysicianID;
             appointment1.DateCreated = DateTime.Now.Date;
             appointment1.DateRequested = appointment.DateRequested;
-            appointment1.AppointmentToken = DateTime.Now.Year.ToString() + DateTime.Now.TimeOfDay.ToString("hhmmss");
-            _db.Appointments.Add(appointment1);
+            appointment1.AppointmentRequestToken = DateTime.Now.Year.ToString() + DateTime.Now.TimeOfDay.ToString("hhmmss");
+            _db.AppointmentRequests.Add(appointment1);
             _db.SaveChanges();
 
             return RedirectToAction("Index");
