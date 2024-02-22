@@ -337,6 +337,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
+    <Compile Include="Controllers\AppointmentRequestController.cs" />
     <Compile Include="Controllers\chemistController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FutureDateAttribute.cs" />
@@ -385,6 +386,7 @@
     <Compile Include="Models\Patient.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PatientDashBoardModel.cs" />
     <Compile Include="Models\PatientRegistrationForm.cs" />
     <Compile Include="Models\AdvicePrescriptionViewModel.cs" />
     <Compile Include="Models\AdvicePrescriptionViewModel.cs" />
@@ -438,7 +440,7 @@
     <Content Include="Views\Admin\AddPatient.cshtml" />
     <Content Include="Views\Admin\ShowPatient.cshtml" />
     <Content Include="Views\Admin\UpdatePatient.cshtml" />
-    <Content Include="Views\Admin\ApointmentRequests.cshtml" />
+    <Content Include="Views\Admin\AppointmentRequests.cshtml" />
     <Content Include="Views\Admin\Schedule.cshtml" />
     <Content Include="Views\Admin\FrontDesk.cshtml" />
     <Content Include="Views\Physician\Apointments.cshtml" />
@@ -505,6 +507,7 @@
     <Content Include="Views\Appointment\Details.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Patient\RejectedAppointment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -515,6 +518,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\AdminPage\" />
+    <Folder Include="Views\AppointmentRequest\" />
     <Folder Include="Views\PurchaseOrder\" />
   </ItemGroup>
   <ItemGroup>

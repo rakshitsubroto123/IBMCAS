@@ -1,11 +1,11 @@
-﻿@model IEnumerable<IBMCAS.Models.Appointment>
+﻿@model IEnumerable<IBMCAS.Models.AppointmentRequest>
 
 @{
     ViewBag.Title = "ApointmentRequests";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>ApointmentRequests</h2>
+<h2>Apointment Requests</h2>
 
 <p>
     @*@Html.ActionLink("Create New", "Create")*@
@@ -33,7 +33,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.AppointmentToken)
+            @Html.DisplayFor(modelItem => item.AppointmentRequestToken)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PatientID)
@@ -50,10 +50,10 @@
 
         <td>
             <button type="button" class="btn btn-outline-warning">
-                <a href="@Url.Action("Schedule", new { id = item.AppointmentToken })" style="color: black; text-decoration: none !important">Schedule</a>
+                <a href="@Url.Action("Schedule", new { id = item.AppointmentRequestToken })" style="color: black; text-decoration: none !important">Schedule</a>
             </button>
             <button type="button" class="btn btn-outline-danger">
-                <a href="@Url.Action("AppointmentRemove", new { id = item.AppointmentToken })" style="color: black; text-decoration: none !important">Remove</a>
+                <a href="@Url.Action("RejectAppointmentRequest", new { id = item.AppointmentRequestToken })" style="color: black; text-decoration: none !important">Remove</a>
             </button>
         </td>
     </tr>

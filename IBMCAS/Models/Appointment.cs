@@ -18,11 +18,8 @@ namespace IBMCAS.Models
         public string AppointmentToken { get; set; }
         public int PatientID { get; set; }
         public int PhysicianID { get; set; }
-        public System.DateTime DateCreated { get; set; }
-        public System.DateTime DateRequested { get; set; }
-        public Nullable<System.DateTime> ScheduledDate { get; set; }
-        public Nullable<int> ScheduledTime { get; set; }
-        public int isVisited { get; set; }
+        public System.DateTime ScheduledDate { get; set; }
+        public int ScheduledTime { get; set; }
         public string Advice { get; set; }
     }
 }

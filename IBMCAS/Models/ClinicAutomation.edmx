@@ -21,11 +21,8 @@
           <Property Name="AppointmentToken" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="PatientID" Type="int" Nullable="false" />
           <Property Name="PhysicianID" Type="int" Nullable="false" />
-          <Property Name="DateCreated" Type="date" Nullable="false" />
-          <Property Name="DateRequested" Type="date" Nullable="false" />
-          <Property Name="ScheduledDate" Type="date" />
-          <Property Name="ScheduledTime" Type="int" />
-          <Property Name="isVisited" Type="int" Nullable="false" />
+          <Property Name="ScheduledDate" Type="date" Nullable="false" />
+          <Property Name="ScheduledTime" Type="int" Nullable="false" />
           <Property Name="Advice" Type="varchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="AppointmentRequest">
@@ -38,8 +35,10 @@
           <Property Name="PhysicianID" Type="int" Nullable="false" />
           <Property Name="DateCreated" Type="date" Nullable="false" />
           <Property Name="DateRequested" Type="date" Nullable="false" />
+          <Property Name="DateScheduled" Type="date" Nullable="false" />
+          <Property Name="TimeScheduled" Type="int" Nullable="false" />
           <Property Name="Note" Type="varchar" MaxLength="1000" />
-          <Property Name="isAccepted" Type="int" Nullable="false" />
+          <Property Name="status" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="chemist">
           <Key>
@@ -197,11 +196,8 @@
           <Property Name="AppointmentToken" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="PatientID" Type="Int32" Nullable="false" />
           <Property Name="PhysicianID" Type="Int32" Nullable="false" />
-          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DateRequested" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ScheduledDate" Type="DateTime" Precision="0" />
-          <Property Name="ScheduledTime" Type="Int32" />
-          <Property Name="isVisited" Type="Int32" Nullable="false" />
+          <Property Name="ScheduledDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ScheduledTime" Type="Int32" Nullable="false" />
           <Property Name="Advice" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="AppointmentRequest">
@@ -214,8 +210,10 @@
           <Property Name="PhysicianID" Type="Int32" Nullable="false" />
           <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DateRequested" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateScheduled" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TimeScheduled" Type="Int32" Nullable="false" />
           <Property Name="Note" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="isAccepted" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="chemist">
           <Key>
@@ -374,11 +372,8 @@
                 <ScalarProperty Name="AppointmentToken" ColumnName="AppointmentToken" />
                 <ScalarProperty Name="PatientID" ColumnName="PatientID" />
                 <ScalarProperty Name="PhysicianID" ColumnName="PhysicianID" />
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="DateRequested" ColumnName="DateRequested" />
                 <ScalarProperty Name="ScheduledDate" ColumnName="ScheduledDate" />
                 <ScalarProperty Name="ScheduledTime" ColumnName="ScheduledTime" />
-                <ScalarProperty Name="isVisited" ColumnName="isVisited" />
                 <ScalarProperty Name="Advice" ColumnName="Advice" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -392,8 +387,10 @@
                 <ScalarProperty Name="PhysicianID" ColumnName="PhysicianID" />
                 <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
                 <ScalarProperty Name="DateRequested" ColumnName="DateRequested" />
+                <ScalarProperty Name="DateScheduled" ColumnName="DateScheduled" />
+                <ScalarProperty Name="TimeScheduled" ColumnName="TimeScheduled" />
                 <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="isAccepted" ColumnName="isAccepted" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

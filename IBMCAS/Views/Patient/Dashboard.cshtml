@@ -1,10 +1,11 @@
-﻿@model IEnumerable<IBMCAS.Models.Appointment>
+﻿@model IBMCAS.Models.PatientDashBoardModel
 
 
 @{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_LayoutPatient.cshtml";
 }
+
 <br />
 <h2>Today's Appointment</h2>
 <br />
@@ -12,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            Token Id
+            Token No
         </th>
         <th>
             Physician ID
@@ -26,52 +27,95 @@
         <th> Show Details</th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.Appointments)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AppointmentToken)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhysicianID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ScheduledDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ScheduledTime)
-            </td>
-            <td>
-                <input id ="checkbox-@item.AppointmentToken" type="checkbox"  onclick="loadDetails(@item.AppointmentToken)">
-            </td>
-        </tr>
-        <tr id="details-@item.AppointmentToken" style="display:none;">
-            <td colspan="5">Details will be loaded here...</td>
-        </tr>
+        if (item.ScheduledDate == DateTime.Today.Date)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppointmentToken)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhysicianID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScheduledDate.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScheduledTime):00 
+                </td>
+                <td>
+                    <input id="checkbox-@item.AppointmentToken" type="checkbox" onclick="loadAppointmentDetails(@item.AppointmentToken)">
+                </td>
+            </tr>
+            <tr id="details-@item.AppointmentToken" style="display:none;">
+                <td colspan="5">Details will be loaded here...</td>
+            </tr>
+        }
+
+    }
+
+</table>
+
+<br />
+<h2>Pending for Scheduling</h2>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Request Token No
+        </th>
+        <th>
+            Physician ID
+        </th>
+        <th>
+            Date Created
+        </th>
+        <th>
+            Note
+        </th>
+    </tr>
+
+    @foreach (var item in Model.AppointmentRequests)
+    {
+        if (item.status == 0)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppointmentRequestToken)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhysicianID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreated.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Note)
+                </td>
+            </tr>
+        }
+
     }
 
 </table>
 
 <script>
-    function loadDetails(appointmentToken) {
+    function loadAppointmentDetails(appointmentToken) {
 
 
         if (document.getElementById('checkbox-' + appointmentToken).checked == true) {
-            //alert(appointmentToken);
 
             var jqxhr = $.get('@Url.Action("Details", "Appointment")/' + appointmentToken, function (data) {
-                //alert("success");
 
                 $('#details-' + appointmentToken).html(data).show();
             })
                 .done(function () {
-                   // alert("second success");
                 })
                 .fail(function () {
-                    //alert("error");
                 })
                 .always(function () {
-                    //alert("finished");
                 });
         }
         else {

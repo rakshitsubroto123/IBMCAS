@@ -20,7 +20,9 @@ namespace IBMCAS.Models
         public int PhysicianID { get; set; }
         public System.DateTime DateCreated { get; set; }
         public System.DateTime DateRequested { get; set; }
+        public System.DateTime DateScheduled { get; set; }
+        public int TimeScheduled { get; set; }
         public string Note { get; set; }
-        public int isAccepted { get; set; }
+        public int status { get; set; }
     }
 }

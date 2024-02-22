@@ -1,0 +1,52 @@
+﻿@model IEnumerable<IBMCAS.Models.AppointmentRequest>
+
+@{
+    ViewBag.Title = "Rejected Appointments";
+    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+
+}
+<br />
+<h2>Rejected Appointment Requests</h2>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            Request Token No
+        </th>
+        <th>
+           Physician ID
+        </th>
+        <th>
+            Date Created
+        </th>
+        <th>
+            Date Requested
+        </th>
+        <th>
+            Note
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentRequestToken)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhysicianID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreated.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateRequested.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Note)
+            </td>
+        </tr>
+    }
+
+</table>

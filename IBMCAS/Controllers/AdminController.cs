@@ -227,32 +227,47 @@ namespace IBMCAS.Controllers
         public ActionResult AppointmentRequests()
         {
             var appointmentReq = from appoint in _db.AppointmentRequests
-                                 where appoint.isAccepted == 0
+                                 where appoint.status == 0
                                  select appoint;
             return View(appointmentReq.ToList());
         }
 
         public ActionResult Schedule(string id)
         {
-            return View(_db.Appointments.Where(q => q.AppointmentToken == id).SingleOrDefault());
+            AppointmentRequest appreq = _db.AppointmentRequests.Where(ar => ar.AppointmentRequestToken == id).FirstOrDefault();
+            if (appreq == null)
+            {
+                return HttpNotFound();
+            }
+            return View(appreq);
         }
 
         [HttpPost]
-        public ActionResult Schedule(Models.Appointment appointment)
+        public ActionResult Schedule(Models.AppointmentRequest appreq)
         {
             if (ModelState.IsValid)
             {
-                _db.Entry(appointment).State = EntityState.Modified;
+                appreq.status = 1;
+                _db.Entry(appreq).State = EntityState.Modified;
+                Appointment appointment = new Appointment();
+                appointment.AppointmentToken = DateTime.Now.Year.ToString() + DateTime.Now.TimeOfDay.ToString("hhmmss");
+                appointment.PatientID = appreq.PatientID;
+                appointment.PhysicianID = appreq.PhysicianID;
+                appointment.ScheduledDate = appreq.DateScheduled;
+                appointment.ScheduledTime = appreq.TimeScheduled;
+                _db.Appointments.Add(appointment);
                 _db.SaveChanges();
             }
-            return RedirectToAction("ApointmentRequests");
+            return RedirectToAction("AppointmentRequests");
         }
 
-        public ActionResult AppointmentRemove(string id)
+        public ActionResult RejectAppointmentRequest(string id)
         {
-            _db.Appointments.Remove(_db.Appointments.Where(q => q.AppointmentToken == id).Single());
+            AppointmentRequest appreq = _db.AppointmentRequests.Where(q => q.AppointmentRequestToken == id).SingleOrDefault();
+            appreq.status = -1;
+            _db.Entry(appreq).State = EntityState.Modified;
             _db.SaveChanges();
-            return RedirectToAction("ApointmentRequests");
+            return RedirectToAction("AppointmentRequests");
         }
 
         public ActionResult FrontDesk()

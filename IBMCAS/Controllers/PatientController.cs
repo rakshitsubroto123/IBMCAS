@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Web;
 using System.Web.Mvc;
 
@@ -22,7 +23,10 @@ namespace IBMCAS.Controllers
         public ActionResult Dashboard()
         {
             CurrentUserModel cur = Session["CurrentUser"] as CurrentUserModel;
-            return View(_db.Appointments.Where(a => a.PatientID == cur.ReferenceToId && a.ScheduledDate == DateTime.Today.Date).ToList());
+            PatientDashBoardModel model = new PatientDashBoardModel();
+            model.Appointments = _db.Appointments.Where(a => a.PatientID == cur.ReferenceToId).ToList();
+            model.AppointmentRequests = _db.AppointmentRequests.Where(a => a.PatientID == cur.ReferenceToId).ToList();
+            return View(model);
         }
 
         public ActionResult BookAppointment()
@@ -31,19 +35,22 @@ namespace IBMCAS.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult BookAppointment([Bind(Include = "PhysicianID, DateRequested")] Appointment appointment)
+        public ActionResult BookAppointment([Bind(Include = "PhysicianID, DateRequested")] AppointmentRequest appointment)
         {
             CurrentUserModel cur = Session["CurrentUser"] as CurrentUserModel;
-            AppointmentRequest appointment1 = new AppointmentRequest();
-            appointment1.PatientID = (int)cur.ReferenceToId;
-            appointment1.PhysicianID = appointment.PhysicianID;
-            appointment1.DateCreated = DateTime.Now.Date;
-            appointment1.DateRequested = appointment.DateRequested;
-            appointment1.AppointmentRequestToken = DateTime.Now.Year.ToString() + DateTime.Now.TimeOfDay.ToString("hhmmss");
-            _db.AppointmentRequests.Add(appointment1);
+            appointment.PatientID = (int)cur.ReferenceToId;
+            appointment.DateCreated = DateTime.Now.Date;
+            appointment.AppointmentRequestToken = DateTime.Now.Year.ToString() + DateTime.Now.TimeOfDay.ToString("hhmmss");
+            _db.AppointmentRequests.Add(appointment);
             _db.SaveChanges();
 
             return RedirectToAction("Index");
         }
+        public ActionResult RejectedAppointment()
+        {
+            CurrentUserModel cur = Session["CurrentUser"] as CurrentUserModel;
+            return View(_db.AppointmentRequests.Where(a => a.PatientID == cur.ReferenceToId && a.status == -1).ToList());
+        }
+
     }
 }
