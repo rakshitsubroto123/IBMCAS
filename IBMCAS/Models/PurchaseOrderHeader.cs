@@ -15,7 +15,7 @@ namespace IBMCAS.Models
     public partial class PurchaseOrderHeader
     {
         public int PurchaseOrderId { get; set; }
-        public Nullable<System.DateTime> PODate { get; set; }
+        public System.DateTime PODate { get; set; }
         public int SupplierId { get; set; }
         public string Note { get; set; }
     }

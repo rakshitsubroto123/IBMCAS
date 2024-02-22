@@ -25,6 +25,7 @@
           <Property Name="DateRequested" Type="date" Nullable="false" />
           <Property Name="ScheduledDate" Type="date" />
           <Property Name="ScheduledTime" Type="int" />
+          <Property Name="isVisited" Type="int" Nullable="false" />
           <Property Name="Advice" Type="varchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="AppointmentRequest">
@@ -200,6 +201,7 @@
           <Property Name="DateRequested" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ScheduledDate" Type="DateTime" Precision="0" />
           <Property Name="ScheduledTime" Type="Int32" />
+          <Property Name="isVisited" Type="Int32" Nullable="false" />
           <Property Name="Advice" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="AppointmentRequest">
@@ -376,6 +378,7 @@
                 <ScalarProperty Name="DateRequested" ColumnName="DateRequested" />
                 <ScalarProperty Name="ScheduledDate" ColumnName="ScheduledDate" />
                 <ScalarProperty Name="ScheduledTime" ColumnName="ScheduledTime" />
+                <ScalarProperty Name="isVisited" ColumnName="isVisited" />
                 <ScalarProperty Name="Advice" ColumnName="Advice" />
               </MappingFragment>
             </EntityTypeMapping>
