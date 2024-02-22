@@ -22,6 +22,7 @@ namespace IBMCAS.Models
         public System.DateTime DateRequested { get; set; }
         public Nullable<System.DateTime> ScheduledDate { get; set; }
         public Nullable<int> ScheduledTime { get; set; }
+        public int isVisited { get; set; }
         public string Advice { get; set; }
     }
 }
