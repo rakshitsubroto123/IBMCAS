@@ -20,6 +20,11 @@ namespace IBMCAS.Controllers
             return View();
         }
 
+        public ActionResult Dashboard()
+        {
+            return RedirectToAction("Apointments");
+        }
+
         public ActionResult Apointments()
         {
             IBMCAS.Models.CurrentUserModel usr = Session["CurrentUser"] as IBMCAS.Models.CurrentUserModel;

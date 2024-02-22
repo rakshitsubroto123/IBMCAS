@@ -359,9 +359,11 @@
     <Compile Include="Models\AppointmentRequest.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AppointmentViewModel.cs" />
     <Compile Include="Models\chemist.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdvicePrescriptionViewModel.cs" />
     <Compile Include="Models\ClinicAutomation.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -388,8 +390,6 @@
     </Compile>
     <Compile Include="Models\PatientDashBoardModel.cs" />
     <Compile Include="Models\PatientRegistrationForm.cs" />
-    <Compile Include="Models\AdvicePrescriptionViewModel.cs" />
-    <Compile Include="Models\AdvicePrescriptionViewModel.cs" />
     <Compile Include="Models\PatientRegistrationQueue.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
@@ -517,9 +517,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AdminPage\" />
-    <Folder Include="Views\AppointmentRequest\" />
-    <Folder Include="Views\PurchaseOrder\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

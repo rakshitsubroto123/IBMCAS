@@ -18,5 +18,5 @@ namespace IBMCAS.Models
 
         public List<PrescriptionViewModel> Prescriptions { get; set; }
     }
-   
+
 }

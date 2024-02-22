@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>FrontDesk</h2>
+<h2>Front Desk</h2>
 
 <p>
     @*@Html.ActionLink("Create New", "Create")*@
@@ -23,6 +23,9 @@
         </th>
         <th>
             Scheduled Time
+        </th>
+        <th>
+            Show Details
         </th>
         <th></th>
     </tr>
@@ -42,7 +45,41 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ScheduledTime)
             </td>
+            <td>
+                <input id="checkbox-@item.AppointmentToken" type="checkbox" onclick="loadAppointmentDetails(@item.AppointmentToken)">
+            </td>
+        </tr>
+        <tr>
+            <td colspan=5 id="details-@item.AppointmentToken" style="display:none;">Details will be loaded here...</td>
         </tr>
     }
 
 </table>
+
+<script>
+    function loadAppointmentDetails(appointmentToken) {
+
+
+        if (document.getElementById('checkbox-' + appointmentToken).checked == true) {
+
+            var jqxhr = $.get('@Url.Action("Details", "Appointment")/' + appointmentToken, function (data) {
+
+                $('#details-' + appointmentToken).html(data).show();
+            })
+                .done(function () {
+                })
+                .fail(function () {
+                })
+                .always(function () {
+                });
+        }
+        else {
+            document.getElementById('details-' + appointmentToken).style.display = "none";
+        }
+
+    }
+</script>
+
+<script src="~/Scripts/jquery-3.7.1.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

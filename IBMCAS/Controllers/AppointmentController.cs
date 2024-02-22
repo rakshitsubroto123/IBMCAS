@@ -28,7 +28,11 @@ namespace IBMCAS.Controllers
             {
                 return HttpNotFound();
             }
-            return PartialView(appointment);
+
+            AppointmentViewModel viewModel = new AppointmentViewModel();
+            viewModel.appointment = appointment;
+            viewModel.prescriptions = _db.Prescriptions.Where(p => p.PrescriptionAdviceId == appointment.AppointmentID).ToList();
+            return PartialView(viewModel);
         }
     }
 }

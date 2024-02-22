@@ -42,10 +42,10 @@
             @Html.DisplayFor(modelItem => item.PhysicianID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateCreated)
+            @Html.DisplayFor(modelItem => item.DateCreated.Date)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateRequested)
+            @Html.DisplayFor(modelItem => item.DateRequested.Date)
         </td>
 
         <td>
@@ -53,7 +53,7 @@
                 <a href="@Url.Action("Schedule", new { id = item.AppointmentRequestToken })" style="color: black; text-decoration: none !important">Schedule</a>
             </button>
             <button type="button" class="btn btn-outline-danger">
-                <a href="@Url.Action("RejectAppointmentRequest", new { id = item.AppointmentRequestToken })" style="color: black; text-decoration: none !important">Remove</a>
+                <a href="@Url.Action("RejectAppointmentRequest", new { id = item.AppointmentRequestToken })" style="color: black; text-decoration: none !important">Reject</a>
             </button>
         </td>
     </tr>

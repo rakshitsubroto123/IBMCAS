@@ -16,6 +16,20 @@ CREATE TABLE [dbo].[Appointment] (
     PRIMARY KEY CLUSTERED ([AppointmentID] ASC)
 );
 
+CREATE TABLE [dbo].[AppointmentRequest] (
+    [AppointmentRequestID]    INT            IDENTITY (1, 1) NOT NULL,
+    [AppointmentRequestToken] NCHAR (10)     NOT NULL,
+    [PatientID]               INT            NOT NULL,
+    [PhysicianID]             INT            NOT NULL,
+    [DateCreated]             DATE           NOT NULL,
+    [DateRequested]           DATE           NOT NULL,
+	[DateScheduled]           Date           NOT NULL,
+	[TimeScheduled]           INT           NOT NULL,
+    [Note]                    VARCHAR (1000) NULL,
+    [status]              INT            DEFAULT 0 NOT NULL,
+    PRIMARY KEY CLUSTERED ([AppointmentRequestID] ASC)
+);
+
 CREATE TABLE [dbo].[chemist] (
     [chemistId]          INT           IDENTITY (1, 1) NOT NULL,
     [chemistName]        VARCHAR (30)  NOT NULL,
@@ -91,6 +105,7 @@ CREATE TABLE [dbo].[Prescription] (
     PRIMARY KEY CLUSTERED ([PrescriptionID] ASC)
 );
 
+
 CREATE TABLE [dbo].[PurchaseOrderHeader] (
     [PurchaseOrderId] INT         IDENTITY (1, 1) NOT NULL,
     [PODate]          DATE        NULL,
@@ -122,18 +137,4 @@ CREATE TABLE [dbo].[UserCred] (
     [UserRole]          VARCHAR (10) NOT NULL,
     [UserReferneceToID] INT          NOT NULL,
     PRIMARY KEY CLUSTERED ([UserID] ASC)
-);
-
-CREATE TABLE [dbo].[AppointmentRequest] (
-    [AppointmentRequestID]    INT            IDENTITY (1, 1) NOT NULL,
-    [AppointmentRequestToken] NCHAR (10)     NOT NULL,
-    [PatientID]               INT            NOT NULL,
-    [PhysicianID]             INT            NOT NULL,
-    [DateCreated]             DATE           NOT NULL,
-    [DateRequested]           DATE           NOT NULL,
-	[DateScheduled]           Date           NOT NULL,
-	[TimeScheduled]           Date           NOT NULL,
-    [Note]                    VARCHAR (1000) NULL,
-    [status]              INT            DEFAULT 0 NOT NULL,
-    PRIMARY KEY CLUSTERED ([AppointmentRequestID] ASC)
 );

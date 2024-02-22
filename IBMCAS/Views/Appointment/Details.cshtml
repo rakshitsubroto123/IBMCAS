@@ -1,60 +1,72 @@
-﻿@model IBMCAS.Models.Appointment
+﻿@model IBMCAS.Models.AppointmentViewModel
 
-<div>
-    <h4>Appointment</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AppointmentToken)
-        </dt>
+<div class="m-2">
+    <div class="mb-1">
+        <table class="table">
+            <tr>
+                <th>Appointment Token</th>
+                <th>Patient Id</th>
+                <th>Physician Id</th>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(model => model.appointment.AppointmentToken)</td>
+                <td>@Html.DisplayFor(model => model.appointment.PatientID)</td>
+                <td>@Html.DisplayFor(model => model.appointment.PhysicianID)</td>
+            </tr>
+        </table>
+        <table class="table">
+            <tr>
+                <th>Scheduled Date</th>
+                <th>Scheduled Time</th>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(model => model.appointment.ScheduledDate)</td>
+                <td>@Html.DisplayFor(model => model.appointment.ScheduledTime)</td>
+            </tr>
+        </table>
+    </div>
+    <div class="mb-1">
+        <table class="table">
+            <tr>
+                <th colspan="*">Advice</th>
+            </tr>
+            <tr>
+                <td>@Html.DisplayFor(model => model.appointment.Advice)</td>
+            </tr>
+        </table>
+    </div>
+    <div class="mb-1">
+        <table class="table">
+            <tr>
+                <th colspan="3">Precriptions</th>
+            </tr>
+            <tr>
+                <th>
+                    Precription ID
+                </th>
+                <th>
+                    Drug Id
+                </th>
+                <th>
+                    Description
+                </th>
+            </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.AppointmentToken)
-        </dd>
+            @foreach (var item in Model.prescriptions)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PrescriptionID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DrugID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                </tr>
+            }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PatientID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PatientID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhysicianID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhysicianID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ScheduledDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ScheduledDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ScheduledTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ScheduledTime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Advice)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Advice)
-        </dd>
-
-    </dl>
+        </table>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AppointmentID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
