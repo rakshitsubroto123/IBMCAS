@@ -491,6 +491,11 @@
     <Content Include="Views\Admin\DetailsPhysician.cshtml" />
     <Content Include="Views\Admin\editChemist.cshtml" />
     <Content Include="Views\Admin\DetailsChemist.cshtml" />
+    <Content Include="Views\Admin\EditSupplier.cshtml" />
+    <Content Include="Views\Admin\DeleteSupplier.cshtml" />
+    <Content Include="Views\Admin\DetailsSupplier.cshtml" />
+    <Content Include="Views\chemist\PurchaseOrder.cshtml" />
+    <Content Include="Views\chemist\suppliersList.cshtml" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
     <Content Include="Views\Appointment\Details.cshtml" />
@@ -503,6 +508,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\PurchaseOrder\" />
     <Folder Include="Views\AdminPage\" />
   </ItemGroup>
   <ItemGroup>
