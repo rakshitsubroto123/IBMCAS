@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<IBMCAS.Models.Appointment>
 
+
 @{
     ViewBag.Title = "Dashboard";
     Layout = "~/Views/Shared/_LayoutPatient.cshtml";
@@ -20,38 +21,66 @@
             Date
         </th>
         <th>
-           Time
+            Time
         </th>
-        <th></th>
+        <th> Show Details</th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AppointmentToken)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhysicianID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ScheduledDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ScheduledTime)
-        </td>
-        <td>
-            <button type="button" class="btn btn-outline-success" onclick="myFunction()">Details</button>
-        </td>
-    </tr>
-    <tr id="AppointmentDetails">
-        @{Html.RenderAction("Details", "Appointment", new { id = item.AppointmentToken });}
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentToken)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhysicianID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduledDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduledTime)
+            </td>
+            <td>
+                <input id ="checkbox-@item.AppointmentToken" type="checkbox"  onclick="loadDetails(@item.AppointmentToken)">
+            </td>
+        </tr>
+        <tr id="details-@item.AppointmentToken" style="display:none;">
+            <td colspan="5">Details will be loaded here...</td>
+        </tr>
+    }
 
 </table>
 
 <script>
-    function myFunction() {
- /*       document.getElementById("AppointmentDetails").;*/
-}
+    function loadDetails(appointmentToken) {
+
+
+        if (document.getElementById('checkbox-' + appointmentToken).checked == true) {
+            //alert(appointmentToken);
+
+            var jqxhr = $.get('@Url.Action("Details", "Appointment")/' + appointmentToken, function (data) {
+                //alert("success");
+
+                $('#details-' + appointmentToken).html(data).show();
+            })
+                .done(function () {
+                   // alert("second success");
+                })
+                .fail(function () {
+                    //alert("error");
+                })
+                .always(function () {
+                    //alert("finished");
+                });
+        }
+        else {
+            document.getElementById('details-' + appointmentToken).style.display = "none";
+        }
+
+    }
 </script>
+
+<script src="~/Scripts/jquery-3.7.1.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
