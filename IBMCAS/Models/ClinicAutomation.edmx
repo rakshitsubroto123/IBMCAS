@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="IBMCASDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="IBMCASDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advice">
           <Key>
             <PropertyRef Name="AdviceId" />
@@ -25,7 +25,6 @@
           <Property Name="DateRequested" Type="date" Nullable="false" />
           <Property Name="ScheduledDate" Type="date" />
           <Property Name="ScheduledTime" Type="int" />
-          <Property Name="isVisited" Type="int" Nullable="false" />
           <Property Name="Advice" Type="varchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="chemist">
@@ -162,7 +161,8 @@
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserCred" EntityType="Self.UserCred" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="IBMCASDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -186,7 +186,6 @@
           <Property Name="DateRequested" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ScheduledDate" Type="DateTime" Precision="0" />
           <Property Name="ScheduledTime" Type="Int32" />
-          <Property Name="isVisited" Type="Int32" Nullable="false" />
           <Property Name="Advice" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="chemist">
@@ -207,6 +206,15 @@
           <Property Name="DrugId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DrugName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DrugDescription" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DrugRequest">
+          <Key>
+            <PropertyRef Name="DrugRequestId" />
+          </Key>
+          <Property Name="DrugRequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestPhysicianId" Type="Int32" Nullable="false" />
+          <Property Name="RequestDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RequestedDate" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
         <EntityType Name="Patient">
           <Key>
@@ -304,6 +312,7 @@
           <EntitySet Name="Appointments" EntityType="Self.Appointment" />
           <EntitySet Name="chemists" EntityType="Self.chemist" />
           <EntitySet Name="Drugs" EntityType="Self.Drug" />
+          <EntitySet Name="DrugRequests" EntityType="Self.DrugRequest" />
           <EntitySet Name="Patients" EntityType="Self.Patient" />
           <EntitySet Name="PatientRegistrationQueues" EntityType="Self.PatientRegistrationQueue" />
           <EntitySet Name="Physicians" EntityType="Self.Physician" />
@@ -312,17 +321,7 @@
           <EntitySet Name="PurchaseOrderProductLines" EntityType="Self.PurchaseOrderProductLine" />
           <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
           <EntitySet Name="UserCreds" EntityType="Self.UserCred" />
-          <EntitySet Name="DrugRequests" EntityType="IBMCASDBModel.DrugRequest" />
         </EntityContainer>
-        <EntityType Name="DrugRequest">
-          <Key>
-            <PropertyRef Name="DrugRequestId" />
-          </Key>
-          <Property Name="DrugRequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RequestPhysicianId" Type="Int32" Nullable="false" />
-          <Property Name="RequestDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RequestedDate" Type="DateTime" Nullable="false" Precision="0" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -349,7 +348,6 @@
                 <ScalarProperty Name="DateRequested" ColumnName="DateRequested" />
                 <ScalarProperty Name="ScheduledDate" ColumnName="ScheduledDate" />
                 <ScalarProperty Name="ScheduledTime" ColumnName="ScheduledTime" />
-                <ScalarProperty Name="isVisited" ColumnName="isVisited" />
                 <ScalarProperty Name="Advice" ColumnName="Advice" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -372,6 +370,16 @@
                 <ScalarProperty Name="DrugId" ColumnName="DrugId" />
                 <ScalarProperty Name="DrugName" ColumnName="DrugName" />
                 <ScalarProperty Name="DrugDescription" ColumnName="DrugDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DrugRequests">
+            <EntityTypeMapping TypeName="IBMCASDBModel.DrugRequest">
+              <MappingFragment StoreEntitySet="DrugRequest">
+                <ScalarProperty Name="DrugRequestId" ColumnName="DrugRequestId" />
+                <ScalarProperty Name="RequestPhysicianId" ColumnName="RequestPhysicianId" />
+                <ScalarProperty Name="RequestDescription" ColumnName="RequestDescription" />
+                <ScalarProperty Name="RequestedDate" ColumnName="RequestedDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -471,16 +479,6 @@
                 <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
                 <ScalarProperty Name="UserRole" ColumnName="UserRole" />
                 <ScalarProperty Name="UserReferneceToID" ColumnName="UserReferneceToID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DrugRequests">
-            <EntityTypeMapping TypeName="IBMCASDBModel.DrugRequest">
-              <MappingFragment StoreEntitySet="DrugRequest">
-                <ScalarProperty Name="RequestedDate" ColumnName="RequestedDate" />
-                <ScalarProperty Name="RequestDescription" ColumnName="RequestDescription" />
-                <ScalarProperty Name="RequestPhysicianId" ColumnName="RequestPhysicianId" />
-                <ScalarProperty Name="DrugRequestId" ColumnName="DrugRequestId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

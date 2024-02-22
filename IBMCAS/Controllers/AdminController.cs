@@ -62,6 +62,9 @@ namespace IBMCAS.Controllers
         [HttpPost]
         public ActionResult EditRegistrationRequest([Bind(    Include = "PRQID, RegistrationTokenNo,DateCreated,PatientDOB,PatientFirstName,PatientLastName,PatientAddress,PatientPhone,PatientEmail,PatientGender,PatientMedicalHistory,PatientAadhaarNumber")] PatientRegistrationQueue patientRegistrationQueue)
         {
+            List<int> l = new List<int>();
+            Stack<int> r = new Stack<int>();    
+            SortedList<int, int> sl = new SortedList<int, int>();
             if (ModelState.IsValid)
             {
                 _db.Entry(patientRegistrationQueue).State = EntityState.Modified;
@@ -261,14 +264,14 @@ namespace IBMCAS.Controllers
             return View(todaysAppointment.ToList());
         }
 
-        public ActionResult Isvisited(string id)
-        {
-            Appointment app = _db.Appointments.Where(a => a.AppointmentToken == id).SingleOrDefault();
-            app.isVisited = 1;
-            _db.Entry(app).State = EntityState.Modified;
-            _db.SaveChanges();
-            return RedirectToAction("FrontDesk");
-        }
+        //public ActionResult Isvisited(string id)
+        //{
+        //    Appointment app = _db.Appointments.Where(a => a.AppointmentToken == id).SingleOrDefault();
+        //    app.isVisited = 1;
+        //    _db.Entry(app).State = EntityState.Modified;
+        //    _db.SaveChanges();
+        //    return RedirectToAction("FrontDesk");
+        //}
 
         public ActionResult chemistIndex()
         {

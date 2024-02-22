@@ -336,6 +336,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\chemistController.cs" />
     <Compile Include="Controllers\FutureDateAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -382,6 +383,7 @@
     </Compile>
     <Compile Include="Models\PatientRegistrationForm.cs" />
     <Compile Include="Models\AdvicePrescriptionViewModel.cs" />
+    <Compile Include="Models\AdvicePrescriptionViewModel.cs" />
     <Compile Include="Models\PatientRegistrationQueue.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
@@ -391,7 +393,6 @@
     <Compile Include="Models\Prescription.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AdvicePrescriptionViewModel.cs" />
     <Compile Include="Models\PurchaseLine.cs" />
     <Compile Include="Models\PurchaseOrderHeader.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
@@ -423,7 +424,7 @@
     <Content Include="Views\Admin\ShowOneRegistrationRequest.cshtml" />
     <Content Include="Views\Admin\EditRegistrationRequest.cshtml" />
     <Content Include="Views\Physician\Index.cshtml" />
-    <Content Include="Views\Patient\Index.cshtml" />
+    <Content Include="Views\Patient\Dashboard.cshtml" />
     <Content Include="Views\Shared\_LayoutPatient.cshtml" />
     <Content Include="Views\Shared\_LayoutPhysician.cshtml" />
     <Content Include="Views\Admin\PatientIndex.cshtml" />
@@ -492,6 +493,7 @@
     <Content Include="Views\Admin\DetailsChemist.cshtml" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
+    <Content Include="Views\Appointment\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -501,6 +503,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AdminPage\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

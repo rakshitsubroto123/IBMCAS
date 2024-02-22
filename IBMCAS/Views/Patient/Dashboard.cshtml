@@ -1,0 +1,57 @@
+﻿@model IEnumerable<IBMCAS.Models.Appointment>
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_LayoutPatient.cshtml";
+}
+<br />
+<h2>Today's Appointment</h2>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Token Id
+        </th>
+        <th>
+            Physician ID
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+           Time
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppointmentToken)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhysicianID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScheduledDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ScheduledTime)
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-success" onclick="myFunction()">Details</button>
+        </td>
+    </tr>
+    <tr id="AppointmentDetails">
+        @{Html.RenderAction("Details", "Appointment", new { id = item.AppointmentToken });}
+    </tr>
+}
+
+</table>
+
+<script>
+    function myFunction() {
+ /*       document.getElementById("AppointmentDetails").;*/
+}
+</script>

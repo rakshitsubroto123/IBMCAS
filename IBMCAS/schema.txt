@@ -14,7 +14,6 @@ CREATE TABLE [dbo].[Appointment] (
     [DateRequested]    DATE           NOT NULL,
     [ScheduledDate]    DATE           NULL,
     [ScheduledTime]    INT            NULL,
-    [isVisited]        INT            NOT NULL,
     [Advice]           VARCHAR (1000) NULL,
     PRIMARY KEY CLUSTERED ([AppointmentID] ASC)
 );

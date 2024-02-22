@@ -13,69 +13,36 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AppointmentToken)
+            Token No
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PatientID)
+            Patient Id
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PhysicianID)
+            Physician Id
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateRequested)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ScheduledDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ScheduledTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isVisited)
+            Scheduled Time
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.AppointmentToken)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PatientID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhysicianID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateCreated)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateRequested)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ScheduledDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ScheduledTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.isVisited)
-        </td>
-        <td>
-            @if (item.isVisited == 0)
-            {
-                <button type="button" class="btn btn-success">
-                    <a href="@Html.Action("Isvisited")" style="color: white; text-decoration: none !important">Visited</a>
-                </button>
-                @*@Html.ActionLink("Isvisited", "Isvisited", new { id = item.AppointmentToken })*@
-            }
-        </td>
-
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppointmentToken)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PatientID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhysicianID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduledTime)
+            </td>
+        </tr>
+    }
 
 </table>

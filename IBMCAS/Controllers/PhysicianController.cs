@@ -23,8 +23,7 @@ namespace IBMCAS.Controllers
         public ActionResult Apointments()
         {
             IBMCAS.Models.CurrentUserModel usr = Session["CurrentUser"] as IBMCAS.Models.CurrentUserModel;
-            //var app = _db.Appointments.Where(q => q.PhysicianID == usr.ReferenceToId && q.isVisited == 1 && q.ScheduledDate == DateTime.Now.Date;
-            return View(_db.Appointments.Where(q => q.PhysicianID == usr.ReferenceToId && q.isVisited == 1 && q.ScheduledDate == DateTime.Today.Date).ToList());
+            return View(_db.Appointments.Where(q => q.PhysicianID == usr.ReferenceToId && q.ScheduledDate == DateTime.Today.Date).ToList());
         }
 
         //public ActionResult Prescription(string id)
