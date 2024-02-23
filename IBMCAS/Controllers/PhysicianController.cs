@@ -17,7 +17,7 @@ namespace IBMCAS.Controllers
         // GET: Physician
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Dashboard");
         }
 
         public ActionResult Dashboard()

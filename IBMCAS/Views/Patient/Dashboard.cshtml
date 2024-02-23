@@ -48,12 +48,14 @@
                     <input id="checkbox-@item.AppointmentToken" type="checkbox" onclick="loadAppointmentDetails(@item.AppointmentToken)">
                 </td>
             </tr>
-            <tr >
-                <td colspan=5 id="details-@item.AppointmentToken" style="display:none;">Details will be loaded here...</td>
+            <tr>
+                <td colspan="5" id="details-@item.AppointmentToken" style="display:none;">
+                    @{Html.RenderAction("Details", "Appointment", new { id = item.AppointmentToken });}
+                </td>
             </tr>
         }
 
-    }
+     }
 
 </table>
 
@@ -78,9 +80,9 @@
     </tr>
 
     @foreach (var item in Model.AppointmentRequests)
-    {
-        if (item.status == 0)
-        {
+                    {
+                        if (item.status == 0)
+                        {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.AppointmentRequestToken)
@@ -95,9 +97,9 @@
                     @Html.DisplayFor(modelItem => item.Note)
                 </td>
             </tr>
-        }
+                        }
 
-    }
+                    }
 
 </table>
 
@@ -106,18 +108,9 @@
 
 
         if (document.getElementById('checkbox-' + appointmentToken).checked == true) {
-
-            var jqxhr = $.get('@Url.Action("Details", "Appointment")/' + appointmentToken, function (data) {
-
-                $('#details-' + appointmentToken).html(data).show();
-            })
-                .done(function () {
-                })
-                .fail(function () {
-                })
-                .always(function () {
-                });
+                document.getElementById('details-' + appointmentToken).style.display = "table-cell";
         }
+
         else {
             document.getElementById('details-' + appointmentToken).style.display = "none";
         }

@@ -17,6 +17,7 @@ namespace IBMCAS.Controllers
             return View();
         }
 
+        [ChildActionOnly]
         public ActionResult Details(string id)
         {
             if (id == null)
