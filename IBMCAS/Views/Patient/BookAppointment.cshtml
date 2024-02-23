@@ -45,5 +45,8 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <button type="button" class="btn btn-primary">
+        <a href="@Url.Action("Index")" style="color: white; text-decoration: none !important">Back</a>
+    </button>
+    @*@Html.ActionLink("Back to List", "Index")*@
 </div>

@@ -36,9 +36,12 @@
             @Html.DisplayFor(modelItem => item.Note)
         </td>
         <td>
-            @Html.ActionLink("Order List", "OrderList", new { id=item.PurchaseOrderId }) 
+            <button type="button" class="btn btn-outline-warning">
+                <a href="@Url.Action("OrderList" , new { id = item.PurchaseOrderId })" style="color: white; text-decoration: none !important">Order List</a>
+            </button>
+            @*@Html.ActionLink("Order List", "OrderList", new { id = item.PurchaseOrderId })*@
             @*@Html.ActionLink("Details", "Details", new { id=item.PurchaseOrderId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PurchaseOrderId })*@
+        @Html.ActionLink("Delete", "Delete", new { id=item.PurchaseOrderId })*@
         </td>
     </tr>
 }

@@ -30,7 +30,10 @@
             @Html.DisplayFor(modelItem => item.ContactNumber)
         </td>
         <td>
-            @Html.ActionLink("Place Order", "PurchaseOrder", new { id=item.SupplierId })
+            <button type="button" class="btn btn-outline-success">
+                <a href="@Url.Action("PurchaseOrder" , new { id = item.SupplierId })" style="color: black; text-decoration: none !important">Place Order</a>
+            </button>
+            @*@Html.ActionLink("Place Order", "PurchaseOrder", new { id = item.SupplierId })*@
         </td>
     </tr>
 }
