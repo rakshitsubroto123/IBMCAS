@@ -213,6 +213,7 @@
     <Content Include="Models\ClinicAutomation.edmx.diagram">
       <DependentUpon>ClinicAutomation.edmx</DependentUpon>
     </Content>
+    <Content Include=".gitignore" />
     <None Include="Properties\PublishProfiles\IBMCAS - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
@@ -345,6 +346,7 @@
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\PhysicianController.cs" />
     <Compile Include="Controllers\PhysiciansController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
     <Compile Include="Controllers\UserCredentialController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -360,10 +362,10 @@
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AppointmentViewModel.cs" />
+    <Compile Include="Models\AdvicePrescriptionViewModel.cs" />
     <Compile Include="Models\chemist.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AdvicePrescriptionViewModel.cs" />
     <Compile Include="Models\ClinicAutomation.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -508,6 +510,10 @@
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Patient\RejectedAppointment.cshtml" />
+    <Content Include="Views\Supplier\Index.cshtml" />
+    <Content Include="Views\Supplier\MedicineOrdered.cshtml" />
+    <Content Include="Views\Supplier\Advice.cshtml" />
+    <Content Include="Views\Supplier\OrderList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -8,10 +8,10 @@
 <h2>chemistCreate</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>chemist</h4>
         <hr />
@@ -66,12 +66,12 @@
 
 <div>
     <button type="button" class="btn btn-primary">
-    <a href="@Url.Action("chemistIndex")" style="color: White; text-decoration: none !important">Back</a>
+        <a href="@Url.Action("chemistIndex")" style="color: White; text-decoration: none !important">Back</a>
     </button>
     @*@Html.ActionLink("Back to List", "Index")*@
 
 </div>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-3.7.1.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
