@@ -4,58 +4,40 @@
     <h5>Appointmnet Details: </h5>
     <div class="row p-2">
         <div class="col">
-            
-            <p><strong>Appointment Token: </strong>@Html.DisplayFor(model => model.appointment.AppointmentToken)</p>
-            <p><strong>Patient MR No:&emsp;&emsp;</strong>@Html.DisplayFor(model => model.appointment.Patient.PatientMRNumber)</p>
-            <p><strong>Patient Name:&emsp;&emsp;</strong>@Html.DisplayFor(model => model.appointment.Patient.PatientFirstName) @Html.DisplayFor(model => model.appointment.Patient.PatientLastName)</p>
-            <p><strong>Physician Name:&emsp;</strong>@Html.DisplayFor(model => model.appointment.Physician.PhysicianName)</p>
-            <p><strong>Scheduled Date:&emsp;</strong>@Model.appointment.ScheduledDate.Date.ToString("dd-MM-yyyy")</p>
-            <p><strong>Scheduled Time:&emsp;</strong>@Html.DisplayFor(model => model.appointment.ScheduledTime):00</p>
+            <div class="row">
+                <div class="col"><strong>Appointment Token:</strong></div>
+                <div class="col">@Html.DisplayFor(model => model.appointment.AppointmentToken)</div>
+            </div>
+            <div class="row">
+                <div class="col"><strong>Patient MR No:</strong></div>
+                <div class="col">@Html.DisplayFor(model => model.appointment.Patient.PatientMRNumber)</div>
+            </div>
+            <div class="row">
+                <div class="col"><strong>Patient Name:</strong></div>
+                <div class="col">@Html.DisplayFor(model => model.appointment.Patient.PatientFirstName) @Html.DisplayFor(model => model.appointment.Patient.PatientLastName)</div>
+            </div>
+            <div class="row">
+                <div class="col"><strong>Physician Name:</strong></div>
+                <div class="col">@Html.DisplayFor(model => model.appointment.Physician.PhysicianName)</div>
+            </div>
+            <div class="row">
+                <div class="col"><strong>Scheduled Date:</strong></div>
+                <div class="col">@Model.appointment.ScheduledDate.Date.ToString("dd-MM-yyyy")</div>
+            </div>
+            <div class="row">
+                <div class="col"><strong>Scheduled Time:</strong></div>
+                <div class="col">@Html.DisplayFor(model => model.appointment.ScheduledTime):00</div>
+            </div>
         </div>
         <div class="col">
             <p><strong>Advise: </strong> @Html.DisplayFor(model => model.advice.AdviceText)</p>
               
         </div>
     </div>
-
-        <table class="table">
-            <tr>
-                <th>Appointment Token</th>
-                <th>Patient MR No</th>
-                <th>Patient Name</th>
-                <th>Physician Name</th>
-            </tr>
-            <tr>
-                <td>@Html.DisplayFor(model => model.appointment.AppointmentToken)</td>
-                <td>@Html.DisplayFor(model => model.appointment.Patient.PatientMRNumber)</td>
-                <td>@Html.DisplayFor(model => model.appointment.Patient.PatientFirstName) @Html.DisplayFor(model => model.appointment.Patient.PatientLastName)</td>
-                <td>@Html.DisplayFor(model => model.appointment.Physician.PhysicianName)</td>
-            </tr>
-        </table>
-        <table class="table">
-            <tr>
-                <th>Scheduled Date</th>
-                <th>Scheduled Time</th>
-            </tr>
-            <tr>
-                <td>@Model.appointment.ScheduledDate.Date.ToString("dd-MM-yyyy")</td>
-                <td>@Html.DisplayFor(model => model.appointment.ScheduledTime)</td>
-            </tr>
-        </table>
     <div class="mb-1">
         <table class="table">
             <tr>
-                <th>Advice</th>
-            </tr>
-            <tr>
-                <td>@Html.DisplayFor(model => model.advice.AdviceText)</td>
-            </tr>
-        </table>
-    </div>
-    <div class="mb-1">
-        <table class="table">
-            <tr>
-                <th colspan="3">Precriptions</th>
+                <th colspan="3">Precriptions:</th>
             </tr>
             <tr>
                 <th>
