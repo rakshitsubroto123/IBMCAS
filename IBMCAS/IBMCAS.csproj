@@ -207,6 +207,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include=".gitignore" />
     <EntityDeploy Include="Models\ClinicAutomation.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ClinicAutomation.Designer.cs</LastGenOutput>
@@ -214,7 +215,6 @@
     <Content Include="Models\ClinicAutomation.edmx.diagram">
       <DependentUpon>ClinicAutomation.edmx</DependentUpon>
     </Content>
-    <Content Include=".gitignore" />
     <None Include="Properties\PublishProfiles\IBMCAS - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
