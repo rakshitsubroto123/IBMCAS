@@ -66,8 +66,8 @@
         </div>
     </div>
 </form>
-<script src="~/Scripts/jquery-1.8.0.js"></script>
-<script src="~/Scripts/jquery-1.8.0.min.js"></script>
+<script src="~/Scripts/jquery-3.7.1.js"></script>
+<script src="~/Scripts/jquery-3.7.1.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 <script>
     var ctr = 0
@@ -75,7 +75,7 @@
         $("#btnSave").click(function (e) {
             e.preventDefault()
             ctr++
-           /* row = ${ ctr } id = "rw${ctr}" + drgid=${ $("#rowCmbDrugName").val() } qty = ${ $("#rowtxtNote").val() } note = "${$("#rowtxtNote").val()}"*/
+            /* row = ${ ctr } id = "rw${ctr}" + drgid=${ $("#rowCmbDrugName").val() } qty = ${ $("#rowtxtNote").val() } note = "${$("#rowtxtNote").val()}"*/
             var row = `<tr>
                 <td>${$("#rowCmbDrugName").val()}
                     <input type="hidden" name="pbdies[${ctr - 1}].DrugName" value="${$("#rowCmbDrugName").val()}" />
