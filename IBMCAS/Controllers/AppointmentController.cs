@@ -32,7 +32,13 @@ namespace IBMCAS.Controllers
 
             AppointmentViewModel viewModel = new AppointmentViewModel();
             viewModel.appointment = appointment;
-            viewModel.prescriptions = _db.Prescriptions.Where(p => p.PrescriptionAdviceId == appointment.AppointmentID).ToList();
+            viewModel.advice = new Advice();
+            viewModel.prescriptions = new List<Prescription>();
+            viewModel.advice = _db.Advices.Where(a => a.ScheduleId == appointment.AppointmentID).SingleOrDefault();
+            if (viewModel.advice != null)
+            {
+                viewModel.prescriptions = _db.Prescriptions.Where(p => p.PrescriptionAdviceId == viewModel.advice.AdviceId).ToList();
+            }
             return PartialView(viewModel);
         }
     }

@@ -21,5 +21,8 @@ namespace IBMCAS.Models
         public System.DateTime ScheduledDate { get; set; }
         public int ScheduledTime { get; set; }
         public string Advice { get; set; }
+    
+        public virtual Patient Patient { get; set; }
+        public virtual Physician Physician { get; set; }
     }
 }
