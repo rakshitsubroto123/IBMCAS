@@ -24,5 +24,8 @@ namespace IBMCAS.Models
         public int TimeScheduled { get; set; }
         public string Note { get; set; }
         public int status { get; set; }
+    
+        public virtual Patient Patient { get; set; }
+        public virtual Physician Physician { get; set; }
     }
 }

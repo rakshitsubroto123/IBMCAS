@@ -1,16 +1,5 @@
 ﻿@model IBMCAS.Models.UserCred
-
-@{
-    ViewBag.Title = "Login";
-    //Layout = "~/Views/Shared/_LayoutHome.cshtml";
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <script src="~/Scripts/bootstrap.js"></script>
-    <link href="~/Content/Login.css" rel="stylesheet" />
-    <script src="~/Content/Login.js"></script>
-}
-
-@using (Html.BeginForm())
+@using (Html.BeginForm("Login", "UserCredential"))
 {
     @Html.AntiForgeryToken()
 
@@ -27,12 +16,8 @@
 
         <div class="container">
             <div class="login-container-wrapper clearfix">
-                <div class="logo">
-                    <i class="fa fa-sign-in">IBMCAS</i>
-                </div>
-                <div class="welcome"><strong>Welcome,</strong> please login</div>
 
-                <form class="form-horizontal login-form">
+                <form action=@Url.Action("Login", "UserCredential") class="form-horizontal login-form">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
                         @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -52,56 +37,17 @@
                     <br />
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <button type="submit" class="btn btn-success btn-lg "><input type="submit" value="Login" class="btn btn-default" /></button>
+                            <!-- Apply btn-primary class to the button to style it -->
+                            <button type="submit" class="btn btn-primary"><input type="submit" value="Login" class="btn btn-default" style="color: white;" /></button>
                         </div>
-                    </div>
-                    <br />
-                    <div class="checkbox pull-left">
-                        <label><input type="checkbox"> Remember</label>
-                    </div>
-                    <div class="checkbox pull-right">
-                        <label> <a class="forget" href="" title="forget">Forgot your password</a> </label>
                     </div>
                 </form>
             </div>
-
-            <h4 class="text-center">
-                <a>
-                    <button type="button" class="btn btn-outline-light">@Html.ActionLink("Home", actionName: ("Index"), controllerName: ("Home"))</button>
-                </a>
-            </h4>
         </div>
 
     </body>
-
-    @*<div class="form-horizontal">
-            <h4>UserCred</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.UserPassword, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.UserPassword, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Login" class="btn btn-default" />
-                </div>
-            </div>
-        </div>*@
 }
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery-3.7.1.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

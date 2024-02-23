@@ -10,52 +10,7 @@
 <h2>Today's Appointment</h2>
 <br />
 
-<table class="table">
-    <tr>
-        <th>
-            Token No
-        </th>
-        <th>
-            Physician ID
-        </th>
-        <th>
-            Date
-        </th>
-        <th>
-            Time
-        </th>
-        <th> Show Details</th>
-    </tr>
-
-    @foreach (var item in Model.Appointments)
-    {
-        if (item.ScheduledDate == DateTime.Today.Date)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AppointmentToken)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhysicianID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ScheduledDate.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ScheduledTime):00 
-                </td>
-                <td>
-                    <input id="checkbox-@item.AppointmentToken" type="checkbox" onclick="loadAppointmentDetails(@item.AppointmentToken)">
-                </td>
-            </tr>
-            <tr >
-                <td colspan=5 id="details-@item.AppointmentToken" style="display:none;">Details will be loaded here...</td>
-            </tr>
-        }
-
-    }
-
-</table>
+@{ Html.RenderPartial("~/Views/Appointment/ListAppointments.cshtml", Model.Appointments);}
 
 <br />
 <h2>Pending for Scheduling</h2>
@@ -67,10 +22,13 @@
             Request Token No
         </th>
         <th>
-            Physician ID
+            Physician
         </th>
         <th>
             Date Created
+        </th>
+        <th>
+            Date Requested
         </th>
         <th>
             Note
@@ -86,10 +44,13 @@
                     @Html.DisplayFor(modelItem => item.AppointmentRequestToken)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.PhysicianID)
+                    @Html.DisplayFor(modelItem => item.PhysicianID) - @Html.DisplayFor(modelItem => item.Physician.PhysicianName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DateCreated.Date)
+                    @item.DateCreated.Date.ToString("dd-MM-yyyy")
+                </td>
+                <td>
+                    @item.DateRequested.Date.ToString("dd-MM-yyyy")
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Note)
@@ -100,31 +61,3 @@
     }
 
 </table>
-
-<script>
-    function loadAppointmentDetails(appointmentToken) {
-
-
-        if (document.getElementById('checkbox-' + appointmentToken).checked == true) {
-
-            var jqxhr = $.get('@Url.Action("Details", "Appointment")/' + appointmentToken, function (data) {
-
-                $('#details-' + appointmentToken).html(data).show();
-            })
-                .done(function () {
-                })
-                .fail(function () {
-                })
-                .always(function () {
-                });
-        }
-        else {
-            document.getElementById('details-' + appointmentToken).style.display = "none";
-        }
-
-    }
-</script>
-
-<script src="~/Scripts/jquery-3.7.1.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

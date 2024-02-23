@@ -68,7 +68,10 @@
                 @Html.DisplayFor(modelItem => item.PatientAadhaarNumber)
             </td>
             <td>
-                @Html.ActionLink("GO", "ShowOneRegistrationRequest", new { id=item.RegistrationTokenNo })
+                <button type="button" class="btn btn-outline-success">
+                    <a href="@Url.Action("ShowOneRegistrationRequest", new { id = item.RegistrationTokenNo })" style="color: black; text-decoration: none !important">Select</a>
+                </button>
+                @*@Html.ActionLink("GO", "ShowOneRegistrationRequest", new { id = item.RegistrationTokenNo })*@
             </td>
         </tr>
     }

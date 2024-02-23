@@ -20,7 +20,22 @@ namespace IBMCAS.Controllers
             return RedirectToAction("Dashboard");
         }
 
+        [ChildActionOnly]
+        public ActionResult Details(int id)
+        {
+            return PartialView();
+        }
+
         public ActionResult Dashboard()
+        {
+            CurrentUserModel cur = Session["CurrentUser"] as CurrentUserModel;
+            PatientDashBoardModel model = new PatientDashBoardModel();
+            model.Appointments = _db.Appointments.Where(a => a.PatientID == cur.ReferenceToId && a.ScheduledDate == DateTime.Today.Date).ToList();
+            model.AppointmentRequests = _db.AppointmentRequests.Where(a => a.PatientID == cur.ReferenceToId).ToList();
+            return View(model);
+        }
+
+        public ActionResult History()
         {
             CurrentUserModel cur = Session["CurrentUser"] as CurrentUserModel;
             PatientDashBoardModel model = new PatientDashBoardModel();
@@ -46,6 +61,13 @@ namespace IBMCAS.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult ApprovedAppointment()
+        {
+            CurrentUserModel cur = Session["CurrentUser"] as CurrentUserModel;
+            return View(_db.Appointments.Where(a => a.PatientID == cur.ReferenceToId).ToList());
+        }
+
         public ActionResult RejectedAppointment()
         {
             CurrentUserModel cur = Session["CurrentUser"] as CurrentUserModel;

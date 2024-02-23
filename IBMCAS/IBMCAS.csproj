@@ -359,6 +359,7 @@
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AppointmentViewModel.cs" />
+    <Compile Include="Models\AdvicePrescriptionViewModel.cs" />
     <Compile Include="Models\chemist.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
@@ -388,8 +389,6 @@
     </Compile>
     <Compile Include="Models\PatientDashBoardModel.cs" />
     <Compile Include="Models\PatientRegistrationForm.cs" />
-    <Compile Include="Models\AdvicePrescriptionViewModel.cs" />
-    <Compile Include="Models\AdvicePrescriptionViewModel.cs" />
     <Compile Include="Models\PatientRegistrationQueue.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
@@ -507,6 +506,11 @@
     <Content Include="Views\Appointment\Details.cshtml" />
     <Content Include="Views\Shared\NotFound.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Patient\RejectedAppointment.cshtml" />
+    <Content Include="Views\Patient\Details.cshtml" />
+    <Content Include="Views\Physician\Details.cshtml" />
+    <Content Include="Views\Appointment\ListAppointments.cshtml" />
+    <Content Include="Views\Patient\ApprovedAppointment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

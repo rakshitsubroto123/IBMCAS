@@ -1,0 +1,46 @@
+﻿@model IEnumerable<IBMCAS.Models.PurchaseOrderHeader>
+
+@{
+    ViewBag.Title = "Advice";
+    Layout = "~/Views/Shared/_LayoutSupplier.cshtml";
+}
+
+<h2>Advice</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PODate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SupplierId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PODate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SupplierId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.ActionLink("Order List", "OrderList", new { id=item.PurchaseOrderId }) 
+            @*@Html.ActionLink("Details", "Details", new { id=item.PurchaseOrderId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PurchaseOrderId })*@
+        </td>
+    </tr>
+}
+
+</table>

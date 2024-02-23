@@ -1,33 +1,23 @@
 ﻿@model IEnumerable<IBMCAS.Models.Appointment>
 
-@{
-    ViewBag.Title = "FrontDesk";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-}
-
-<h2>Front Desk</h2>
-
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-</p>
 <table class="table">
     <tr>
         <th>
             Token No
         </th>
         <th>
-            Patient Id
+            Date
         </th>
         <th>
-            Physician Id
+            Time
         </th>
         <th>
-            Scheduled Time
+            Patient MR No
         </th>
         <th>
-            Show Details
+            Physician Name
         </th>
-        <th></th>
+        <th>Show Details</th>
     </tr>
 
     @foreach (var item in Model)
@@ -37,13 +27,16 @@
                 @Html.DisplayFor(modelItem => item.AppointmentToken)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PatientID)
+                @item.ScheduledDate.Date.ToString("dd-MM-yyyy")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PhysicianID)
+                @Html.DisplayFor(modelItem => item.ScheduledTime):00
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ScheduledTime)
+                @Html.DisplayFor(modelItem => item.Patient.PatientMRNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Physician.PhysicianName)
             </td>
             <td>
                 <input id="checkbox-@item.AppointmentToken" type="checkbox" onclick="loadAppointmentDetails(@item.AppointmentToken)">
@@ -60,18 +53,12 @@
 
 <script>
     function loadAppointmentDetails(appointmentToken) {
-
-
         if (document.getElementById('checkbox-' + appointmentToken).checked == true) {
-                document.getElementById('details-' + appointmentToken).style.display = "table-cell";
+            document.getElementById('details-' + appointmentToken).style.display = "table-cell";
         }
+
         else {
             document.getElementById('details-' + appointmentToken).style.display = "none";
         }
-
     }
 </script>
-
-<script src="~/Scripts/jquery-3.7.1.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

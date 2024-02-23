@@ -6,12 +6,16 @@
             <tr>
                 <th>Appointment Token</th>
                 <th>Patient Id</th>
+                <th>Patient Name</th>
                 <th>Physician Id</th>
+                <th>Physician Name</th>
             </tr>
             <tr>
                 <td>@Html.DisplayFor(model => model.appointment.AppointmentToken)</td>
                 <td>@Html.DisplayFor(model => model.appointment.PatientID)</td>
+                <td>@Html.DisplayFor(model => model.appointment.Patient.PatientFirstName) @Html.DisplayFor(model => model.appointment.Patient.PatientLastName)</td>
                 <td>@Html.DisplayFor(model => model.appointment.PhysicianID)</td>
+                <td>@Html.DisplayFor(model => model.appointment.Physician.PhysicianName)</td>
             </tr>
         </table>
         <table class="table">
@@ -20,7 +24,7 @@
                 <th>Scheduled Time</th>
             </tr>
             <tr>
-                <td>@Html.DisplayFor(model => model.appointment.ScheduledDate)</td>
+                <td>@Model.appointment.ScheduledDate.Date.ToString("dd-MM-yyyy")</td>
                 <td>@Html.DisplayFor(model => model.appointment.ScheduledTime)</td>
             </tr>
         </table>
@@ -28,10 +32,10 @@
     <div class="mb-1">
         <table class="table">
             <tr>
-                <th colspan="*">Advice</th>
+                <th>Advice</th>
             </tr>
             <tr>
-                <td>@Html.DisplayFor(model => model.appointment.Advice)</td>
+                <td>@Html.DisplayFor(model => model.advice.AdviceText)</td>
             </tr>
         </table>
     </div>

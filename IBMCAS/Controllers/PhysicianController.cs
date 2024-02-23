@@ -17,7 +17,13 @@ namespace IBMCAS.Controllers
         // GET: Physician
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Dashboard");
+        }
+
+        [ChildActionOnly]
+        public ActionResult Details(int id)
+        {
+            return PartialView();
         }
 
         public ActionResult Dashboard()
@@ -30,33 +36,6 @@ namespace IBMCAS.Controllers
             IBMCAS.Models.CurrentUserModel usr = Session["CurrentUser"] as IBMCAS.Models.CurrentUserModel;
             return View(_db.Appointments.Where(q => q.PhysicianID == usr.ReferenceToId && q.ScheduledDate == DateTime.Today.Date).ToList());
         }
-
-        //public ActionResult Prescription(string id)
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public ActionResult Prescription([Bind(Include = "PrescriptionAdviceId, DrugID, Prescription1")] Prescription prescription)
-        //{
-        //    IBMCAS.Models.CurrentUserModel usr = Session["CurrentUser"] as IBMCAS.Models.CurrentUserModel;
-        //        Prescription newPres = new Prescription();
-        //        newPres.PrescriptionAdviceId = _db.Appointments.Where(q => q.PhysicianID == usr.ReferenceToId).FirstOrDefault().AppointmentID;
-        //        newPres.DrugID = prescription.DrugID;
-        //        newPres.Prescription1 = prescription.Prescription1;
-            
-        //        //_db.Appointments.Where(q => q.PhysicianID 
-        //        //                       == usr.ReferenceToId && 
-        //        //                       _db.Prescriptions.Where(p => p.Prescribed 
-        //        //                       == 1).FirstOrDefault().PrescriptionScheduleId 
-        //        //                       == usr.ReferenceToId).FirstOrDefault().Advice 
-        //        //                       = "1";
-            
-        //    _db.Prescriptions.Add(newPres);
-        //        _db.SaveChanges();
-
-        //    return RedirectToAction("Apointments");
-        //}
 
         public ActionResult AdvicePrescriptionForm(int? AppointmentID)
         {

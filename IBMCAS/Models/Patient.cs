@@ -14,6 +14,13 @@ namespace IBMCAS.Models
     
     public partial class Patient
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Patient()
+        {
+            this.Appointments = new HashSet<Appointment>();
+            this.AppointmentRequests = new HashSet<AppointmentRequest>();
+        }
+    
         public int PatientID { get; set; }
         public string PatientMRNumber { get; set; }
         public System.DateTime PatientDOB { get; set; }
@@ -25,5 +32,10 @@ namespace IBMCAS.Models
         public string PatientGender { get; set; }
         public string PatientMedicalHistory { get; set; }
         public string PatientAadhaarNumber { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Appointment> Appointments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AppointmentRequest> AppointmentRequests { get; set; }
     }
 }

@@ -16,10 +16,10 @@
             Token No
         </th>
         <th>
-            Patient ID
+            Patient
         </th>
         <th>
-           Physician ID
+           Physician
         </th>
         <th>
             Date Created
@@ -36,16 +36,16 @@
             @Html.DisplayFor(modelItem => item.AppointmentRequestToken)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PatientID)
+            @Html.DisplayFor(modelItem => item.PatientID) - @Html.DisplayFor(modelItem => item.Patient.PatientID)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PhysicianID)
+            @Html.DisplayFor(modelItem => item.PhysicianID) - @Html.DisplayFor(modelItem => item.Physician.PhysicianName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateCreated.Date)
+            @item.DateCreated.Date.ToString("dd-MM-yyyy")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateRequested.Date)
+            @item.DateRequested.Date.ToString("dd-MM-yyyy")
         </td>
 
         <td>
