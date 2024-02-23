@@ -102,8 +102,20 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "EditRegistrationRequest", new { id = Model.RegistrationTokenNo }) |
-    @Html.ActionLink("Approve", "ApproveRegistrationRequest", new { id = Model.RegistrationTokenNo }) |
-    @Html.ActionLink("Reject", "RejectRegistrationRequest", new { id = Model.RegistrationTokenNo }) |
-    @Html.ActionLink("Back to List", "RegistrationRequests")
+    <button type="button" class="btn btn-outline-warning">
+        <a href="@Url.Action("EditRegistrationRequest", new { id = Model.RegistrationTokenNo })" style="color: black; text-decoration: none !important">Edit</a>
+    </button>
+    @*@Html.ActionLink("Edit", "EditRegistrationRequest", new { id = Model.RegistrationTokenNo })*@
+    <button type="button" class="btn btn-outline-success">
+        <a href="@Url.Action("ApproveRegistrationRequest", new { id = Model.RegistrationTokenNo })" style="color: black; text-decoration: none !important">Approve</a>
+    </button>
+    @*@Html.ActionLink("Approve", "ApproveRegistrationRequest", new { id = Model.RegistrationTokenNo })*@
+    <button type="button" class="btn btn-outline-danger">
+        <a href="@Url.Action("RejectRegistrationRequest", new { id = Model.RegistrationTokenNo })" style="color: black; text-decoration: none !important">Reject</a>
+    </button>
+    @*@Html.ActionLink("Reject", "RejectRegistrationRequest", new { id = Model.RegistrationTokenNo })*@
+    <button type="button" class="btn btn-primary">
+        <a href="@Url.Action("RegistrationRequests")" style="color: White; text-decoration: none !important">Back</a>
+    </button>
+    @*@Html.ActionLink("Back to List", "RegistrationRequests")*@
 </p>
