@@ -15,6 +15,37 @@
     <link href="~/Content/home/assets/img/favicon.png" rel="icon">
     <link href="~/Content/home/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
     <link href="~/Content/style.css" rel="stylesheet" />
+    <style>
+        #testimonials {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        #author {
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+    <style>
+        <style >
+        /* Add custom CSS for the button */
+        .btn-primary input[type="submit"] {
+            background-color: #800080; /* Purple color */
+            color: white; /* White text color */
+            border-color: #800080; /* Purple border color */
+            transition: all 0.3s ease;
+        }
+
+        /* Style changes on hover */
+        .btn-primary input[type="submit"]:hover {
+            background-color: 6a006a; /* Darker purple on hover */
+            border-color: #6a006a; /* Darker border on hover */
+        }
+    </style>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
@@ -83,8 +114,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 d-flex flex-column justify-content-center">
-                    <h1 class="animate">We offer modern solutions for growing your business</h1>
-                    <h2>We are team of talented designers making websites with Bootstrap</h2>
+                    <h1 class="animate">Revolutionizing Healthcare, One Click at a Time</h1>
+                    <h2>Revolutionize your healthcare experience with our cutting-edge online clinic application. Access expert care anytime, anywhere, ensuring your wellness is just a click away</h2>
                     <div>
                         <br />
                         <button class="cta">
@@ -286,185 +317,117 @@
                     <p>Frequently Asked Questions</p>
                 </header>
 
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm col-lg-6">
+                            
+                        </div><div class="accordion accordion-flush" id="faqlist1">
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                What types of medical issues can I address through the app?
+            </button>
+        </h2>
+        <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+            <div class="accordion-body">
+                Our platform covers a wide range of medical issues, including general health concerns, prescription refills, mental health support, dermatology consultations, and more. However, please note that some conditions may require in-person evaluation and treatment.
+
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
+                Do I need special equipment or software to use the app?
+            </button>
+        </h2>
+        <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+            <div class="accordion-body">
+                You can access our platform using any internet-enabled device, such as a smartphone, tablet, or computer. No special equipment or software is required, just a stable internet connection.
+
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion-item">
+        <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
+                Can I use the app for emergency situations?
+            </button>
+        </h2>
+        <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+            <div class="accordion-body">
+                No, our platform is not intended for medical emergencies. If you have a life-threatening or urgent medical issue, please call emergency services immediately.
+            </div>
+        </div>
+
+    </div>
+</div>
+
+                        <div class="col-s col-lg-6m">
+                            <div class="accordion accordion-flush" id="faqlist2">
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-1">
+                                            How long does it take to get a response from a healthcare provider?
+                                        </button>
+                                    </h2>
+                                    <div id="faq2-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                                        <div class="accordion-body">
+                                            Our healthcare providers strive to respond to appointment requests, messages, and prescription requests promptly. Typically, you can expect a response within 3 hours, but response times may vary based on demand.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-2">
+                                            What if I'm not satisfied with the consultation?
+                                        </button>
+                                    </h2>
+                                    <div id="faq2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                                        <div class="accordion-body">
+                                            If you have any concerns or are not satisfied with your consultation, please contact our customer support team. We are committed to addressing your issues and ensuring your satisfaction. Depending on the situation, we may offer a refund or connect you with another healthcare provider for a second opinion.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-3">
+                                            How do I transfer my medical records to or from the app?
+                                        </button>
+                                    </h2>
+                                    <div id="faq2-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                                        <div class="accordion-body">
+                                            You can request and upload your medical records from other healthcare providers directly through the app. Our platform also allows you to export your medical records  for use elsewhere, ensuring seamless continuity of care.
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-lg-6">
                         <!-- F.A.Q List 1-->
-                        <div class="accordion accordion-flush" id="faqlist1">
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
-                                        Non consectetur a erat nam at lectus urna duis?
-                                    </button>
-                                </h2>
-                                <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
-                                    <div class="accordion-body">
-                                        Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-                                    </div>
-                                </div>
-                            </div>
+                        
 
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
-                                        Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque?
-                                    </button>
-                                </h2>
-                                <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
-                                    <div class="accordion-body">
-                                        Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-lg-6">
 
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
-                                        Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi?
-                                    </button>
-                                </h2>
-                                <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
-                                    <div class="accordion-body">
-                                        Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-                                    </div>
-                                </div>
-                            </div>
-
+                            <!-- F.A.Q List 2-->
+                            
                         </div>
-                    </div>
 
-                    <div class="col-lg-6">
-
-                        <!-- F.A.Q List 2-->
-                        <div class="accordion accordion-flush" id="faqlist2">
-
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-1">
-                                        Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?
-                                    </button>
-                                </h2>
-                                <div id="faq2-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
-                                    <div class="accordion-body">
-                                        Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-2">
-                                        Tempus quam pellentesque nec nam aliquam sem et tortor consequat?
-                                    </button>
-                                </h2>
-                                <div id="faq2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
-                                    <div class="accordion-body">
-                                        Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-3">
-                                        Varius vel pharetra vel turpis nunc eget lorem dolor?
-                                    </button>
-                                </h2>
-                                <div id="faq2-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
-                                    <div class="accordion-body">
-                                        Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
 
                 </div>
 
-            </div>
-
-        </section><!-- End F.A.Q Section -->
-        <!-- ======= Testimonials Section ======= -->
-        <section id="testimonials" class="testimonials">
-
-            <div class="container">
-
-                <header class="section-header">
-                    <h2>Testimonials</h2>
-                    <p>What they are saying about us</p>
-                </header>
-
-                <div class="testimonials-slider swiper">
-                    <div class="swiper-wrapper">
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                                </div>
-                                <p>
-                                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                                </p>
-                                <div class="profile mt-auto">
-                                    <img src="~/Content/home/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="" />
-                                    @*<img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">*@
-                                    <h3>Saul Goodman</h3>
-                                    <h4>Ceo &amp; Founder</h4>
-                                </div>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                    </div>
-
-                    <div class="swiper-wrapper">
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                                </div>
-                                <p>
-                                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                                </p>
-                                <div class="profile mt-auto">
-                                    <img src="~/Content/home/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="" />
-                                    @*<img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">*@
-                                    <h3>Saul Goodman</h3>
-                                    <h4>Ceo &amp; Founder</h4>
-                                </div>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                    </div>
-
-
-                    <div class="swiper-wrapper">
-
-                        <div class="swiper-slide">
-                            <div class="testimonial-item">
-                                <div class="stars">
-                                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                                </div>
-                                <p>
-                                    Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                                </p>
-                                <div class="profile mt-auto">
-                                    <img src="~/Content/home/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="" />
-                                    @*<img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">*@
-                                    <h3>Saul Goodman</h3>
-                                    <h4>Ceo &amp; Founder</h4>
-                                </div>
-                            </div>
-                        </div><!-- End testimonial item -->
-
-                    </div>
-
-                    @*<div class="swiper-pagination"></div>*@
-                </div>
-
-            </div>
-
-        </section><!-- End Testimonials Section -->
+</section><!-- End F.A.Q Section -->
         <!-- ======= Team Section ======= -->
         <section id="team" class="team">
 
@@ -490,9 +453,9 @@
                                 </div>
                             </div>
                             <div class="member-info">
-                                <h4>Walter White</h4>
-                                <span>Chief Executive Officer</span>
-                                <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
+                                <h4>Soumyo Nath Tripathy</h4>
+                                
+                                @*<p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>*@
                             </div>
                         </div>
                     </div>
@@ -510,9 +473,9 @@
                                 </div>
                             </div>
                             <div class="member-info">
-                                <h4>Sarah Jhonson</h4>
-                                <span>Product Manager</span>
-                                <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
+                                <h4>Subroto Rakshit</h4>
+                                
+                                @*<p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>*@
                             </div>
                         </div>
                     </div>
@@ -530,9 +493,9 @@
                                 </div>
                             </div>
                             <div class="member-info">
-                                <h4>William Anderson</h4>
-                                <span>CTO</span>
-                                <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut architecto porro aspernatur molestiae modi.</p>
+                                <h4>Rishi Agarwal</h4>
+                                
+                                @*<p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut architecto porro aspernatur molestiae modi.</p>*@
                             </div>
                         </div>
                     </div>
@@ -550,9 +513,9 @@
                                 </div>
                             </div>
                             <div class="member-info">
-                                <h4>Amanda Jepson</h4>
-                                <span>Accountant</span>
-                                <p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia aut aliquid doloremque ut possimus ipsum officia.</p>
+                                <h4>Sruti Kumari</h4>
+                                
+                                @*<p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia aut aliquid doloremque ut possimus ipsum officia.</p>*@
                             </div>
                         </div>
                     </div>
@@ -569,24 +532,32 @@
 
                 <header class="section-header">
                     <h2>Our Clients</h2>
-                    <p>Temporibus omnis officia</p>
+                    <p>Testimonials</p>
                 </header>
 
-                <div class="clients-slider swiper">
-                    <div class="swiper-wrapper align-items-center">
-                        <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-1.png" class="img-fluid" alt="" /></div>
-                        <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-1.png" class="img-fluid" alt="" /></div>
-                        <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-1.png" class="img-fluid" alt="" /></div>
-                        <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-4.png" class="img-fluid" alt="" /></div>
-                        <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-5.png" class="img-fluid" alt="" /></div>
-                        <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-6.png" class="img-fluid" alt="" /></div>
-                        <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-7.png" class="img-fluid" alt="" /></div>
-                        <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-8.png" class="img-fluid" alt="" /></div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
+                @*<div class="clients-slider swiper">
+        <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-1.png" class="img-fluid" alt="" /></div>
+            <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-1.png" class="img-fluid" alt="" /></div>
+            <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-1.png" class="img-fluid" alt="" /></div>
+            <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-4.png" class="img-fluid" alt="" /></div>
+            <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-5.png" class="img-fluid" alt="" /></div>
+            <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-6.png" class="img-fluid" alt="" /></div>
+            <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-7.png" class="img-fluid" alt="" /></div>
+            <div class="swiper-slide"><img src="~/Content/home/assets/img/clients/client-8.png" class="img-fluid" alt="" /></div>
+        </div>
+        <div class="swiper-pagination"></div>*@
+                @*<h4>
+            "Using this online clinic app has been a game-changer for me. It's incredibly convenient to book appointments, consult with healthcare professionals, and manage my health records—all from the comfort of my home."
+            <b>-Sarah M.</b>
+        </h4>*@
 
+                <div id="testimonials"></div>
+                <div id="author"></div>
+
+            </div>
+            @*</div>*@
+            
         </section><!-- End Clients Section -->
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact">
@@ -731,7 +702,8 @@
                                             <br />
                                             <div class="form-group">
                                                 <div class="col-md-offset-2 col-md-10">
-                                                    <button type="submit" class="btn btn-primary"><input type="submit" value="Login" class="btn btn-default" /></button>
+                                                    <!-- Apply btn-primary class to the button to style it -->
+                                                    <button type="submit" class="btn btn-primary"><input type="submit" value="Login" class="btn btn-default" style="color: white;" /></button>
                                                 </div>
                                             </div>
                                         </form>
@@ -760,9 +732,9 @@
                     <div class="col-lg-7 col-md-12 footer-info">
                         <a href="index.html" class="logo d-flex align-items-center">
                             <img src="assets/img/logo.png" alt="">
-                            <span>FlexStart</span>
+                            <span>IBMCAS</span>
                         </a>
-                        <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                        <p><b>"Transforming healthcare with automated solutions. Our online clinic platform simplifies scheduling, records, and patient care for a more efficient, personalized experience." </b></p>
                         <div class="social-links mt-3">
                             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -829,6 +801,34 @@
     <script src="~/Content/home/assets/js/main.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="~/Content/index.js"></script>
+
+
+    <script>
+        const testimonials = [
+            { content: "I was skeptical about virtual healthcare at first, but after trying out this app, I'm sold. The doctors are knowledgeable, the interface is user-friendly, and I appreciate being able to receive quality care", author: "~Subroto Agarwal" },
+            { content: "Using this online clinic app has been a game- changer for me.It's incredibly convenient to book appointments, consult with healthcare professionals, and manage my health records—all from the comfort of my home.", author: "~Soumyo Rakshit" },
+            { content: "As someone with a busy schedule, I'm grateful for this online clinic app. It allows me to prioritize my health without sacrificing valuable time. Plus, the ability to access my medical history and prescriptions on the go is incredibly convenient.", author: "~Rishi Tripathy" },
+            { content: "I'm not the most tech-savvy person, but I found this online clinic app incredibly easy to use. The interface is intuitive, and I was able to navigate it with ease. Plus, the support team was always available to answer any questions I had. Overall, a great experience!", author: "~Sruti Kumari" }
+        ];
+
+        const testimonialsContainer = document.getElementById('testimonials');
+        const authorContainer = document.getElementById('author');
+
+        let index = 0;
+
+        function showTestimonial() {
+            const testimonial = testimonials[index];
+            testimonialsContainer.innerHTML = `<p>${testimonial.content}</p>`;
+            authorContainer.innerHTML = `<p><strong>${testimonial.author}</strong></p>`;
+            index = (index + 1) % testimonials.length;
+        }
+
+        // Initial testimonial display
+        showTestimonial();
+
+        // Switch testimonials every second
+        setInterval(showTestimonial, 3000);
+    </script>
 
 </body>
 
