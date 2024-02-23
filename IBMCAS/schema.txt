@@ -125,8 +125,8 @@ CREATE TABLE [dbo].[PurchaseOrderProductLine] (
 
 CREATE TABLE [dbo].[Supplier] (
     [SupplierId] INT          IDENTITY (1, 1) NOT NULL,
-    [FirstName]  VARCHAR (20) NOT NULL,
-    [LastName]   VARCHAR (20) NOT NULL,
+    [CompanyName]  VARCHAR (20) NOT NULL,
+    [ContactNumber]   VARCHAR (13) NOT NULL,
     PRIMARY KEY CLUSTERED ([SupplierId] ASC)
 );
 
