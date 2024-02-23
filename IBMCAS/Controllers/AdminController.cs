@@ -360,19 +360,19 @@ namespace IBMCAS.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateSupplier([Bind(Include = "FirstName, LastName")] Supplier supplier)
+        public ActionResult CreateSupplier([Bind(Include = "CompanyName, ContactNumber")] Supplier supplier)
         {
             Supplier newsup = new Supplier();
-            newsup.FirstName = supplier.FirstName;
-            newsup.LastName = supplier.LastName;
+            newsup.CompanyName = supplier.CompanyName;
+            newsup.ContactNumber = supplier.ContactNumber;
             _db.Suppliers.Add(newsup);
             _db.SaveChanges();
 
             UserCred newUsr = new UserCred();
-            newUsr.UserName = supplier.FirstName+ "@gmail.com";
+            newUsr.UserName = supplier.CompanyName+ "@gmail.com";
             newUsr.UserRole = "SUPPLIER";
             newUsr.UserReferneceToID = supplier.SupplierId;
-            newUsr.UserPassword = supplier.FirstName + "@gmail.com";
+            newUsr.UserPassword = supplier.CompanyName + "@gmail.com";
             _db.UserCreds.Add(newUsr);
             _db.SaveChanges();
             return View("IndexSupplier", _db.Suppliers.ToList());
