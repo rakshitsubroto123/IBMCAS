@@ -13,7 +13,9 @@ CREATE TABLE [dbo].[Appointment] (
     [ScheduledDate]    DATE           NOT NULL,
     [ScheduledTime]    INT            NOT NULL,
     [Advice]           VARCHAR (1000) NULL,
-    PRIMARY KEY CLUSTERED ([AppointmentID] ASC)
+    PRIMARY KEY CLUSTERED ([AppointmentID] ASC),
+    FOREIGN KEY ([PatientID]) REFERENCES [dbo].[Patient] ([PatientID]),
+    FOREIGN KEY ([PhysicianID]) REFERENCES [dbo].[Physician] ([PhysicianID])
 );
 
 CREATE TABLE [dbo].[AppointmentRequest] (
@@ -23,12 +25,15 @@ CREATE TABLE [dbo].[AppointmentRequest] (
     [PhysicianID]             INT            NOT NULL,
     [DateCreated]             DATE           NOT NULL,
     [DateRequested]           DATE           NOT NULL,
-	[DateScheduled]           Date           NOT NULL,
-	[TimeScheduled]           INT           NOT NULL,
+    [DateScheduled]           DATE           NOT NULL,
+    [TimeScheduled]           INT            NOT NULL,
     [Note]                    VARCHAR (1000) NULL,
-    [status]              INT            DEFAULT 0 NOT NULL,
-    PRIMARY KEY CLUSTERED ([AppointmentRequestID] ASC)
+    [status]                  INT            DEFAULT ((0)) NOT NULL,
+    PRIMARY KEY CLUSTERED ([AppointmentRequestID] ASC),
+    FOREIGN KEY ([PatientID]) REFERENCES [dbo].[Patient] ([PatientID]),
+    FOREIGN KEY ([PhysicianID]) REFERENCES [dbo].[Physician] ([PhysicianID])
 );
+
 
 CREATE TABLE [dbo].[chemist] (
     [chemistId]          INT           IDENTITY (1, 1) NOT NULL,
