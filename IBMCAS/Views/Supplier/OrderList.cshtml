@@ -1,0 +1,52 @@
+﻿@model IEnumerable<IBMCAS.Models.PurchaseOrderProductLine>
+
+@{
+    ViewBag.Title = "OrderList";
+    Layout = "~/Views/Shared/_LayoutSupplier.cshtml";
+}
+
+<h2>OrderList</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PurchaseOrderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DrugId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortNote)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchaseOrderId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DrugId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Qty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShortNote)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PurchaseOrderProductLineId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PurchaseOrderProductLineId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PurchaseOrderProductLineId })
+        </td>*@
+    </tr>
+}
+
+</table>

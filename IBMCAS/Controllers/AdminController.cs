@@ -360,7 +360,7 @@ namespace IBMCAS.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateSupplier([Bind(Include = "CompanyName, ContactNumber")] Supplier supplier)
+        public ActionResult CreateSupplier([Bind(Include = "SupplierId, CompanyName, ContactNumber")] Supplier supplier)
         {
             Supplier newsup = new Supplier();
             newsup.CompanyName = supplier.CompanyName;
