@@ -1,20 +1,34 @@
 ﻿@model IBMCAS.Models.AppointmentViewModel
 
-<div class="m-2">
-    <div class="mb-1">
+<div class="container m-2">
+    <h5>Appointmnet Details: </h5>
+    <div class="row p-2">
+        <div class="col">
+            
+            <p><strong>Appointment Token: </strong>@Html.DisplayFor(model => model.appointment.AppointmentToken)</p>
+            <p><strong>Patient MR No:&emsp;&emsp;</strong>@Html.DisplayFor(model => model.appointment.Patient.PatientMRNumber)</p>
+            <p><strong>Patient Name:&emsp;&emsp;</strong>@Html.DisplayFor(model => model.appointment.Patient.PatientFirstName) @Html.DisplayFor(model => model.appointment.Patient.PatientLastName)</p>
+            <p><strong>Physician Name:&emsp;</strong>@Html.DisplayFor(model => model.appointment.Physician.PhysicianName)</p>
+            <p><strong>Scheduled Date:&emsp;</strong>@Model.appointment.ScheduledDate.Date.ToString("dd-MM-yyyy")</p>
+            <p><strong>Scheduled Time:&emsp;</strong>@Html.DisplayFor(model => model.appointment.ScheduledTime):00</p>
+        </div>
+        <div class="col">
+            <p><strong>Advise: </strong> @Html.DisplayFor(model => model.advice.AdviceText)</p>
+              
+        </div>
+    </div>
+
         <table class="table">
             <tr>
                 <th>Appointment Token</th>
-                <th>Patient Id</th>
+                <th>Patient MR No</th>
                 <th>Patient Name</th>
-                <th>Physician Id</th>
                 <th>Physician Name</th>
             </tr>
             <tr>
                 <td>@Html.DisplayFor(model => model.appointment.AppointmentToken)</td>
-                <td>@Html.DisplayFor(model => model.appointment.PatientID)</td>
+                <td>@Html.DisplayFor(model => model.appointment.Patient.PatientMRNumber)</td>
                 <td>@Html.DisplayFor(model => model.appointment.Patient.PatientFirstName) @Html.DisplayFor(model => model.appointment.Patient.PatientLastName)</td>
-                <td>@Html.DisplayFor(model => model.appointment.PhysicianID)</td>
                 <td>@Html.DisplayFor(model => model.appointment.Physician.PhysicianName)</td>
             </tr>
         </table>
@@ -28,7 +42,6 @@
                 <td>@Html.DisplayFor(model => model.appointment.ScheduledTime)</td>
             </tr>
         </table>
-    </div>
     <div class="mb-1">
         <table class="table">
             <tr>
