@@ -8,6 +8,7 @@ namespace IBMCAS.Models
     public class AppointmentViewModel
     {
         public Appointment appointment;
+        public Advice advice;
         public List<Prescription> prescriptions;
     }
 }
