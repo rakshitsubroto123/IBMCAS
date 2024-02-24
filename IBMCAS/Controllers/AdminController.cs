@@ -163,12 +163,12 @@ namespace IBMCAS.Controllers
 
         public ActionResult PhysicianIndex()
         {
-            return View("PhysicianIndex", _db.Physicians.ToList());
+            return View("~/Views/Physician/ListAll.cshtml","_LayoutAdmin", _db.Physicians.ToList());
         }
 
         public ActionResult AddPhysician()
         {
-            return View();
+            return View("~/Views/Physician/Add.cshtml","_LayoutAdmin");
         }
 
         // POST: Physicians/Create

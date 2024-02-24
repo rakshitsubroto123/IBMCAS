@@ -1,0 +1,70 @@
+﻿@model IEnumerable<IBMCAS.Models.Physician>
+
+@{
+    ViewBag.Title = "PhysicianIndex";
+    Layout = null;
+}
+
+<h2 class="mt-2">Physician Management Page</h2>
+
+<p>
+    <button type="button" class="btn btn-primary mt-2">
+        <a href="@Url.Action("AddPhysician")" style="color:white; text-decoration: none !important">Add</a>
+    </button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Specialization
+        </th>
+        <th>
+            Summary
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhysicianName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhysicianAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhysicianPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhysicianEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhysicianSpecialization)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhysicianSummary)
+            </td>
+            <td>
+                <button type="button" class="btn btn-outline-warning">
+                    <a href="@Url.Action("EditPhysician", new { id = item.PhysicianID })" style="color: black; text-decoration: none !important">Edit</a>
+                </button>
+                <button type="button" class="btn btn-outline-success">
+                    <a href="@Url.Action("DetailsPhysician", new { id = item.PhysicianID })" style="color: black; text-decoration: none !important">Details</a>
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>
