@@ -299,7 +299,7 @@ namespace IBMCAS.Controllers
         }
 
         [HttpPost]
-        public ActionResult chemistCreate([Bind(Include = "chemistName, chemistPhone, chemistEmail, chemistAddress, ChemistDateOfBirth")] chemist chemist)
+        public ActionResult chemistCreate(chemist chemist)
         {
             chemist newChemist = new chemist();
             newChemist.chemistName = chemist.chemistName;
@@ -307,15 +307,15 @@ namespace IBMCAS.Controllers
             newChemist.chemistEmail = chemist.chemistEmail;
             newChemist.chemistAddress = chemist.chemistAddress;
             newChemist.ChemistDateOfBirth = chemist.ChemistDateOfBirth;
+            _db.chemists.Add(newChemist);
+            _db.SaveChanges();
 
             UserCred usr = new UserCred();
             usr.UserName = chemist.chemistEmail;
             usr.UserPassword = chemist.chemistEmail;
             usr.UserRole = "CHEMIST";
-            usr.UserReferneceToID = chemist.chemistId;
-
-            _db.chemists.Add(newChemist);
-            _db.SaveChanges();
+            usr.UserReferneceToID =  _db.chemists.Where(q => q.chemistEmail == chemist.chemistEmail).SingleOrDefault().chemistId;
+            //usr.UserReferneceToID = chemist.chemistId;
 
             _db.UserCreds.Add(usr);
             _db.SaveChanges();
@@ -371,7 +371,7 @@ namespace IBMCAS.Controllers
             UserCred newUsr = new UserCred();
             newUsr.UserName = supplier.CompanyName+ "@gmail.com";
             newUsr.UserRole = "SUPPLIER";
-            newUsr.UserReferneceToID = supplier.SupplierId;
+            newUsr.UserReferneceToID = _db.Suppliers.Where(q => q.CompanyName == supplier.CompanyName).SingleOrDefault().SupplierId;
             newUsr.UserPassword = supplier.CompanyName + "@gmail.com";
             _db.UserCreds.Add(newUsr);
             _db.SaveChanges();
