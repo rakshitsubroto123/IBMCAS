@@ -350,6 +350,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infra\EmailValidationAttribute.cs" />
     <Compile Include="Infra\RoleProvider.cs" />
     <Compile Include="Models\Advice.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
@@ -432,14 +433,11 @@
     <Content Include="Views\Patient\Dashboard.cshtml" />
     <Content Include="Views\Shared\_LayoutPatient.cshtml" />
     <Content Include="Views\Shared\_LayoutPhysician.cshtml" />
-    <Content Include="Views\Admin\PatientIndex.cshtml" />
     <Content Include="Views\Admin\PhysicianIndex.cshtml" />
     <Content Include="Views\Admin\AddPhysician.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Admin\AddPatient.cshtml" />
-    <Content Include="Views\Admin\ShowPatient.cshtml" />
     <Content Include="Views\Admin\UpdatePatient.cshtml" />
-    <Content Include="Views\Admin\ApointmentRequests.cshtml" />
     <Content Include="Views\Admin\Schedule.cshtml" />
     <Content Include="Views\Admin\FrontDesk.cshtml" />
     <Content Include="Views\Physician\Apointments.cshtml" />
@@ -492,8 +490,6 @@
     <Content Include="Views\Physician\AdvicePrescriptionForm.cshtml" />
     <Content Include="Views\Physician\RequestDrug.cshtml" />
     <Content Include="Views\chemist\DrugReuest.cshtml" />
-    <Content Include="Views\Admin\EditPhysician.cshtml" />
-    <Content Include="Views\Admin\DetailsPhysician.cshtml" />
     <Content Include="Views\Admin\editChemist.cshtml" />
     <Content Include="Views\Admin\DetailsChemist.cshtml" />
     <Content Include="Views\Admin\EditSupplier.cshtml" />
@@ -516,6 +512,9 @@
     <Content Include="Views\Appointment\ListAppointments.cshtml" />
     <Content Include="Views\Patient\ApprovedAppointment.cshtml" />
     <Content Include="Views\web.config" />
+    <Content Include="Views\Admin\AppointmentRequests.cshtml" />
+    <Content Include="Views\Patient\ListAll.cshtml" />
+    <Content Include="Views\Physician\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

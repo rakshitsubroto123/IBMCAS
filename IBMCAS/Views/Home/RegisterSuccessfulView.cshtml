@@ -1,9 +1,217 @@
-﻿
-@{
-    ViewBag.Title = "RegisterSuccessfulView";
-    Layout = "~/Views/Shared/_LayoutHome.cshtml";
-}
+﻿@model IBMCAS.Models.PatientRegistrationQueue
+<html lang="en">
 
-<h2>RegisterSuccessfulView</h2>
-<p>@ViewBag.PatientRegistrationFormData</p>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+    <title>IBMCAS</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Favicons -->
+    <link href="~/Content/home/assets/img/favicon.png" rel="icon">
+    <link href="~/Content/home/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <style>
+        #testimonials {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        #author {
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+    <style>
+        <style >
+        /* Add custom CSS for the button */
+        .btn-primary input[type="submit"] {
+            background-color: #800080; /* Purple color */
+            color: white; /* White text color */
+            border-color: #800080; /* Purple border color */
+            transition: all 0.3s ease;
+        }
+
+        /* Style changes on hover */
+        .btn-primary input[type="submit"]:hover {
+            background-color: 6a006a; /* Darker purple on hover */
+            border-color: #6a006a; /* Darker border on hover */
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/Content/home/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/Content/home/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/home/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/Content/home/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/Content/home/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/Content/home/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/Content/home/assets/css/style.css" rel="stylesheet">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!-- =======================================================
+    * Template Name: FlexStart
+    * Updated: Jan 29 2024 with Bootstrap v5.3.2
+    * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+            <a class="logo d-flex align-items-center">
+                <img src="~/Content/home/assets/img/logo.png" alt="" />
+                <span>IBMCAS</span>
+            </a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="getstarted scrollto" href="@Url.Action("Index","Home")">HOME</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="hero d-flex align-items-center">
+        <div class="container justify-content-center align-content-center">
+            <h2>Registration Successfull</h2><br />
+            <h4><i>Please Visit Hospital for User Credentials...<i></h4>
+            <h5><strong>@ViewBag.PatientRegistrationFormData</strong></h5>
+
+        </div>
+
+    </section><!-- End Hero -->
+    <!-- ======= Footer ======= -->
+    <br />
+    <footer id="footer" class="footer">
+
+
+        <div class="footer-top">
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-lg-7 col-md-12 footer-info">
+                        <a href="index.html" class="logo d-flex align-items-center">
+                            <img src="assets/img/logo.png" alt="">
+                            <span>IBMCAS</span>
+                        </a>
+                        <p><b>"Transforming healthcare with automated solutions. Our online clinic platform simplifies scheduling, records, and patient care for a more efficient, personalized experience." </b></p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-6 footer-links">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><i class="bi bi-chevron-right"></i> <a href="#hero">Home</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="#about">About us</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="#consultants">Consultants</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="#team">Team</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
+                            <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+                        <h4>Contact Us</h4>
+                        <p>
+                            A108 Adam Street <br>
+                            New York, NY 535022<br>
+                            United States <br><br>
+                            <strong>Phone:</strong> +1 5589 55488 55<br>
+                            <strong>Email:</strong> info@example.com<br>
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>IBMCAS</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/flexstart-bootstrap-startup-template/ -->
+                UI Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/Scripts/jquery-3.7.1.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    @*<script src="assets/js/main.js"></script>*@
+    <script src="~/Content/home/assets/js/main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="~/Content/index.js"></script>
+
+
+    <script>
+        const testimonials = [
+            { content: "I was skeptical about virtual healthcare at first, but after trying out this app, I'm sold. The doctors are knowledgeable, the interface is user-friendly, and I appreciate being able to receive quality care", author: "~Subroto Agarwal" },
+            { content: "Using this online clinic app has been a game- changer for me.It's incredibly convenient to book appointments, consult with healthcare professionals, and manage my health records—all from the comfort of my home.", author: "~Soumyo Rakshit" },
+            { content: "As someone with a busy schedule, I'm grateful for this online clinic app. It allows me to prioritize my health without sacrificing valuable time. Plus, the ability to access my medical history and prescriptions on the go is incredibly convenient.", author: "~Rishi Tripathy" },
+            { content: "I'm not the most tech-savvy person, but I found this online clinic app incredibly easy to use. The interface is intuitive, and I was able to navigate it with ease. Plus, the support team was always available to answer any questions I had. Overall, a great experience!", author: "~Sruti Kumari" }
+        ];
+
+        const testimonialsContainer = document.getElementById('testimonials');
+        const authorContainer = document.getElementById('author');
+
+        let index = 0;
+
+        function showTestimonial() {
+            const testimonial = testimonials[index];
+            testimonialsContainer.innerHTML = `<p>${testimonial.content}</p>`;
+            authorContainer.innerHTML = `<p><strong>${testimonial.author}</strong></p>`;
+            index = (index + 1) % testimonials.length;
+        }
+
+        // Initial testimonial display
+        showTestimonial();
+
+        // Switch testimonials every second
+        setInterval(showTestimonial, 3000);
+    </script>
+
+</body>
+
+</html>

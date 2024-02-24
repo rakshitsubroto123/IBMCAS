@@ -1,15 +1,10 @@
 ﻿@model IEnumerable<IBMCAS.Models.Patient>
 
 @{
-    ViewBag.Title = "PatientIndex";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = null;
 }
 
 <h2>Patient Management Page</h2>
-
-@*<p>
-        @Html.ActionLink("Add New", "AddPatient")
-    </p>*@
 
 <table class="table">
     <tr>
@@ -17,10 +12,6 @@
             MR Number
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.PatientFirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PatientLastName)*@
             Name
         </th>
         <th>
@@ -69,3 +60,4 @@
     }
 
 </table>
+

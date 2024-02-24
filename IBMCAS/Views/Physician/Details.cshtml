@@ -1,54 +1,63 @@
 ﻿@model IBMCAS.Models.Physician
 
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.PhysicianName)
-        </dt>
+@{
+    Layout = null;
+}
 
-        <dd>
-            @Html.DisplayFor(model => model.PhysicianName)
-        </dd>
+<div class="justify-content-center align-content-center m-2">
+    <h2 class="mb-2 mt-2">Details</h2>
+    <div class="row">
+        <div class="col">
+            <b>Name</b>
+        </div>
+        <div class="col">
+            : @Html.DisplayFor(model => model.PhysicianName)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <b>Email</b>
+        </div>
+        <div class="col">
+            : @Html.DisplayFor(model => model.PhysicianEmail)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <b>Phone No</b>
+        </div>
+        <div class="col">
+            : @Html.DisplayFor(model => model.PhysicianPhone)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <b>Address</b>
+        </div>
+        <div class="col">
+            : @Html.DisplayFor(model => model.PhysicianAddress)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <b>Specialization</b>
+        </div>
+        <div class="col">
+            : @Html.DisplayFor(model => model.PhysicianSpecialization)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <b>Summary</b>
+        </div>
+        <div class="col">
+            : @Html.DisplayFor(model => model.PhysicianSummary)
+        </div>
+    </div>
+    <p class="mt-2">
+        <button type="button" class="btn btn-primary">
+            <a href="@Url.Action("PhysicianIndex")" style="color: White; text-decoration: none !important">Back</a>
+        </button>
+    </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PhysicianAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhysicianAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhysicianPhone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhysicianPhone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhysicianEmail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhysicianEmail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhysicianSpecialization)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhysicianSpecialization)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhysicianSummary)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhysicianSummary)
-        </dd>
-
-    </dl>
 </div>

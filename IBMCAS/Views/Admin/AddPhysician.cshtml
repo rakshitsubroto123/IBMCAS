@@ -5,78 +5,71 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>AddPhysician</h2>
+<h2 class="mt-2">Please Enter Details...</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>Physician</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.PhysicianName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PhysicianName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PhysicianName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PhysicianAddress, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PhysicianAddress, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PhysicianAddress, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PhysicianPhone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PhysicianPhone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PhysicianPhone, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PhysicianEmail, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PhysicianEmail, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PhysicianEmail, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PhysicianSpecialization, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PhysicianSpecialization, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PhysicianSpecialization, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PhysicianSummary, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PhysicianSummary, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PhysicianSummary, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <br/>
-
-        <div class="form-group">
-                <button type="button" class="btn btn-success">
-                    <input type="submit" value="Create" />
-                </button>
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        Name
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PhysicianName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PhysicianName, "", new { @class = "text-danger" })
         </div>
     </div>
-}
 
-<br />
-<br />
-<button type="button" class="btn btn-primary">
-    <a href="@Url.Action("PhysicianIndex")" style="color: White; text-decoration: none !important">Back</a>
-</button>
-@*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@
+    <div class="form-group">
+        Address
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PhysicianAddress, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PhysicianAddress, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Phone Number
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PhysicianPhone, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PhysicianPhone, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Email
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PhysicianEmail, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PhysicianEmail, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Specialization
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PhysicianSpecialization, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PhysicianSpecialization, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Summary
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PhysicianSummary, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PhysicianSummary, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        
+        <input type="submit" class="btn btn-success" value="Create" />
+        
+        <button type="button" class="btn btn-primary">
+            <a href="@Url.Action("PhysicianIndex")" style="color: White; text-decoration: none !important">Back</a>
+        </button>
+    </div>
+</div>
+}

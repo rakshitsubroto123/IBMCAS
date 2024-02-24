@@ -115,7 +115,7 @@ namespace IBMCAS.Controllers
 
         public ActionResult PatientIndex()
         {
-            return View("PatientIndex", _db.Patients.ToList());
+            return View("~/Views/Patient/ListAll.cshtml","_LayoutAdmin", _db.Patients.ToList());
         }
 
         public ActionResult AddPatient()
@@ -142,7 +142,7 @@ namespace IBMCAS.Controllers
 
         public ActionResult ShowPatient(string id)
         {
-             return View(_db.Patients.Where(q => q.PatientMRNumber == id).SingleOrDefault());
+            return View("~/Views/Patient/Details.cshtml","_LayoutAdmin", _db.Patients.Where(q => q.PatientMRNumber == id).SingleOrDefault());
         }
 
         public ActionResult UpdatePatient(string id)
@@ -204,7 +204,7 @@ namespace IBMCAS.Controllers
 
         public ActionResult EditPhysician(int id)
         {
-            return View(_db.Physicians.Where(q => q.PhysicianID == id).SingleOrDefault());
+            return View("~/Views/Physician/Edit.cshtml", "_LayoutAdmin", _db.Physicians.Where(q => q.PhysicianID == id).SingleOrDefault());
         }
 
         [HttpPost]
@@ -220,7 +220,8 @@ namespace IBMCAS.Controllers
 
         public ActionResult DetailsPhysician(int id)
         {
-            return View(_db.Physicians.Where(q => q.PhysicianID == id).SingleOrDefault());
+            
+            return View("~/Views/Physician/Details.cshtml","_LayoutAdmin", _db.Physicians.Find(id));
         }
 
         [HttpGet]

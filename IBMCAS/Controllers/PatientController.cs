@@ -10,22 +10,29 @@ using System.Web.Mvc;
 
 namespace IBMCAS.Controllers
 {
-    [Authorize(Roles = "PATIENT")]
     public class PatientController : Controller
     {
         Models.IBMCASDBEntities2 _db = new Models.IBMCASDBEntities2();
         // GET: Patient
+        [Authorize(Roles = "PATIENT")]
         public ActionResult Index()
         {
             return RedirectToAction("Dashboard");
         }
 
-        [ChildActionOnly]
+        [Authorize(Roles ="ADMIN")]
         public ActionResult Details(int id)
         {
-            return PartialView();
+            return View(_db.Patients.Find(id));
         }
 
+        [Authorize(Roles = "ADMIN")]
+        public ActionResult ListAll()
+        {
+            return View(_db.Patients.ToList());
+        }
+
+        [Authorize(Roles = "PATIENT")]
         public ActionResult Dashboard()
         {
             CurrentUserModel cur = Session["CurrentUser"] as CurrentUserModel;
@@ -34,7 +41,7 @@ namespace IBMCAS.Controllers
             model.AppointmentRequests = _db.AppointmentRequests.Where(a => a.PatientID == cur.ReferenceToId).ToList();
             return View(model);
         }
-
+        [Authorize(Roles = "PATIENT")]
         public ActionResult History()
         {
             CurrentUserModel cur = Session["CurrentUser"] as CurrentUserModel;
@@ -43,12 +50,13 @@ namespace IBMCAS.Controllers
             model.AppointmentRequests = _db.AppointmentRequests.Where(a => a.PatientID == cur.ReferenceToId).ToList();
             return View(model);
         }
-
+        [Authorize(Roles = "PATIENT")]
         public ActionResult BookAppointment()
         {
             ViewBag.PhysicianList = _db.Physicians.ToList();
             return View();
         }
+        [Authorize(Roles = "PATIENT")]
         [HttpPost]
         public ActionResult BookAppointment([Bind(Include = "PhysicianID, DateRequested")] AppointmentRequest appointment)
         {
@@ -61,13 +69,13 @@ namespace IBMCAS.Controllers
 
             return RedirectToAction("Index");
         }
-
+        [Authorize(Roles = "PATIENT")]
         public ActionResult ApprovedAppointment()
         {
             CurrentUserModel cur = Session["CurrentUser"] as CurrentUserModel;
             return View(_db.Appointments.Where(a => a.PatientID == cur.ReferenceToId).ToList());
         }
-
+        [Authorize(Roles = "PATIENT")]
         public ActionResult RejectedAppointment()
         {
             CurrentUserModel cur = Session["CurrentUser"] as CurrentUserModel;

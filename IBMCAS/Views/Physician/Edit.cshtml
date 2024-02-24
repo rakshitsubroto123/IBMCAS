@@ -2,10 +2,10 @@
 
 @{
     ViewBag.Title = "EditPhysician";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = null;
 }
 
-<h2>EditPhysician</h2>
+<h2 class="mt-2">Editing Mode</h2>
 
 
 @using (Html.BeginForm())
@@ -13,13 +13,11 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Physician</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.PhysicianID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PhysicianName, htmlAttributes: new { @class = "control-label col-md-2" })
+            Name
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PhysicianName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PhysicianName, "", new { @class = "text-danger" })
@@ -27,7 +25,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PhysicianAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            Address
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PhysicianAddress, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PhysicianAddress, "", new { @class = "text-danger" })
@@ -35,7 +33,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PhysicianPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+            Phone Number
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PhysicianPhone, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PhysicianPhone, "", new { @class = "text-danger" })
@@ -43,7 +41,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PhysicianEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            Email
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PhysicianEmail, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PhysicianEmail, "", new { @class = "text-danger" })
@@ -51,7 +49,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PhysicianSpecialization, htmlAttributes: new { @class = "control-label col-md-2" })
+            Specialization
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PhysicianSpecialization, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PhysicianSpecialization, "", new { @class = "text-danger" })
@@ -59,27 +57,22 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PhysicianSummary, htmlAttributes: new { @class = "control-label col-md-2" })
+            Summary
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PhysicianSummary, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PhysicianSummary, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+        <div class="form-group mt-2">
+
+            <input type="submit" value="Save" class="btn btn-success" />
+            <button type="button" class="btn btn-primary">
+                <a href="@Url.Action("PhysicianIndex")" style="color: White; text-decoration: none !important">Back</a>
+            </button>
         </div>
     </div>
 }
-
-<div>
-    <button type="button" class="btn btn-primary">
-        <a href="@Url.Action("PhysicianIndex")" style="color: White; text-decoration: none !important">Back</a>
-    </button>
-    @*@Html.ActionLink("Back to List", "Index")*@
-</div>
 
 <script src="~/Scripts/jquery-3.7.1.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
