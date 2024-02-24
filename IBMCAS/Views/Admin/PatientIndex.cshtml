@@ -14,7 +14,7 @@
 <table class="table">
     <tr>
         <th>
-            MRNumber
+            MR Number
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.PatientFirstName)
@@ -42,25 +42,23 @@
     {
         <tr>
             <td>
-               MRNumber
+                @Html.DisplayFor(modelItem => item.PatientMRNumber)
             </td>
             <td>
-               FirstName
-            @*</td>
-            <td>*@
-                LastName
+                @Html.DisplayFor(modelItem => item.PatientFirstName)
+                @Html.DisplayFor(modelItem => item.PatientLastName)
             </td>
             <td>
-                Phone
+                @Html.DisplayFor(modelItem => item.PatientPhone)
             </td>
             <td>
-                Email
+                @Html.DisplayFor(modelItem => item.PatientEmail)
             </td>
             <td>
-                Gender
+                @Html.DisplayFor(modelItem => item.PatientGender)
             </td>
             <td>
-                AadhaarNumber
+                @Html.DisplayFor(modelItem => item.PatientAadhaarNumber)
             </td>
             <td>
                 <button type="button" class="btn btn-success">

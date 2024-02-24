@@ -7,9 +7,9 @@
 
 <h2>Apointments</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -33,7 +33,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Advice)
         </th>
-        <th></th>
+        @*<th></th>*@
     </tr>
 
 @foreach (var item in Model) {
@@ -56,12 +56,13 @@
         @*<td>
             @Html.DisplayFor(modelItem => item.isVisited)
         </td>*@
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Advice)
-        </td>
+        </td>*@
         <td>
             <a href="~/Physician/AdvicePrescriptionForm?AppointmentID=@item.AppointmentID"><button>Advice</button></a>
             @*@Html.ActionLink("Edit", "AdvicePrescriptionForm", new { id=item.AppointmentID })*@
+            @*<a href="~/Views/Physician/Apointments.cshtml">~/Views/Physician/Apointments.cshtml</a>*@
         </td>
     </tr>
 }

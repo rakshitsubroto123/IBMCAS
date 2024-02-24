@@ -19,5 +19,8 @@ namespace IBMCAS.Models
         public int DrugId { get; set; }
         public int Qty { get; set; }
         public string ShortNote { get; set; }
+    
+        public virtual Patient Patient { get; set; }
+        public virtual PurchaseOrderHeader PurchaseOrderHeader { get; set; }
     }
 }

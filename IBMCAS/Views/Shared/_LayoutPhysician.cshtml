@@ -12,11 +12,11 @@
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="@Url.Action("FrontDesk","Admin")">IBMCAS - PHYSICIAN PORTAL</a>
+        <a class="navbar-brand ps-3" href="@Url.Action("Dashboard","Physician")">IBMCAS - PHYSICIAN PORTAL</a>
         <!-- Sidebar Toggle-->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 mx-4 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <button class="btn btn-link btn-sm order-1 order-lg-0 mx-xl-5 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" hidden>
             <div class="input-group" hidden>
@@ -25,20 +25,19 @@
             </div>
         </form>
         <!-- Navbar-->
-        <a class="btn btn-primary mx-2" href="@Url.Action("Logout","UserCredential")">Logout</a>
+        <a class="btn btn-danger mx-2" href="@Url.Action("Logout","UserCredential")">Logout</a>
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
-            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <nav class="sb-sidenav accordion sb-sidenav-dark bg-primary bg-opacity-50" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
-                    <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Receptionist</div>
-                        <a class="nav-link" href=@Url.Action("Dashboard","Physician")>
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="nav text-dark">
+                        <a class="nav-link text-dark" href=@Url.Action("Dashboard","Physician")>
+                            <div class="sb-nav-link-icon text-dark"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
-                        <a class="nav-link" href=@Url.Action("RequestDrug","Physician")>
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        <a class="nav-link text-dark" href=@Url.Action("RequestDrug","Physician")>
+                            <div class="sb-nav-link-icon text-dark"><i class="fas fa-tachometer-alt"></i></div>
                             Request Drug
                         </a>
 

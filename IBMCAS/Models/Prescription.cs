@@ -18,5 +18,8 @@ namespace IBMCAS.Models
         public int PrescriptionAdviceId { get; set; }
         public Nullable<int> DrugID { get; set; }
         public string Description { get; set; }
+    
+        public virtual Advice Advice { get; set; }
+        public virtual Drug Drug { get; set; }
     }
 }
