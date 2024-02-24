@@ -2,7 +2,8 @@
     [AdviceId]   INT           IDENTITY (1, 1) NOT NULL,
     [ScheduleId] INT           NOT NULL,
     [AdviceText] VARCHAR (250) NOT NULL,
-    PRIMARY KEY CLUSTERED ([AdviceId] ASC)
+    PRIMARY KEY CLUSTERED ([AdviceId] ASC),
+	FOREIGN KEY (ScheduleId) REFERENCES [dbo].Appointment (AppointmentID)
 );
 
 CREATE TABLE [dbo].[Appointment] (
@@ -57,7 +58,8 @@ CREATE TABLE [dbo].[DrugRequest] (
     [RequestPhysicianId] INT          NOT NULL,
     [RequestDescription] VARCHAR (50) NOT NULL,
     [RequestedDate]      DATE         NOT NULL,
-    PRIMARY KEY CLUSTERED ([DrugRequestId] ASC)
+    PRIMARY KEY CLUSTERED ([DrugRequestId] ASC),
+	FOREIGN KEY ([RequestPhysicianId]) REFERENCES [dbo].Physician (PhysicianId),
 );
 
 CREATE TABLE [dbo].[Patient] (
@@ -91,6 +93,7 @@ CREATE TABLE [dbo].[PatientRegistrationQueue] (
     PRIMARY KEY CLUSTERED ([PRQID] ASC)
 );
 
+
 CREATE TABLE [dbo].[Physician] (
     [PhysicianID]             INT            IDENTITY (1, 1) NOT NULL,
     [PhysicianName]           VARCHAR (50)   NOT NULL,
@@ -107,7 +110,9 @@ CREATE TABLE [dbo].[Prescription] (
     [PrescriptionAdviceId] INT           NOT NULL,
     [DrugID]               INT           NULL,
     [Description]          VARCHAR (300) NULL,
-    PRIMARY KEY CLUSTERED ([PrescriptionID] ASC)
+    PRIMARY KEY CLUSTERED ([PrescriptionID] ASC),
+	FOREIGN KEY ([PrescriptionAdviceId]) REFERENCES [dbo].advice ([AdviceId]),
+	FOREIGN KEY ([DrugID]) REFERENCES [dbo].drug ([DrugId]),
 );
 
 
@@ -116,7 +121,8 @@ CREATE TABLE [dbo].[PurchaseOrderHeader] (
     [PODate]          DATE        NULL,
     [SupplierId]      INT         NOT NULL,
     [Note]            NCHAR (300) NULL,
-    PRIMARY KEY CLUSTERED ([PurchaseOrderId] ASC)
+    PRIMARY KEY CLUSTERED ([PurchaseOrderId] ASC),
+	FOREIGN KEY ([SupplierId]) REFERENCES [dbo].supplier ([SupplierId]),
 );
 
 CREATE TABLE [dbo].[PurchaseOrderProductLine] (
@@ -125,7 +131,9 @@ CREATE TABLE [dbo].[PurchaseOrderProductLine] (
     [DrugId]                     INT           NOT NULL,
     [Qty]                        INT           NOT NULL,
     [ShortNote]                  VARCHAR (200) NULL,
-    PRIMARY KEY CLUSTERED ([PurchaseOrderProductLineId] ASC)
+    PRIMARY KEY CLUSTERED ([PurchaseOrderProductLineId] ASC),
+	FOREIGN KEY ([PurchaseOrderId]) REFERENCES [dbo].[PurchaseOrderHeader] ([PurchaseOrderId]),
+	FOREIGN KEY ([DrugId]) REFERENCES [dbo].[Patient] ([PatientID])
 );
 
 CREATE TABLE [dbo].[Supplier] (

@@ -41,10 +41,7 @@
             </tr>
             <tr>
                 <th>
-                    Precription ID
-                </th>
-                <th>
-                    Drug Id
+                    Drug Name
                 </th>
                 <th>
                     Description
@@ -54,9 +51,6 @@
             @foreach (var item in Model.prescriptions)
             {
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.PrescriptionID)
-                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.DrugID)
                     </td>
