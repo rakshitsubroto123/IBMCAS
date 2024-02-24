@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="IBMCASDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="IBMCASDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advice">
           <Key>
             <PropertyRef Name="AdviceId" />
@@ -388,6 +388,14 @@
           <Property Name="Qty" Type="Int32" Nullable="false" />
           <Property Name="ShortNote" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserCred">
           <Key>
             <PropertyRef Name="UserID" />
@@ -459,6 +467,7 @@
           <EntitySet Name="Prescriptions" EntityType="Self.Prescription" />
           <EntitySet Name="PurchaseOrderHeaders" EntityType="Self.PurchaseOrderHeader" />
           <EntitySet Name="PurchaseOrderProductLines" EntityType="Self.PurchaseOrderProductLine" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
           <EntitySet Name="UserCreds" EntityType="Self.UserCred" />
           <AssociationSet Name="FK__Appointme__Patie__7C1A6C5A" Association="Self.FK__Appointme__Patie__7C1A6C5A">
             <End Role="Patient" EntitySet="Patients" />
@@ -477,14 +486,6 @@
             <End Role="AppointmentRequest" EntitySet="AppointmentRequests" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Supplier">
-          <Key>
-            <PropertyRef Name="SupplierId" />
-          </Key>
-          <Property Name="SupplierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -639,6 +640,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="IBMCASDBModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UserCreds">
             <EntityTypeMapping TypeName="IBMCASDBModel.UserCred">
               <MappingFragment StoreEntitySet="UserCred">
@@ -647,15 +657,6 @@
                 <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
                 <ScalarProperty Name="UserRole" ColumnName="UserRole" />
                 <ScalarProperty Name="UserReferneceToID" ColumnName="UserReferneceToID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Suppliers">
-            <EntityTypeMapping TypeName="IBMCASDBModel.Supplier">
-              <MappingFragment StoreEntitySet="Supplier">
-                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
