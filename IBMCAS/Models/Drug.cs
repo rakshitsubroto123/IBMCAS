@@ -14,8 +14,17 @@ namespace IBMCAS.Models
     
     public partial class Drug
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Drug()
+        {
+            this.Prescriptions = new HashSet<Prescription>();
+        }
+    
         public int DrugId { get; set; }
         public string DrugName { get; set; }
         public string DrugDescription { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Prescription> Prescriptions { get; set; }
     }
 }

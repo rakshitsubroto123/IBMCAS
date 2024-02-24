@@ -14,6 +14,12 @@ namespace IBMCAS.Models
     
     public partial class Appointment
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Appointment()
+        {
+            this.Advices = new HashSet<Advice>();
+        }
+    
         public int AppointmentID { get; set; }
         public string AppointmentToken { get; set; }
         public int PatientID { get; set; }
@@ -22,6 +28,8 @@ namespace IBMCAS.Models
         public int ScheduledTime { get; set; }
         public string Advice { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Advice> Advices { get; set; }
         public virtual Patient Patient { get; set; }
         public virtual Physician Physician { get; set; }
     }

@@ -18,5 +18,7 @@ namespace IBMCAS.Models
         public int RequestPhysicianId { get; set; }
         public string RequestDescription { get; set; }
         public System.DateTime RequestedDate { get; set; }
+    
+        public virtual Physician Physician { get; set; }
     }
 }

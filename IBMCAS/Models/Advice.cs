@@ -14,8 +14,18 @@ namespace IBMCAS.Models
     
     public partial class Advice
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Advice()
+        {
+            this.Prescriptions = new HashSet<Prescription>();
+        }
+    
         public int AdviceId { get; set; }
         public int ScheduleId { get; set; }
         public string AdviceText { get; set; }
+    
+        public virtual Appointment Appointment { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Prescription> Prescriptions { get; set; }
     }
 }
