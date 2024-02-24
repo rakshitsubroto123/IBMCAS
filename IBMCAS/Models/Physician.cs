@@ -19,6 +19,7 @@ namespace IBMCAS.Models
         {
             this.Appointments = new HashSet<Appointment>();
             this.AppointmentRequests = new HashSet<AppointmentRequest>();
+            this.DrugRequests = new HashSet<DrugRequest>();
         }
     
         public int PhysicianID { get; set; }
@@ -33,5 +34,7 @@ namespace IBMCAS.Models
         public virtual ICollection<Appointment> Appointments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AppointmentRequest> AppointmentRequests { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DrugRequest> DrugRequests { get; set; }
     }
 }

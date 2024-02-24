@@ -14,9 +14,19 @@ namespace IBMCAS.Models
     
     public partial class PurchaseOrderHeader
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PurchaseOrderHeader()
+        {
+            this.PurchaseOrderProductLines = new HashSet<PurchaseOrderProductLine>();
+        }
+    
         public int PurchaseOrderId { get; set; }
         public Nullable<System.DateTime> PODate { get; set; }
         public int SupplierId { get; set; }
         public string Note { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseOrderProductLine> PurchaseOrderProductLines { get; set; }
+        public virtual Supplier Supplier { get; set; }
     }
 }
