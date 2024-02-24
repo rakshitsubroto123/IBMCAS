@@ -14,7 +14,7 @@
             Request Token No
         </th>
         <th>
-           Physician ID
+           Physician
         </th>
         <th>
             Date Created
@@ -22,10 +22,6 @@
         <th>
             Date Requested
         </th>
-        <th>
-            Note
-        </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -35,16 +31,13 @@
                 @Html.DisplayFor(modelItem => item.AppointmentRequestToken)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PhysicianID)
+                @item.PhysicianID - @item.Physician.PhysicianName
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateCreated.Date)
+                @item.DateCreated.Date.ToString("dd-MM-yyyy")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateRequested.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Note)
+                @item.DateRequested.Date.ToString("dd-MM-yyyy")
             </td>
         </tr>
     }

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Schedule</h2>
+<h4 class="m-2">Please Input Date and Time</h4>
 
 
 @using (Html.BeginForm())
@@ -13,15 +13,13 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>Appointment</h4>
-    <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.AppointmentRequestID)
     <table class="table">
         <tr>
             <td>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.AppointmentRequestToken, htmlAttributes: new { @class = "control-label col-md-2" })
+                    Appointment Request Token
                     <div class="col-md-10">
                         @Html.DisplayFor(model => model.AppointmentRequestToken, new { htmlAttributes = new { @class = "form-control" } })
                         <input hidden name="AppointmentRequestToken" value="@Model.AppointmentRequestToken" />
@@ -31,9 +29,9 @@
             </td>
             <td>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.PatientID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    Patient MR No
                     <div class="col-md-10">
-                        @Html.DisplayFor(model => model.PatientID, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.DisplayFor(model => model.Patient.PatientMRNumber, new { htmlAttributes = new { @class = "form-control" } })
                         <input hidden name="PatientID" value=@Model.PatientID />
                         @Html.ValidationMessageFor(model => model.PatientID, "", new { @class = "text-danger" })
                     </div>
@@ -41,40 +39,29 @@
             </td>
             <td>
                 <div class="form-group">
-                    @Html.LabelFor(model => model.PhysicianID, htmlAttributes: new { @class = "control-label col-md-2" })
+                    Physician
                     <div class="col-md-10">
-                        @Html.DisplayFor(model => model.PhysicianID, new { htmlAttributes = new { @class = "form-control" } })
-                        <input hidden name="PhysicianID" value=@Model.PhysicianID />
+                       @Model.PhysicianID - @Model.Physician.PhysicianName
+                        <input hidden name="PhysicianID" value="@Model.PhysicianID" />
                         @Html.ValidationMessageFor(model => model.PhysicianID, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </td>
-        </tr>
-        <tr>
-            <td>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.DateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DisplayFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control" } })
-                        <input hidden name="DateCreated" value=@Model.DateCreated />
-                        @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </td>
+            <input hidden name="DateCreated" value=@Model.DateCreated />
             <td>
                 <div class="form-group">
                     @Html.LabelFor(model => model.DateRequested, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.DisplayFor(model => model.DateRequested, new { htmlAttributes = new { @class = "form-control" } })
+                        @Model.DateRequested.Date.ToString("dd-MM-yyyy")
                         <input hidden name="DateRequested" value=@Model.DateRequested />
                         @Html.ValidationMessageFor(model => model.DateRequested, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </td>
         </tr>
-    </table>
+       
     <tr>
-        <td>
+        <td colspan="2">
             <div class="form-group">
                 @Html.LabelFor(model => model.DateScheduled, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -83,7 +70,7 @@
                 </div>
             </div>
         </td>
-        <td>
+        <td colspan="2">
             <div class="form-group">
                 @Html.LabelFor(model => model.TimeScheduled, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -101,20 +88,16 @@
             </div>
         </td>
     </tr>
+        </table>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
-        </div>
+        <input type="submit" value="Save" class="btn btn-success" />
+        <button type="button" class="btn btn-primary">
+            <a href="@Url.Action("AppointmentRequests")" style="color: White; text-decoration: none !important">Back</a>
+        </button>
     </div>
 </div>
 }
-
-<div>
-    <button type="button" class="btn btn-primary">
-        <a href="@Url.Action("AppointmentRequests")" style="color: White; text-decoration: none !important">Back</a>
-    </button>
-</div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

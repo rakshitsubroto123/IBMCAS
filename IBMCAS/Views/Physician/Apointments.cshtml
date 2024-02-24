@@ -5,35 +5,19 @@
     Layout = "~/Views/Shared/_LayoutPhysician.cshtml";
 }
 
-<h2>Apointments</h2>
+<h2 class="mt-2">Appointments</h2>
 
-@*<p>
-    @Html.ActionLink("Create New", "Create")
-</p>*@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AppointmentToken)
+            Appointment Token
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PatientID)
+            Patient MR No
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhysicianID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ScheduledDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ScheduledTime)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.isVisited)
-        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Advice)
         </th>
-        @*<th></th>*@
     </tr>
 
 @foreach (var item in Model) {
@@ -42,27 +26,10 @@
             @Html.DisplayFor(modelItem => item.AppointmentToken)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PatientID)
+            @Html.DisplayFor(modelItem => item.Patient.PatientMRNumber)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhysicianID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ScheduledDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ScheduledTime)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.isVisited)
-        </td>*@
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Advice)
-        </td>*@
         <td>
             <a href="~/Physician/AdvicePrescriptionForm?AppointmentID=@item.AppointmentID"><button>Advice</button></a>
-            @*@Html.ActionLink("Edit", "AdvicePrescriptionForm", new { id=item.AppointmentID })*@
-            @*<a href="~/Views/Physician/Apointments.cshtml">~/Views/Physician/Apointments.cshtml</a>*@
         </td>
     </tr>
 }

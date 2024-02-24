@@ -107,7 +107,7 @@ namespace IBMCAS.Controllers
             drugRequest2.RequestedDate = DateTime.Now.Date;
             _db.DrugRequests.Add(drugRequest2);
             _db.SaveChanges();
-            return View("Index");
+            return RedirectToAction("Apointments");
 
         }
 
