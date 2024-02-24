@@ -173,29 +173,41 @@
         </Association>
         <Association Name="FK__Appointme__Patie__2739D489">
           <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
-          <End Role="AppointmentRequest" Type="Self.AppointmentRequest" Multiplicity="*" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Patient">
               <PropertyRef Name="PatientID" />
             </Principal>
-            <Dependent Role="AppointmentRequest">
+            <Dependent Role="Appointment">
               <PropertyRef Name="PatientID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Patie__29221CFB">
+        <Association Name="FK__Appointme__Patie__7E02B4CC">
           <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
-          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <End Role="AppointmentRequest" Type="Self.AppointmentRequest" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Patient">
               <PropertyRef Name="PatientID" />
             </Principal>
-            <Dependent Role="Appointment">
+            <Dependent Role="AppointmentRequest">
               <PropertyRef Name="PatientID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Physi__282DF8C2">
+        <Association Name="FK__Appointme__Physi__7D0E9093">
+          <End Role="Physician" Type="Self.Physician" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Physician">
+              <PropertyRef Name="PhysicianID" />
+            </Principal>
+            <Dependent Role="Appointment">
+              <PropertyRef Name="PhysicianID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Physi__7EF6D905">
           <End Role="Physician" Type="Self.Physician" Multiplicity="1" />
           <End Role="AppointmentRequest" Type="Self.AppointmentRequest" Multiplicity="*" />
           <ReferentialConstraint>
@@ -203,18 +215,6 @@
               <PropertyRef Name="PhysicianID" />
             </Principal>
             <Dependent Role="AppointmentRequest">
-              <PropertyRef Name="PhysicianID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Appointme__Physi__2A164134">
-          <End Role="Physician" Type="Self.Physician" Multiplicity="1" />
-          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Physician">
-              <PropertyRef Name="PhysicianID" />
-            </Principal>
-            <Dependent Role="Appointment">
               <PropertyRef Name="PhysicianID" />
             </Dependent>
           </ReferentialConstraint>
@@ -314,11 +314,11 @@
             <End Role="Patient" EntitySet="Patient" />
             <End Role="AppointmentRequest" EntitySet="AppointmentRequest" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Patie__29221CFB" Association="Self.FK__Appointme__Patie__29221CFB">
-            <End Role="Patient" EntitySet="Patient" />
+          <AssociationSet Name="FK__Appointme__Physi__7D0E9093" Association="Self.FK__Appointme__Physi__7D0E9093">
+            <End Role="Physician" EntitySet="Physician" />
             <End Role="Appointment" EntitySet="Appointment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Physi__282DF8C2" Association="Self.FK__Appointme__Physi__282DF8C2">
+          <AssociationSet Name="FK__Appointme__Physi__7EF6D905" Association="Self.FK__Appointme__Physi__7EF6D905">
             <End Role="Physician" EntitySet="Physician" />
             <End Role="AppointmentRequest" EntitySet="AppointmentRequest" />
           </AssociationSet>
@@ -395,8 +395,8 @@
           <Property Name="TimeScheduled" Type="Int32" Nullable="false" />
           <Property Name="Note" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Patient" Relationship="Self.FK__Appointme__Patie__2739D489" FromRole="AppointmentRequest" ToRole="Patient" />
-          <NavigationProperty Name="Physician" Relationship="Self.FK__Appointme__Physi__282DF8C2" FromRole="AppointmentRequest" ToRole="Physician" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Appointme__Patie__7E02B4CC" FromRole="AppointmentRequest" ToRole="Patient" />
+          <NavigationProperty Name="Physician" Relationship="Self.FK__Appointme__Physi__7EF6D905" FromRole="AppointmentRequest" ToRole="Physician" />
         </EntityType>
         <EntityType Name="chemist">
           <Key>
@@ -568,7 +568,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Physi__2A164134">
+        <Association Name="FK__Appointme__Physi__7D0E9093">
           <End Role="Physician" Type="Self.Physician" Multiplicity="1" />
           <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -580,7 +580,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Patie__2739D489">
+        <Association Name="FK__Appointme__Patie__7E02B4CC">
           <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
           <End Role="AppointmentRequest" Type="Self.AppointmentRequest" Multiplicity="*" />
           <ReferentialConstraint>
@@ -592,7 +592,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Physi__282DF8C2">
+        <Association Name="FK__Appointme__Physi__7EF6D905">
           <End Role="Physician" Type="Self.Physician" Multiplicity="1" />
           <End Role="AppointmentRequest" Type="Self.AppointmentRequest" Multiplicity="*" />
           <ReferentialConstraint>
@@ -691,15 +691,15 @@
             <End Role="Patient" EntitySet="Patients" />
             <End Role="Appointment" EntitySet="Appointments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Physi__2A164134" Association="Self.FK__Appointme__Physi__2A164134">
+          <AssociationSet Name="FK__Appointme__Physi__7D0E9093" Association="Self.FK__Appointme__Physi__7D0E9093">
             <End Role="Physician" EntitySet="Physicians" />
             <End Role="Appointment" EntitySet="Appointments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Patie__2739D489" Association="Self.FK__Appointme__Patie__2739D489">
+          <AssociationSet Name="FK__Appointme__Patie__7E02B4CC" Association="Self.FK__Appointme__Patie__7E02B4CC">
             <End Role="Patient" EntitySet="Patients" />
             <End Role="AppointmentRequest" EntitySet="AppointmentRequests" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Physi__282DF8C2" Association="Self.FK__Appointme__Physi__282DF8C2">
+          <AssociationSet Name="FK__Appointme__Physi__7EF6D905" Association="Self.FK__Appointme__Physi__7EF6D905">
             <End Role="Physician" EntitySet="Physicians" />
             <End Role="AppointmentRequest" EntitySet="AppointmentRequests" />
           </AssociationSet>
