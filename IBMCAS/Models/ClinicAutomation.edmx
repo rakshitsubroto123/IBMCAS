@@ -313,6 +313,7 @@
           <AssociationSet Name="FK__Appointme__Patie__44952D46" Association="Self.FK__Appointme__Patie__44952D46">
             <End Role="Patient" EntitySet="Patient" />
             <End Role="Appointment" EntitySet="Appointment" />
+            <End Role="Advice" EntitySet="Advice" />
           </AssociationSet>
           <AssociationSet Name="FK__Appointme__Patie__5006DFF2" Association="Self.FK__Appointme__Patie__5006DFF2">
             <End Role="Patient" EntitySet="Patient" />
