@@ -15,18 +15,13 @@ namespace IBMCAS.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            IBMCAS.Models.CurrentUserModel usr = Session["CurrentUser"] as IBMCAS.Models.CurrentUserModel;
+            return View(_db.PurchaseOrderHeaders.Where(q => q.SupplierId == usr.ReferenceToId).ToList());
         }
         public ActionResult MedicineOrdered()
         {
             IBMCAS.Models.CurrentUserModel usr = Session["CurrentUser"] as IBMCAS.Models.CurrentUserModel;
             return View(_db.PurchaseOrderProductLines.Where(q => q.PurchaseOrderId == usr.ReferenceToId).ToList());
-        }
-
-        public ActionResult Advice()
-        {
-            IBMCAS.Models.CurrentUserModel usr = Session["CurrentUser"] as IBMCAS.Models.CurrentUserModel;
-            return View(_db.PurchaseOrderHeaders.Where(q=>q.SupplierId == usr.ReferenceToId).ToList());
         }
 
         public ActionResult OrderList(int id)

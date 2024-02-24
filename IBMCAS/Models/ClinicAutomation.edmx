@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="IBMCASDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="IBMCASDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advice">
           <Key>
             <PropertyRef Name="AdviceId" />
@@ -159,19 +159,7 @@
           <Property Name="UserRole" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="UserReferneceToID" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Appointme__Patie__7C1A6C5A">
-          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
-          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Patient">
-              <PropertyRef Name="PatientID" />
-            </Principal>
-            <Dependent Role="Appointment">
-              <PropertyRef Name="PatientID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Appointme__Patie__7E02B4CC">
+        <Association Name="FK__Appointme__Patie__2739D489">
           <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
           <End Role="AppointmentRequest" Type="Self.AppointmentRequest" Multiplicity="*" />
           <ReferentialConstraint>
@@ -183,19 +171,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Physi__7D0E9093">
-          <End Role="Physician" Type="Self.Physician" Multiplicity="1" />
+        <Association Name="FK__Appointme__Patie__29221CFB">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
           <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Physician">
-              <PropertyRef Name="PhysicianID" />
+            <Principal Role="Patient">
+              <PropertyRef Name="PatientID" />
             </Principal>
             <Dependent Role="Appointment">
-              <PropertyRef Name="PhysicianID" />
+              <PropertyRef Name="PatientID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Physi__7EF6D905">
+        <Association Name="FK__Appointme__Physi__282DF8C2">
           <End Role="Physician" Type="Self.Physician" Multiplicity="1" />
           <End Role="AppointmentRequest" Type="Self.AppointmentRequest" Multiplicity="*" />
           <ReferentialConstraint>
@@ -203,6 +191,18 @@
               <PropertyRef Name="PhysicianID" />
             </Principal>
             <Dependent Role="AppointmentRequest">
+              <PropertyRef Name="PhysicianID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Appointme__Physi__2A164134">
+          <End Role="Physician" Type="Self.Physician" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Physician">
+              <PropertyRef Name="PhysicianID" />
+            </Principal>
+            <Dependent Role="Appointment">
               <PropertyRef Name="PhysicianID" />
             </Dependent>
           </ReferentialConstraint>
@@ -222,21 +222,21 @@
           <EntitySet Name="PurchaseOrderProductLine" EntityType="Self.PurchaseOrderProductLine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserCred" EntityType="Self.UserCred" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Appointme__Patie__7C1A6C5A" Association="Self.FK__Appointme__Patie__7C1A6C5A">
-            <End Role="Patient" EntitySet="Patient" />
-            <End Role="Appointment" EntitySet="Appointment" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Patie__7E02B4CC" Association="Self.FK__Appointme__Patie__7E02B4CC">
+          <AssociationSet Name="FK__Appointme__Patie__2739D489" Association="Self.FK__Appointme__Patie__2739D489">
             <End Role="Patient" EntitySet="Patient" />
             <End Role="AppointmentRequest" EntitySet="AppointmentRequest" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Physi__7D0E9093" Association="Self.FK__Appointme__Physi__7D0E9093">
-            <End Role="Physician" EntitySet="Physician" />
+          <AssociationSet Name="FK__Appointme__Patie__29221CFB" Association="Self.FK__Appointme__Patie__29221CFB">
+            <End Role="Patient" EntitySet="Patient" />
             <End Role="Appointment" EntitySet="Appointment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Physi__7EF6D905" Association="Self.FK__Appointme__Physi__7EF6D905">
+          <AssociationSet Name="FK__Appointme__Physi__282DF8C2" Association="Self.FK__Appointme__Physi__282DF8C2">
             <End Role="Physician" EntitySet="Physician" />
             <End Role="AppointmentRequest" EntitySet="AppointmentRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Appointme__Physi__2A164134" Association="Self.FK__Appointme__Physi__2A164134">
+            <End Role="Physician" EntitySet="Physician" />
+            <End Role="Appointment" EntitySet="Appointment" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -263,8 +263,8 @@
           <Property Name="ScheduledDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ScheduledTime" Type="Int32" Nullable="false" />
           <Property Name="Advice" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Patient" Relationship="Self.FK__Appointme__Patie__7C1A6C5A" FromRole="Appointment" ToRole="Patient" />
-          <NavigationProperty Name="Physician" Relationship="Self.FK__Appointme__Physi__7D0E9093" FromRole="Appointment" ToRole="Physician" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Appointme__Patie__29221CFB" FromRole="Appointment" ToRole="Patient" />
+          <NavigationProperty Name="Physician" Relationship="Self.FK__Appointme__Physi__2A164134" FromRole="Appointment" ToRole="Physician" />
         </EntityType>
         <EntityType Name="AppointmentRequest">
           <Key>
@@ -280,8 +280,8 @@
           <Property Name="TimeScheduled" Type="Int32" Nullable="false" />
           <Property Name="Note" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Patient" Relationship="Self.FK__Appointme__Patie__7E02B4CC" FromRole="AppointmentRequest" ToRole="Patient" />
-          <NavigationProperty Name="Physician" Relationship="Self.FK__Appointme__Physi__7EF6D905" FromRole="AppointmentRequest" ToRole="Physician" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK__Appointme__Patie__2739D489" FromRole="AppointmentRequest" ToRole="Patient" />
+          <NavigationProperty Name="Physician" Relationship="Self.FK__Appointme__Physi__282DF8C2" FromRole="AppointmentRequest" ToRole="Physician" />
         </EntityType>
         <EntityType Name="chemist">
           <Key>
@@ -326,8 +326,8 @@
           <Property Name="PatientGender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PatientMedicalHistory" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="PatientAadhaarNumber" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Patie__7C1A6C5A" FromRole="Patient" ToRole="Appointment" />
-          <NavigationProperty Name="AppointmentRequests" Relationship="Self.FK__Appointme__Patie__7E02B4CC" FromRole="Patient" ToRole="AppointmentRequest" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Patie__29221CFB" FromRole="Patient" ToRole="Appointment" />
+          <NavigationProperty Name="AppointmentRequests" Relationship="Self.FK__Appointme__Patie__2739D489" FromRole="Patient" ToRole="AppointmentRequest" />
         </EntityType>
         <EntityType Name="PatientRegistrationQueue">
           <Key>
@@ -357,8 +357,8 @@
           <Property Name="PhysicianEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PhysicianSpecialization" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PhysicianSummary" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Physi__7D0E9093" FromRole="Physician" ToRole="Appointment" />
-          <NavigationProperty Name="AppointmentRequests" Relationship="Self.FK__Appointme__Physi__7EF6D905" FromRole="Physician" ToRole="AppointmentRequest" />
+          <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Physi__2A164134" FromRole="Physician" ToRole="Appointment" />
+          <NavigationProperty Name="AppointmentRequests" Relationship="Self.FK__Appointme__Physi__282DF8C2" FromRole="Physician" ToRole="AppointmentRequest" />
         </EntityType>
         <EntityType Name="Prescription">
           <Key>
@@ -388,6 +388,14 @@
           <Property Name="Qty" Type="Int32" Nullable="false" />
           <Property Name="ShortNote" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="SupplierId" />
+          </Key>
+          <Property Name="SupplierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <EntityType Name="UserCred">
           <Key>
             <PropertyRef Name="UserID" />
@@ -398,7 +406,7 @@
           <Property Name="UserRole" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserReferneceToID" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Appointme__Patie__7C1A6C5A">
+        <Association Name="FK__Appointme__Patie__29221CFB">
           <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
           <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -410,7 +418,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Physi__7D0E9093">
+        <Association Name="FK__Appointme__Physi__2A164134">
           <End Role="Physician" Type="Self.Physician" Multiplicity="1" />
           <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -422,7 +430,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Patie__7E02B4CC">
+        <Association Name="FK__Appointme__Patie__2739D489">
           <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
           <End Role="AppointmentRequest" Type="Self.AppointmentRequest" Multiplicity="*" />
           <ReferentialConstraint>
@@ -434,7 +442,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Physi__7EF6D905">
+        <Association Name="FK__Appointme__Physi__282DF8C2">
           <End Role="Physician" Type="Self.Physician" Multiplicity="1" />
           <End Role="AppointmentRequest" Type="Self.AppointmentRequest" Multiplicity="*" />
           <ReferentialConstraint>
@@ -459,32 +467,25 @@
           <EntitySet Name="Prescriptions" EntityType="Self.Prescription" />
           <EntitySet Name="PurchaseOrderHeaders" EntityType="Self.PurchaseOrderHeader" />
           <EntitySet Name="PurchaseOrderProductLines" EntityType="Self.PurchaseOrderProductLine" />
+          <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
           <EntitySet Name="UserCreds" EntityType="Self.UserCred" />
-          <AssociationSet Name="FK__Appointme__Patie__7C1A6C5A" Association="Self.FK__Appointme__Patie__7C1A6C5A">
+          <AssociationSet Name="FK__Appointme__Patie__29221CFB" Association="Self.FK__Appointme__Patie__29221CFB">
             <End Role="Patient" EntitySet="Patients" />
             <End Role="Appointment" EntitySet="Appointments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Physi__7D0E9093" Association="Self.FK__Appointme__Physi__7D0E9093">
+          <AssociationSet Name="FK__Appointme__Physi__2A164134" Association="Self.FK__Appointme__Physi__2A164134">
             <End Role="Physician" EntitySet="Physicians" />
             <End Role="Appointment" EntitySet="Appointments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Patie__7E02B4CC" Association="Self.FK__Appointme__Patie__7E02B4CC">
+          <AssociationSet Name="FK__Appointme__Patie__2739D489" Association="Self.FK__Appointme__Patie__2739D489">
             <End Role="Patient" EntitySet="Patients" />
             <End Role="AppointmentRequest" EntitySet="AppointmentRequests" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Physi__7EF6D905" Association="Self.FK__Appointme__Physi__7EF6D905">
+          <AssociationSet Name="FK__Appointme__Physi__282DF8C2" Association="Self.FK__Appointme__Physi__282DF8C2">
             <End Role="Physician" EntitySet="Physicians" />
             <End Role="AppointmentRequest" EntitySet="AppointmentRequests" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Supplier">
-          <Key>
-            <PropertyRef Name="SupplierId" />
-          </Key>
-          <Property Name="SupplierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ContactNumber" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -639,6 +640,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Suppliers">
+            <EntityTypeMapping TypeName="IBMCASDBModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UserCreds">
             <EntityTypeMapping TypeName="IBMCASDBModel.UserCred">
               <MappingFragment StoreEntitySet="UserCred">
@@ -647,15 +657,6 @@
                 <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
                 <ScalarProperty Name="UserRole" ColumnName="UserRole" />
                 <ScalarProperty Name="UserReferneceToID" ColumnName="UserReferneceToID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Suppliers">
-            <EntityTypeMapping TypeName="IBMCASDBModel.Supplier">
-              <MappingFragment StoreEntitySet="Supplier">
-                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="SupplierId" ColumnName="SupplierId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
