@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3ee249aa35e943b1b5652482ec296ad8" Name="Diagram1">
+      <Diagram DiagramId="8e0d1497bf9142feac19234c1f748a45" Name="Diagram1" ZoomLevel="98">
         <EntityTypeShape EntityType="IBMCASDBModel.Advice" Width="1.5" PointX="2.75" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IBMCASDBModel.Appointment" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="IBMCASDBModel.AppointmentRequest" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
@@ -19,10 +19,10 @@
         <EntityTypeShape EntityType="IBMCASDBModel.PurchaseOrderProductLine" Width="1.5" PointX="8.75" PointY="8.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IBMCASDBModel.Supplier" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
         <EntityTypeShape EntityType="IBMCASDBModel.UserCred" Width="1.5" PointX="8.75" PointY="11.625" IsExpanded="true" />
-        <AssociationConnector Association="IBMCASDBModel.FK__Appointme__Patie__7C1A6C5A" ManuallyRouted="false" />
-        <AssociationConnector Association="IBMCASDBModel.FK__Appointme__Physi__7D0E9093" ManuallyRouted="false" />
-        <AssociationConnector Association="IBMCASDBModel.FK__Appointme__Patie__7E02B4CC" ManuallyRouted="false" />
-        <AssociationConnector Association="IBMCASDBModel.FK__Appointme__Physi__7EF6D905" ManuallyRouted="false" />
+        <AssociationConnector Association="IBMCASDBModel.FK__Appointme__Patie__29221CFB" ManuallyRouted="false" />
+        <AssociationConnector Association="IBMCASDBModel.FK__Appointme__Physi__2A164134" ManuallyRouted="false" />
+        <AssociationConnector Association="IBMCASDBModel.FK__Appointme__Patie__2739D489" ManuallyRouted="false" />
+        <AssociationConnector Association="IBMCASDBModel.FK__Appointme__Physi__282DF8C2" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
