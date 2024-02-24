@@ -14,25 +14,26 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.PatientMRNumber)
+            MRNumber
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PatientFirstName)
+            @*@Html.DisplayNameFor(model => model.PatientFirstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PatientLastName)
+            @Html.DisplayNameFor(model => model.PatientLastName)*@
+            Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PatientPhone)
+            Phone
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PatientEmail)
+            Email
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PatientGender)
+            Gender
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PatientAadhaarNumber)
+            AadhaarNumber
         </th>
         <th></th>
     </tr>
@@ -41,25 +42,25 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.PatientMRNumber)
+               MRNumber
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PatientFirstName)
+               FirstName
+            @*</td>
+            <td>*@
+                LastName
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PatientLastName)
+                Phone
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PatientPhone)
+                Email
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PatientEmail)
+                Gender
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PatientGender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PatientAadhaarNumber)
+                AadhaarNumber
             </td>
             <td>
                 <button type="button" class="btn btn-success">

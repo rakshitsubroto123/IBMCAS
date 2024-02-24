@@ -388,7 +388,6 @@
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PatientDashBoardModel.cs" />
-    <Compile Include="Models\PatientRegistrationForm.cs" />
     <Compile Include="Models\PatientRegistrationQueue.cs">
       <DependentUpon>ClinicAutomation.tt</DependentUpon>
     </Compile>
