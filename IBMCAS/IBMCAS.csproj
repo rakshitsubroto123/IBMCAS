@@ -515,6 +515,7 @@
     <Content Include="Views\Physician\Details.cshtml" />
     <Content Include="Views\Appointment\ListAppointments.cshtml" />
     <Content Include="Views\Patient\ApprovedAppointment.cshtml" />
+    <Content Include="Views\web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
