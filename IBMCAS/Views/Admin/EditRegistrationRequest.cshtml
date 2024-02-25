@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>EditRegistrationRequest</h2>
+<h2>Edit Registration Request</h2>
 
 
 @using (Html.BeginForm())
@@ -13,29 +13,30 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>PatientRegistrationQueue</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ID)
 
+        <input type="hidden" name="PRQID" value="@Model.PRQID" />
         <div class="form-group">
-            @Html.LabelFor(model => model.RegistrationTokenID, htmlAttributes: new { @class = "control-label col-md-2" })
+            Registration Token No
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RegistrationTokenID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RegistrationTokenID, "", new { @class = "text-danger" })
+                @Html.DisplayFor(model => model.RegistrationTokenNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RegistrationTokenNo, "", new { @class = "text-danger" })
+                <input type="hidden" name="RegistrationTokenNo" value="@Model.RegistrationTokenNo" />
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DateCreated, htmlAttributes: new { @class = "control-label col-md-2" })
+            Date Created
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DisplayFor(model => model.DateCreated, new { htmlAttributes = new { @class = "form-control" } })
+
+                <input type="hidden" name="DateCreated" value="@Model.DateCreated" />
                 @Html.ValidationMessageFor(model => model.DateCreated, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PatientDOB, htmlAttributes: new { @class = "control-label col-md-2" })
+            Date Of Birth
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PatientDOB, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PatientDOB, "", new { @class = "text-danger" })
@@ -43,7 +44,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PatientFirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            First Name
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PatientFirstName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PatientFirstName, "", new { @class = "text-danger" })
@@ -51,7 +52,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PatientLastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            Last Name
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PatientLastName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PatientLastName, "", new { @class = "text-danger" })
@@ -59,7 +60,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PatientAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+            Address
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PatientAddress, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PatientAddress, "", new { @class = "text-danger" })
@@ -67,7 +68,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PatientPhone, htmlAttributes: new { @class = "control-label col-md-2" })
+            Patient Phone
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PatientPhone, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PatientPhone, "", new { @class = "text-danger" })
@@ -75,7 +76,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PatientEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+            Email
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PatientEmail, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PatientEmail, "", new { @class = "text-danger" })
@@ -83,7 +84,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PatientGender, htmlAttributes: new { @class = "control-label col-md-2" })
+            Gender
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PatientGender, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PatientGender, "", new { @class = "text-danger" })
@@ -91,7 +92,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PatientMedicalHistory, htmlAttributes: new { @class = "control-label col-md-2" })
+           Medical History
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PatientMedicalHistory, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PatientMedicalHistory, "", new { @class = "text-danger" })
@@ -99,24 +100,21 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PatientAadhaarNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            Aadhaar Number
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PatientAadhaarNumber, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PatientAadhaarNumber, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+        <div class="form-group mt-2">
+            
+                <input type="submit" value="Save" class="btn btn-success" />
+               <button class="btn btn-primary" href=@Url.Action("RegistrationRequests", "Admin")>Back</button>
+            
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "RegistrationRequests")
-</div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
