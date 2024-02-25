@@ -513,6 +513,7 @@
     <Content Include="Views\Physician\Edit.cshtml" />
     <Content Include="Views\Physician\ListAll.cshtml" />
     <Content Include="Views\Physician\Add.cshtml" />
+    <Content Include="Views\Physician\ReAdvise.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
