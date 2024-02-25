@@ -11,7 +11,8 @@ namespace IBMCAS.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Physician
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,10 +24,18 @@ namespace IBMCAS.Models
         }
     
         public int PhysicianID { get; set; }
+        [Required]
         public string PhysicianName { get; set; }
+        [Required]
         public string PhysicianAddress { get; set; }
+        [Required]
+        [MinLength(10)]
+        [MaxLength(10)]
         public string PhysicianPhone { get; set; }
+        [Required]
+        [EmailValidation]
         public string PhysicianEmail { get; set; }
+        [Required]
         public string PhysicianSpecialization { get; set; }
         public string PhysicianSummary { get; set; }
     
