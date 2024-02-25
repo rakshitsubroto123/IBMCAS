@@ -40,6 +40,11 @@ namespace IBMCAS.Controllers
         public ActionResult AdvicePrescriptionForm(int? AppointmentID)
         {
             ViewBag.ScheduleID = AppointmentID;
+            Advice ad = _db.Advices.Where(q => q.ScheduleId == AppointmentID).FirstOrDefault();
+            if(ad != null)
+            {
+                return View("ReAdvise");
+            }
             ViewBag.Drugs = _db.Drugs.ToList();
             var model = new AdvicePrescriptionViewModel
             {
