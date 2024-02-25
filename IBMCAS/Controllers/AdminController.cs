@@ -62,9 +62,6 @@ namespace IBMCAS.Controllers
         [HttpPost]
         public ActionResult EditRegistrationRequest([Bind(    Include = "PRQID, RegistrationTokenNo,DateCreated,PatientDOB,PatientFirstName,PatientLastName,PatientAddress,PatientPhone,PatientEmail,PatientGender,PatientMedicalHistory,PatientAadhaarNumber")] PatientRegistrationQueue patientRegistrationQueue)
         {
-            List<int> l = new List<int>();
-            Stack<int> r = new Stack<int>();    
-            SortedList<int, int> sl = new SortedList<int, int>();
             if (ModelState.IsValid)
             {
                 _db.Entry(patientRegistrationQueue).State = EntityState.Modified;
