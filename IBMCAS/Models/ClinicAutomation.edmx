@@ -255,12 +255,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PurchaseO__DrugI__43D61337">
-          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+        <Association Name="FK__PurchaseO__DrugI__4D5F7D71">
+          <End Role="Drug" Type="Self.Drug" Multiplicity="1" />
           <End Role="PurchaseOrderProductLine" Type="Self.PurchaseOrderProductLine" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Patient">
-              <PropertyRef Name="PatientID" />
+            <Principal Role="Drug">
+              <PropertyRef Name="DrugId" />
             </Principal>
             <Dependent Role="PurchaseOrderProductLine">
               <PropertyRef Name="DrugId" />
@@ -338,8 +338,8 @@
             <End Role="Advice" EntitySet="Advice" />
             <End Role="Prescription" EntitySet="Prescription" />
           </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__DrugI__43D61337" Association="Self.FK__PurchaseO__DrugI__43D61337">
-            <End Role="Patient" EntitySet="Patient" />
+          <AssociationSet Name="FK__PurchaseO__DrugI__4D5F7D71" Association="Self.FK__PurchaseO__DrugI__4D5F7D71">
+            <End Role="Drug" EntitySet="Drug" />
             <End Role="PurchaseOrderProductLine" EntitySet="PurchaseOrderProductLine" />
           </AssociationSet>
           <AssociationSet Name="FK__PurchaseO__Purch__42E1EEFE" Association="Self.FK__PurchaseO__Purch__42E1EEFE">
@@ -417,6 +417,7 @@
           <Property Name="DrugName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DrugDescription" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Prescriptions" Relationship="Self.FK__Prescript__DrugI__40F9A68C" FromRole="Drug" ToRole="Prescription" />
+          <NavigationProperty Name="PurchaseOrderProductLines" Relationship="Self.FK__PurchaseO__DrugI__4D5F7D71" FromRole="Drug" ToRole="PurchaseOrderProductLine" />
         </EntityType>
         <EntityType Name="DrugRequest">
           <Key>
@@ -445,7 +446,6 @@
           <Property Name="PatientAadhaarNumber" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Appointments" Relationship="Self.FK__Appointme__Patie__29221CFB" FromRole="Patient" ToRole="Appointment" />
           <NavigationProperty Name="AppointmentRequests" Relationship="Self.FK__Appointme__Patie__2739D489" FromRole="Patient" ToRole="AppointmentRequest" />
-          <NavigationProperty Name="PurchaseOrderProductLines" Relationship="Self.FK__PurchaseO__DrugI__43D61337" FromRole="Patient" ToRole="PurchaseOrderProductLine" />
         </EntityType>
         <EntityType Name="PatientRegistrationQueue">
           <Key>
@@ -510,7 +510,7 @@
           <Property Name="DrugId" Type="Int32" Nullable="false" />
           <Property Name="Qty" Type="Int32" Nullable="false" />
           <Property Name="ShortNote" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Patient" Relationship="Self.FK__PurchaseO__DrugI__43D61337" FromRole="PurchaseOrderProductLine" ToRole="Patient" />
+          <NavigationProperty Name="Drug" Relationship="Self.FK__PurchaseO__DrugI__4D5F7D71" FromRole="PurchaseOrderProductLine" ToRole="Drug" />
           <NavigationProperty Name="PurchaseOrderHeader" Relationship="Self.FK__PurchaseO__Purch__42E1EEFE" FromRole="PurchaseOrderProductLine" ToRole="PurchaseOrderHeader" />
         </EntityType>
         <EntityType Name="Supplier">
@@ -616,6 +616,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PurchaseO__DrugI__4D5F7D71">
+          <End Role="Drug" Type="Self.Drug" Multiplicity="1" />
+          <End Role="PurchaseOrderProductLine" Type="Self.PurchaseOrderProductLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drug">
+              <PropertyRef Name="DrugId" />
+            </Principal>
+            <Dependent Role="PurchaseOrderProductLine">
+              <PropertyRef Name="DrugId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__DrugReque__Reque__3F115E1A">
           <End Role="Physician" Type="Self.Physician" Multiplicity="1" />
           <End Role="DrugRequest" Type="Self.DrugRequest" Multiplicity="*" />
@@ -625,18 +637,6 @@
             </Principal>
             <Dependent Role="DrugRequest">
               <PropertyRef Name="RequestPhysicianId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PurchaseO__DrugI__43D61337">
-          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
-          <End Role="PurchaseOrderProductLine" Type="Self.PurchaseOrderProductLine" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Patient">
-              <PropertyRef Name="PatientID" />
-            </Principal>
-            <Dependent Role="PurchaseOrderProductLine">
-              <PropertyRef Name="DrugId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -707,13 +707,13 @@
             <End Role="Drug" EntitySet="Drugs" />
             <End Role="Prescription" EntitySet="Prescriptions" />
           </AssociationSet>
+          <AssociationSet Name="FK__PurchaseO__DrugI__4D5F7D71" Association="Self.FK__PurchaseO__DrugI__4D5F7D71">
+            <End Role="Drug" EntitySet="Drugs" />
+            <End Role="PurchaseOrderProductLine" EntitySet="PurchaseOrderProductLines" />
+          </AssociationSet>
           <AssociationSet Name="FK__DrugReque__Reque__3F115E1A" Association="Self.FK__DrugReque__Reque__3F115E1A">
             <End Role="Physician" EntitySet="Physicians" />
             <End Role="DrugRequest" EntitySet="DrugRequests" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PurchaseO__DrugI__43D61337" Association="Self.FK__PurchaseO__DrugI__43D61337">
-            <End Role="Patient" EntitySet="Patients" />
-            <End Role="PurchaseOrderProductLine" EntitySet="PurchaseOrderProductLines" />
           </AssociationSet>
           <AssociationSet Name="FK__PurchaseO__Purch__42E1EEFE" Association="Self.FK__PurchaseO__Purch__42E1EEFE">
             <End Role="PurchaseOrderHeader" EntitySet="PurchaseOrderHeaders" />

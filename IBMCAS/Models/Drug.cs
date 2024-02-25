@@ -18,6 +18,7 @@ namespace IBMCAS.Models
         public Drug()
         {
             this.Prescriptions = new HashSet<Prescription>();
+            this.PurchaseOrderProductLines = new HashSet<PurchaseOrderProductLine>();
         }
     
         public int DrugId { get; set; }
@@ -26,5 +27,7 @@ namespace IBMCAS.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Prescription> Prescriptions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PurchaseOrderProductLine> PurchaseOrderProductLines { get; set; }
     }
 }

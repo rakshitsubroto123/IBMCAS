@@ -11,8 +11,7 @@ namespace IBMCAS.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class PatientRegistrationQueue
     {
         public int PRQID { get; set; }
@@ -22,18 +21,10 @@ namespace IBMCAS.Models
         public string PatientFirstName { get; set; }
         public string PatientLastName { get; set; }
         public string PatientAddress { get; set; }
-
-        [MaxLength(10)]
-        [MinLength(10)]
         public string PatientPhone { get; set; }
-
-        [EmailValidation]
         public string PatientEmail { get; set; }
         public string PatientGender { get; set; }
         public string PatientMedicalHistory { get; set; }
-
-        [MaxLength(12)]
-        [MinLength(12)]
         public string PatientAadhaarNumber { get; set; }
     }
 }

@@ -94,7 +94,8 @@ namespace IBMCAS.Controllers
                             {
                                 PurchaseOrderId = pheader.PurchaseOrderId,
                                 DrugId = drg.DrugId,
-                                ShortNote = pbody.ShortNote
+                                ShortNote = pbody.ShortNote,
+                                Qty = pbody.Qty
                             };
                             _db.PurchaseOrderProductLines.Add(popl);
                         }

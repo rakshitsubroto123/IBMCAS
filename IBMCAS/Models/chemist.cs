@@ -11,16 +11,12 @@ namespace IBMCAS.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class chemist
     {
         public int chemistId { get; set; }
         public string chemistName { get; set; }
-        [MaxLength(10)]
-        [MinLength(10)]
         public string chemistPhone { get; set; }
-        [EmailValidation]
         public string chemistEmail { get; set; }
         public string chemistAddress { get; set; }
         public System.DateTime ChemistDateOfBirth { get; set; }

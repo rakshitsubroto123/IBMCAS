@@ -132,8 +132,8 @@ CREATE TABLE [dbo].[PurchaseOrderProductLine] (
     [Qty]                        INT           NOT NULL,
     [ShortNote]                  VARCHAR (200) NULL,
     PRIMARY KEY CLUSTERED ([PurchaseOrderProductLineId] ASC),
-	FOREIGN KEY ([PurchaseOrderId]) REFERENCES [dbo].[PurchaseOrderHeader] ([PurchaseOrderId]),
-	FOREIGN KEY ([DrugId]) REFERENCES [dbo].[Patient] ([PatientID])
+    FOREIGN KEY ([PurchaseOrderId]) REFERENCES [dbo].[PurchaseOrderHeader] ([PurchaseOrderId]),
+    FOREIGN KEY ([DrugId]) REFERENCES [dbo].drug ([DrugId])
 );
 
 CREATE TABLE [dbo].[Supplier] (
