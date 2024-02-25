@@ -5,21 +5,18 @@
     Layout = "~/Views/Shared/_Layoutchemist.cshtml";
 }
 
-<h2>DrugReuest</h2>
+<h2>Drug Reqests</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.RequestPhysicianId)
+             Physician
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RequestDescription)
+            Description
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RequestedDate)
+            Requested Date
         </th>
         <th></th>
     </tr>
@@ -27,18 +24,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.RequestPhysicianId)
+            @item.Physician.PhysicianID - @item.Physician.PhysicianName
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.RequestDescription)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RequestedDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DrugRequestId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DrugRequestId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DrugRequestId })
+            @item.RequestedDate.Date.ToString("dd-MM-yyyy")
         </td>
     </tr>
 }

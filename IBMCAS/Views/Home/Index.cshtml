@@ -86,7 +86,7 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                     <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#consultants">Consultants</a></li>
+                    @*<li><a class="nav-link scrollto" href="#consultants">Consultants</a></li>*@
                     <li><a class="nav-link scrollto" href="#team">Team</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact Us</a></li>
 
@@ -158,8 +158,8 @@
                                 IBMCAS, the Integrated Biometric Clinic Automation System, is a groundbreaking software solution designed to revolutionize clinic operations by automating patient registration, appointment scheduling based on physician availability, and prescription generation including drugs and personalized advice. With streamlined processes for adding and deleting physicians and patients, IBMCAS empowers clinics to enhance efficiency, reduce paperwork, and deliver high-quality patient care seamlessly.
                             </p>
                             <div class="text-center text-lg-start">
-                                <a href="#consultants" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
-                                    <span>Consultants</span>
+                                <a href=@Url.Action("Register", "Home") class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+                                    <span>Register</span>
                                     <i class="bi bi-arrow-right"></i>
                                 </a>
                             </div>
@@ -175,7 +175,7 @@
 
         </section><!-- End About Section -->
         <!-- ======= Consultants Section ======= -->
-        <section id="consultants" class="values">
+        @*<section id="consultants" class="values">
 
             <div class="container">
 
@@ -184,7 +184,7 @@
                     <p>Book an Appointment with our Doctors</p>
                 </header>
 
-            </div>
+            </div>*@
 
         </section><!-- End Consultants Section -->
         <!-- ======= Counts Section ======= -->

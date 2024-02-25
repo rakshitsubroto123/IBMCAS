@@ -21,7 +21,7 @@ namespace IBMCAS.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("DrugReuest");
         }
 
         public ActionResult CreateDrug()
