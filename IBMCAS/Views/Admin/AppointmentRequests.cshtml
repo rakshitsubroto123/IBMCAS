@@ -36,7 +36,7 @@
             @Html.DisplayFor(modelItem => item.AppointmentRequestToken)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PatientID) - @Html.DisplayFor(modelItem => item.Patient.PatientID)
+            @Html.DisplayFor(modelItem => item.Patient.PatientMRNumber) - @Html.DisplayFor(modelItem => item.Patient.PatientFirstName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PhysicianID) - @Html.DisplayFor(modelItem => item.Physician.PhysicianName)
