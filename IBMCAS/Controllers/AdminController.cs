@@ -396,5 +396,10 @@ namespace IBMCAS.Controllers
         {
             return View(_db.Suppliers.Where(q=>q.SupplierId==id).SingleOrDefault());
         }
+
+        public ActionResult AllAppointments()
+        {
+            return View("~/Views/Appointment/ListAppointments.cshtml", "_LayoutAdmin", _db.Appointments.ToList());
+        }
     }
 }
